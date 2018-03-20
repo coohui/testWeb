@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css">
+.circular{
+	width: 60px;height: 60px;border-radius:50%;background: red;
+	animation:rotate 2s infinite;
+
+}	
+@keyframes rotate{
+	0%{
+      transform:rotateY(0deg);
+	}
+	100%{
+      transform:rotateY(360deg);
+	}
+}
+</style>
+</head>
+<body>
+<div id='test' name="testId">
+	<p name="first">first</p>
+</div>
+<div id="obj"></div>
+
+<div class="circular">3</div>
+</body>
+</html>
+<script>
+var obody=document.getElementsByTagName('body')[0];
+alert('宽：'+document.documentElement.clientWidth+'高：'+document.documentElement.clientHeight );
+
+var test=document.getElementById('test');
+var obj=document.getElementById('obj');
+var p=document.createElement('p');
+p.innerHTML='I am a test element!';
+//test.appendChild(p);//不可以传字符串
+//test.append(p);//可以传字符串
+console.log(test.getAttribute('name'));
+test.setAttribute('name','changeTestId');
+console.log(test.getAttribute('name'));
+
+console.log(test.nodeName);
+console.log(test.nodeValue);
+console.log(test.nodeType);
+
+for(key in document){
+  document.write(key+'==='+document[key]+'<br/>');
+}
+
+console.log(null==null);//true
+console.log(null==undefined);//true
+console.log(null===null);//true
+
+console.log(parseInt('X8X8')+parseFloat('8')); //NaN   parseInt('X8X8')字符开头则会转成NaN
+console.log(parseInt('8X8')+parseFloat('8')); //16
+
+var str='   aaaa    ';
+String.prototype.testTrim=function(){
+   return this.replace(/(^\s+)|(\s+$)/g,'');
+}
+console.log(str.testTrim());
+
+parseInt('09/08/2009');//9 非数字字符后面的都不解析
+console.log(parseInt('0X899pppp'));//2201 0X表示16进制 把899转换成了2201
+
+//Math对象
+console.log(Math.abs(-20));
+console.log(Math.ceil(5.1));//向上取整
+console.log(Math.floor(5.9));//向下取整
+console.log(Math.round(5.9));
+console.log(Math.random());
+console.log(Math.pow(2,3));//8
+console.log(Math.exp(2));
+console.log(Math.sqrt(6));
+console.log(Math.max(2,3));
+console.log(Math.min(2,3));
+console.log(Math.sin(30));//返回数的正弦
+console.log(Math.cos(30));//返回数的余弦
+console.log(Math.tan(30));//返回角的正切
+console.log(Math.asin(30));//返回数的反正弦值
+console.log(Math.acos(30));//返回数的反余弦值
+console.log(Math.atan(30));	//以介于 -PI/2 与 PI/2 弧度之间的数值来返回 x 的反正切值
+console.log(Math.atan2(30));//返回从 x 轴到点 (x,y) 的角度（介于 -PI/2 与 PI/2 弧度之间）
+
+var arr=new Array(3); 
+for(var i in arr){
+    console.log(i+':'+arr[i])
+}
+
+//width:100%; white-space:nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden;  
+
+/*<meta http-equiv="x-dns-prefetch-control" content="on">  //开启DNS预读取  off关
+<link rel="dns-prefetch" href="//www.zhix.net">
+<link rel="dns-prefetch" href="//api.share.zhix.net">
+<link rel="dns-prefetch" href="//bdimg.share.zhix.net">*/
+
+/*一、语法题
+1、阐述说明：var、let、const的区别?(10分)
+2、请用Javascript完成如下叙述：(20分)
+1)获取一个纯数字数组中的最大元素，
+法一:Math.max(...arr);
+法二:Math.max.apply(null,arr);
+2)编写一个函数，合并所有传入数组
+
+3)获取一个集合所有的Key
+
+4)同步发送N个Request，并集中处理Response 
+
+5)编写一个异步函数，延时60毫秒输出：Hello World
+
+3、请用es6重构以下代码（30分）
+1) var jsonParser=require('body-parser').jsonParser;
+2) var body=request.body;
+   var username=body.username;
+   var password=body.password;
+3) var calculate=function ( x, y, z ) {
+	if(typeof x!='number'){
+		x=0;
+	}  
+	if(typeof y!='number'){
+		y=6;
+	}  
+	var dwt= x % y;
+	var result 
+	if(dwt==z) {
+		result=true;
+	}
+	if(dwt!=z) {
+		result = false;
+	} 
+	return result;
+}
+二、程序题
+1.编写一个队列函数，尽可能实现如下功能：(20分)
+1)empty：检测队列是否为空
+2)back：返回队列末尾成员
+3)front：返回队列首位元素
+4)pop：删除队列首位元素
+5)push：推送元素至队列末尾
+6)size返回队列成员个数
+2.列出a、b、c的所有4位排序可能；(20分)
+bca abcb abcc acba acbb acbc
+
+const obj = {
+	name: "jsCoder",
+	skill: ["es6", "react", "angular"],
+	say: function() {
+		for(var i = 1, len = this.skill.length; i<= len; i++){
+		 (function (i){
+			setTimeout(function () {
+			console.log('No.' + i + obj.name);
+			console.log(obj.skill[i-1]);
+			console.log('--------------------------');
+			}, 0);
+		 })(i);
+		 console.log(i);
+		}
+	}
+};
+obj.say();
+
+const obj2 = {
+	name: " jsCoder",
+	skill: ["es6","react","angular"],
+	say: function() {
+		for(var i = 1, len = this.skill.length; i<= len; i++){
+         var _this=this;
+		 (function (i,_this){
+			var that=_this;
+			setTimeout(function () {
+				console.log('No.' + i + that.name);
+				console.log(that.skill[i-1]);
+				console.log('--------------------------');
+			}, 0);
+		 })(i,_this);
+		 console.log(i);
+		}
+	}
+};
+obj2.say();*/
+
+</script>
