@@ -28,6 +28,24 @@
 </body>
 </html>
 <script>
+
+function teacher(name,age){
+	this.name = name;
+	this.age = age;
+	this.sayhi = function(){
+	alert('name:'+name+", age:"+age);
+	}
+}
+function student(){
+	var args = arguments;
+	teacher.call(this,args[0],args[1]);
+	// teacher.apply(this,arguments);
+}
+var teacher1 = new teacher('xiaoming',23);
+teacher1.sayhi();
+var student1 = new student('xiaolan',12);
+student1.sayhi();
+
 var obody=document.getElementsByTagName('body')[0];
 alert('宽：'+document.documentElement.clientWidth+'高：'+document.documentElement.clientHeight );
 
