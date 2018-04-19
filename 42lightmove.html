@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit">
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<meta HTTP-EQUIV="expires" CONTENT="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+.m1-div{
+  height: 80px;
+  margin-left:15px;
+  font-size: 14px;
+  color: #333333;
+  width: 99%;
+  position: relative;
+
+}
+.xb-screen .m1-div{/*>1900*/
+  height: 76px;
+}
+.b-screen .m1-div{ /*1600<w<1900*/
+  height: 76px;
+}
+.m-screen .m1-div{/*1300<w<1600*/
+  height: 62px;
+}
+.s-screen .m1-div{/*1000<w<1300*/
+  height: 62px;
+}
+.xs-screen .m1-div{/*w<1000*/ 
+  height: 62px;
+}
+.m1-div label{
+  font-size: 12px;
+  color: #999999;
+}
+.m1-progress{
+  width: 95%;
+  border-radius: 2em;
+  position: absolute;
+  background-color:#ffffff;
+}
+.xb-screen .m1-score{/*>1900*/
+  height: 24px;
+  line-height: 24px;
+  margin-top: 4px;
+}
+.b-screen .m1-score{ /*1600<w<1900*/
+  margin-top: 3px;
+  height: 26px;
+  line-height: 26px;
+}
+.m-screen .m1-score{/*1300<w<1600*/
+  margin-top: 3px;
+  height: 20px;
+  line-height: 20px;
+}
+.s-screen .m1-score{/*1000<w<1300*/
+  height: 22px;
+  line-height: 22px;
+  margin-top: 2px;
+}
+.xs-screen .m1-score{/*w<1000*/ 
+  height: 22px;
+  line-height: 22px;
+  margin-top: 2px;
+}
+.m1-tit{
+  width: 100%;
+  height: 36px;
+  line-height: 36px;
+  cursor: default;
+  font-size: 15px;
+}
+.xb-screen .m1-tit{/*>1900*/
+  height: 36px;
+  line-height: 36px;
+}
+.b-screen .m1-tit{ /*1600<w<1900*/
+  height: 36px;
+  line-height: 36px;
+}
+.m-screen .m1-tit{/*1300<w<1600*/
+  height: 30px;
+  line-height: 30px;
+}
+.s-screen .m1-tit{/*1000<w<1300*/
+  height: 22px;
+  line-height: 22px;
+}
+.xs-screen .m1-tit{/*w<1000*/ 
+  height: 22px;
+  line-height: 22px;
+}
+.m1-tips{
+  width: 100%;
+  height: 12%;
+  font-size: 12px;
+}
+.m1-totalTit{
+  color: #666666;
+  width: 98%;
+  text-align: center;
+  margin-top: 3.5%;
+  cursor: default
+}
+.m1-span1{
+  width: 100%;
+  text-align: right;
+  float: right;
+  color: #f0f0f0;
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 12px;
+  cursor: default;
+}
+.m1-scoreBack{
+  float: left;
+  width: 78%;
+  height: 32px;
+  line-height: 32px;
+  border: 1px solid #bdbdbd;
+  background-color: #fff;
+  border-radius: 0.5em;
+}
+.xb-screen .m1-scoreBack{/*>1900*/
+
+}
+.b-screen .m1-scoreBack{ /*1600<w<1900*/
+
+}
+.m-screen .m1-scoreBack{/*1300<w<1600*/
+  height: 26px;
+  line-height: 26px;
+}
+.s-screen .m1-scoreBack{/*1000<w<1300*/
+  height: 26px;
+  line-height: 26px;
+}
+.xs-screen .m1-scoreBack{/*w<1000*/ 
+  height: 26px;
+  line-height: 26px;
+}
+.m1-standard{
+  float: left;
+  background: #ffb164;
+  color: #fff;
+  width: 60px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  margin:6px 0 0 8px;
+  border-radius: 8px;
+}
+.xb-screen .m1-standard{/*>1900*/
+
+}
+.b-screen .m1-standard{ /*1600<w<1900*/
+  height: 25px;
+  line-height: 25px;
+}
+.m-screen .m1-standard{/*1300<w<1600*/
+  width: 50px;
+  height: 20px;
+  line-height: 20px;
+  margin:6px 0 0 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: default;
+}
+.s-screen .m1-standard{/*1000<w<1300*/
+  width: 50px;
+  height: 20px;
+  line-height: 20px;
+  margin:6px 0 0 8px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.xs-screen .m1-standard{/*w<1000*/ 
+  width: 50px;
+  height: 20px;
+  line-height: 20px;
+  margin:6px 0 0 8px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.m1-div .F0601W{
+  width: 95%;
+}
+.m1-div .F060W{
+  width: 35%;
+}
+.m1-div .F0605W{
+  width: 68.8%;
+}
+.F0607W{
+  width: 97.6%;
+}
+.F0609W{
+  width: 91.9%;
+}
+.m1-score{
+  height: 24px;
+  line-height: 24px;
+  width: 80%;
+  border-radius: 0.5em;
+  background: -webkit-linear-gradient(left, #66e4ff ,#3bbcf8); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(left, #66e4ff, #3bbcf8); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(left, #66e4ff ,#3bbcf8); /* Firefox 3.6 - 15 */
+  background: linear-gradient(left, #66e4ff ,#3bbcf8);
+  margin-left: 3px;
+  margin-top: 3px;
+}
+.m1-score:hover{
+  background: -webkit-linear-gradient(left, #4cddfc ,#21b3f7); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(left,  #4cddfc ,#21b3f7); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(left, #4cddfc ,#21b3f7);/* Firefox 3.6 - 15 */
+  background: linear-gradient(left, #4cddfc ,#21b3f7);
+}
+.a1{
+  animation: light_move2 3s ease-in-out  infinite;  /*alternate*/
+}
+.a2{
+  animation: light_move2 3s ease-in-out 0.5s infinite;  /*alternate*/
+}
+.a3{
+  animation: light_move2 3s ease-in-out 1s infinite;  /*alternate*/
+}
+@keyframes light_move2 {
+  0% {background: -webkit-linear-gradient(left,#66e4ff,#66e4ff 0%,#3bbcf8);}
+  10%{background: -webkit-linear-gradient(left,#66e4ff,#66e4ff 10%,#3bbcf8);}
+  20%{background: -webkit-linear-gradient(left,#66e4ff,#66e4ff 20%,#3bbcf8);}
+  30%{background: -webkit-linear-gradient(left,#66e4ff,#66e4ff 30%,#3bbcf8);}
+  40%{background: -webkit-linear-gradient(left,#66e4ff,#66e4ff 40%,#3bbcf8);}
+  50%{background: -webkit-linear-gradient(left,#66e4ff,#66e4ff 50%,#3bbcf8);}
+  60%{background: -webkit-linear-gradient(left,#66e4ff,#66e4ff 60%,#3bbcf8);}
+  70%{background: -webkit-linear-gradient(left,#66e4ff,#66e4ff 70%,#3bbcf8);}
+  80%{background: -webkit-linear-gradient(left,#66e4ff,#66e4ff 80%,#3bbcf8);}
+  90%{background: -webkit-linear-gradient(left,#66e4ff,#66e4ff 90%,#3bbcf8);}
+  100%{background: -webkit-linear-gradient(left,#66e4ff,#3bbcf8);}
+}
+
+</style>
+</head>
+<body class="m-screen">
+<div style="width: 460px;">
+	<div class="m1-div">
+		<div class="m1-tit">
+			用水总量&nbsp;
+			<label class="fontSmall">(目标值: </label>
+			<label class="DZ0001 fontSmall">≤457.296</label>
+			<label class="fontSmall">亿m³以内)</label>
+		</div>
+		<div class="m1-progress">
+			<div class="m1-scoreBack">
+				<div class="m1-score F0601W a1">
+					<span class="m1-span1 F0601">
+						434.96
+					</span>
+				</div>
+			</div>
+			<div class="m1-standard">
+				已达标
+			</div>
+		</div>
+	</div>
+
+
+	<div class="m1-div">
+		<div class="m1-tit">
+			用水总量&nbsp;
+			<label class="fontSmall">(目标值: </label>
+			<label class="DZ0001 fontSmall">≤457.296</label>
+			<label class="fontSmall">亿m³以内)</label>
+		</div>
+		<div class="m1-progress">
+			<div class="m1-scoreBack">
+				<div class="m1-score F060W a2">
+					<span class="m1-span1 F0601">
+						434.96
+					</span>
+				</div>
+			</div>
+			<div class="m1-standard">
+				已达标
+			</div>
+		</div>
+	</div>
+
+	<div class="m1-div">
+		<div class="m1-tit">
+			用水总量&nbsp;
+			<label class="fontSmall">(目标值: </label>
+			<label class="DZ0001 fontSmall">≤457.296</label>
+			<label class="fontSmall">亿m³以内)</label>
+		</div>
+		<div class="m1-progress">
+			<div class="m1-scoreBack">
+				<div class="m1-score F0605W a3">
+					<span class="m1-span1 F0601">
+						434.96
+					</span>
+				</div>
+			</div>
+			<div class="m1-standard">
+				已达标
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>

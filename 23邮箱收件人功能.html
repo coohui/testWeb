@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>邮箱收件人功能</title>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<style>
+html{}
+body{ width:100vw;overflow-x: hidden!important; }
+.g-wrap{ margin: 0 auto; width: 1000px;}
+/*滚动条样式*/
+::-webkit-scrollbar{width: 7px; height: 7px; background-color: #fff;}
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track
+{ -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); border-radius: 10px; background-color: #F5F5F5;}
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb{ border-radius: 10px; -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); background-color: rgba(204,204,204,1);}
+ul,li{ margin:0; padding:0; list-style: none;}
+.clear {zoom: 1;}
+.clear:after {content: '';display: block;clear: both;}
+
+.keysearchPro{ float: left;  position: relative; z-index: 999999; font-family: "微软雅黑"}
+.keysearchPro .mulCheck{float: left; padding-right: 10px; overflow: hidden;width: 406px; height: 28px; border: 1px solid #ccc; cursor: text; background:#fff}
+.keysearchPro .ks-row{float: left; padding:0 4px; margin:4px 0; }
+.keysearchPro .ks-item{ float: left; position: relative; cursor: default; border-radius: 4px; height: 20px;font-size: 12px;line-height: 20px; padding: 0 16px 0 4px;background:#acd1e6;}
+.keysearchPro .ks-item:hover{ background: #b8e2ff}
+.keysearchPro .mulCheckText{ float: left; }
+.keysearchPro .mulCheckDelete{cursor: pointer; position: absolute; top: 0px; right: 4px;}
+.keysearchPro .add-div{ float: left; margin:4px 0;}
+.keysearchPro .add-input{ min-width: 13px; width: 13px; height: 20px; padding-left: 4px; font-size: 12px;line-height: 20px; border:none; outline: none; -webkit-appearance: none;white-space :nowrap }
+.keysearchPro .checkMore{ position: absolute; top: 0; right: 4px; height: 26px; cursor: pointer; color: #ccc}
+.keysearchPro .checkSelect{ display: none; margin-top: 0px; float: left; clear: both; width: 416px; min-height: 0; max-height:200px; overflow-x: hidden; overflow-y:auto;  border: 1px solid #ccc; border-bottom:none; cursor: default; background:#fff; }
+.keysearchPro .sel-row{}
+.keysearchPro .sel-text{ display: inline-block; width: 100%; vertical-align: top; white-space: nowrap; text-overflow: ellipsis; -o-text-overflow: ellipsis; overflow: hidden; text-align: -webkit-match-parent; color: #000; font-size: 13px; height: 22px; line-height: 22px; cursor: pointer; padding-left: 10px;}
+.keysearchPro .sel-text:hover{background: #e1e1e1;}
+</style>
+</head>
+<body>
+<div class="g-wrap">
+    <div style="position: relative; margin-left: 100px; padding-left: 60px;">
+        <div style="position: relative; margin-left: 60px;">
+        <div id="aa" class="keysearchPro"></div>
+       </div>
+    </div>
+</div>  
+</body>
+</html>
+<script type="text/javascript">
+	var keysearchPro={
+        init:function(id,config){
+           var defaultOption={};
+           var settings= $.extend({},defaultOption,config);
+           var obj=$(id); 
+           _initHtml();//初始化基础框架
+           var mulCheck=obj.find('.mulCheck');
+           var addInput=obj.find('.add-input');
+           var checkSelect=obj.find('.checkSelect');
+           var checkSelectList=obj.find('.checkSelectList');
+           var addDiv=obj.find('.add-div');
+           var checkedItems=obj.find('.checkedItems');
+           var checkMore=obj.find('.checkMore');
+           
+           var objWidth=mulCheck.width();
+
+           _initChecked();
+
+           function _initHtml(){//初始化基础框架
+               var str='<div class="mulCheck">'+
+                        '<div class="checkedItems"></div>'+
+                        '<div class="add-div">'+
+                            '<input class="add-input ignore" size="1" type="text" value="">'+
+                        '</div>'+
+                        '<div class="checkSelect">'+
+                            '<ul class="checkSelectList"></ul>'+
+                        '</div>'+
+                        '<div class="checkMore">...</div>'+
+                    '</div>';
+                    obj.html(str);
+           }
+
+           function _initChecked(){
+              var data=settings.data;
+              var str='';
+              for(var i=0,len=data.length;i<len;i++){
+                  str+='<div class="ks-row" unselectable="on">'+
+                        '<div class="ks-item">'+
+                             '<span class="mulCheckText" code="'+data[i].code+'">'+data[i].name+'</span>'+
+                             '<span class="mulCheckDelete" id="mulCheckDelete'+i+'">x</span>'+
+                         '</div>'+
+                     '</div>';
+               }
+               checkedItems.html(str);
+           }
+
+           function _updateIndex(){
+               var checkedRows=$('.ks-row');
+               for(var i=0,len=checkedRows.length;i<len;i++){
+                   checkedRows.eq(i).find('.mulCheckDelete').attr('id','mulCheckDelete'+i);
+               }
+           }
+
+           function _getSelData(key){
+                $.ajax({
+                   type: "get",
+                   url:settings.url,
+                   crossDomain:true,
+                   data: {keyWord:(key||'')},
+                   success: function(data){
+                      if(data.data){
+                        _updateSel(data.data);
+                      }
+                   }
+                });
+           }
+
+           function _updateSel(data){
+              var html='';
+              for(var i=0,len=data.length;i<len;i++){
+                  html+='<li class="sel-row"><a class="sel-text" id="row'+i+'" code="'+data[i].code+'" title="'+data[i].name+'">'+data[i].name+'</a></li>';
+              }
+              checkSelectList.html(html);
+           }
+
+           mulCheck.bind('click').on('click',function(event){
+                event=event||window.event;
+                var target=event.target||event.srcElement;
+                if(target.className=='keysearchPro'||target.className=='mulCheck'||target.className=='checkMore'){
+                   mulCheck.css({'height':'auto'}); 
+                   checkSelect.css({'display':'block'});
+                   addInput.focus();
+                }else if(target.className=='ks-row'){
+                   console.log('此处可扩展手写插入item');
+                }else if(target.className=='mulCheckText'){
+                   console.log('此处可扩展单击编辑item');
+                }else if(target.className=='mulCheckDelete'){
+                   var deleteId=target.id;
+                   $('#'+deleteId).parents('.ks-row').remove();
+                   _updateIndex();
+                }
+                return false;
+           }) 
+           
+           addInput.keydown(function(event) {}); 
+
+           addInput.keyup(function(event) {
+               var maxWidth=parseInt(objWidth-addInput.position().left);
+               var val=$(this).val();
+               var width=val.length*12;
+               width=width>maxWidth?maxWidth:width;
+               console.log(width);
+               addInput.css({'width':width});
+               _getSelData(val);
+           }); 
+
+           addInput.focusout(function(){
+
+           });
+
+           checkSelectList.unbind('click').on('click',function(event){
+              event=event||window.event;
+              var target=event.target||event.srcElement;
+              if(!target.id){return};
+              var rowId=$('#'+target.id);
+              var name=rowId.html();
+              var code=rowId.attr('code');
+              var len=$('.ks-row').length;
+              var html='<div class="ks-row" unselectable="on">'+
+                    '<div class="ks-item"><span class="mulCheckText" code="'+code+'">'+name+'</span>'+
+                    '<span class="mulCheckDelete" id="mulCheckDelete'+len+'">x</span></div>'+
+                 '</div>';
+                 addDiv.before(html);
+           })
+
+           $(document).unbind('click').on('click',function(){
+              checkSelect.hide();
+              mulCheck.css({'height':28});
+           })
+        }
+	};
+
+    var data=[{name:'aaaa',code:'158151'},{name:'bbbb',code:'158151'},{name:'cccc',code:'158151'}];
+	keysearchPro.init('#aa',{
+        data:data,
+        url:"http://10.100.9.61:9010/busi/WaterPermitManager/getOrgList.do"
+    });
+</script>
+

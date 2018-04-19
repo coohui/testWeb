@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>流程图</title>
+<style>
+body{margin:0; padding:0;background: #f5f5f5;}
+.g-content{ width: 1000px; position: relative; height: 1600px; margin:0 auto; background: #fff }
+.flowChart{position: absolute; left: 0; top:0; width: 100%; height: 100%}
+.rect{cursor: pointer; fill:rgb(255,255,255); stroke-width:1;stroke:rgb(137,177,193)}
+.txt{cursor: pointer; color: #333333; font-family:'微软雅黑'; font-size: 14px;}
+.vRect{dominant-baseline: middle;}
+.vRect2{fill:#7f7f7f; stroke-width:0;}
+.hRect{}
+.hRectTxt{ text-anchor: middle;}
+.hRect2{/*fill:url(#imgRight);*/}
+.active{fill:rgb(196,245,255);} 
+.line{stroke:#89b1c1;stroke-width:2}
+</style>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div class="g-content clear">
+	<div class="flowChart" id="flowChart">
+		<svg  width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+ 		  <defs>
+ 		    <!-- writing-mode="tb"-->
+		    <g id="vRect">
+		        <rect class="vRect rect" x="0" y="0" rx="4" ry="4" width="34" height="100" data="vRect"/>
+		        <text fill="#000" x="0" y="0" width="34" height="100" data="vRect" class="vRectTxt txt">
+		            <tspan>工程抢险 </tspan>
+		        </text>
+		    </g>
+ 		  </defs> 
+
+ 		  <defs>
+		    <g id="vRect2">
+		        <rect class="vRect2" rx="4" ry="4" width="62" height="34" data="vRect2"/>
+		        <text fill="#fff" x="6" y="22" width="62" height="34"  data="vRect2" class="vRect2Txt txt">
+		            <tspan>派出2人</tspan>
+		        </text>
+		    </g>
+ 		  </defs> 
+
+ 		  <defs> 
+		    <g id="hRect">
+		        <rect class="hRect rect" rx="4" ry="4" width="110" height="34" data="hRect" />
+		        <text fill="#000" x="56" y="22" data="hRect" class="hRectTxt txt"> 
+		            <tspan>5、工程抢险</tspan>
+		        </text>
+		    </g>
+ 		  </defs> 
+
+ 		  <defs> 
+		    <g id="hRect2">
+		        <rect class="hRect2 rect active" rx="4" ry="4" width="110" height="34" data="hRect2"/>
+		        <text fill="#000" x="56" y="22" data="hRect2" class="hRectTxt txt"> 
+		            <tspan>发文</tspan>
+		        </text>
+		        <image href="img/right.png" x="6" y="10" width="14" height="13" />
+		        <!-- userSpaceOnUse:重复 objectBoundingBox：不重复 -->
+		        <pattern id="imgRight" x="0" y="0" width="14" height="13" patternUnits="objectBoundingBox">  
+		           <image href="img/right.png" x="0" y="0" width="14" height="13" />
+		        </pattern>
+		    </g>
+ 		  </defs> 
+
+ 		  <defs> 
+		    <g id="hLine">
+		        <line class="hLine line" x1="0" y1="0" x2="30" y2="0"/>
+		    </g>
+ 		  </defs>  
+
+ 		  <line class="vLine line" x1="60" y1="300" x2="60" y2="460"/>
+
+<!--         <g id="vRect">
+    <rect class="vRect rect" x="110" y="110" rx="4" ry="4" width="34" height="100" data="vRect"/>
+    <text fill="#000" x="110" y="110" width="34" height="100" data="vRect" class="vRectTxt txt">
+          <tspan>测试</tspan>
+    </text>
+</g> -->
+
+          <use xlink:href="#vRect" x="50" y="50"/>
+          <use xlink:href="#hRect" x="250" y="250"/>
+          <use xlink:href="#hRect2" x="650" y="250"/>
+          <use xlink:href="#hLine" x="650" y="450"/>
+          <use xlink:href="#vRect2" x="200" y="450"/>
+		</svg>
+	</div>
+</div>
+<script type="text/javascript">
+$(function(){
+   var data=[{
+         "id" : "4d3ce10a714245feac48000000000000",
+         "name" : "工程抢险",
+         "orderIndex" : 1,
+         "pid" : "-1",
+         "lev" : "1",
+         "status" : "0",
+         "nt" : null,
+         "ts" : 1501927575000,
+         "addvcd" : "440000",
+         "org" : "006941135",
+         "children" : [
+            {
+               "id" : "4d3ce10a714245feac4838f400000000",
+               "name" : "会商会议",
+               "orderIndex" : 2,
+               "pid" : "4d3ce10a714245feac48000000000000",
+               "lev" : "2",
+               "status" : "0",
+               "nt" : null,
+               "ts" : 1501927575000,
+               "addvcd" : "440000",
+               "org" : "006941135",
+               "children" : [
+                  {
+                     "id" : "4d3ce10a714245feac4838f4078b0000",
+                     "name" : "会商会议",
+                     "orderIndex" : 4,
+                     "pid" : "4d3ce10a714245feac4838f400000000",
+                     "lev" : "3",
+                     "status" : "0",
+                     "nt" : null,
+                     "ts" : 1501927576000,
+                     "addvcd" : "440000",
+                     "org" : "006941135",
+                     "children" : [],
+                     "dealTp" : "08"
+                  },
+                  {
+                     "id" : "4d3ce10a714245feac4838f42e090000",
+                     "name" : "通知",
+                     "orderIndex" : 1,
+                     "pid" : "4d3ce10a714245feac4838f400000000",
+                     "lev" : "3",
+                     "status" : "0",
+                     "nt" : null,
+                     "ts" : 1501927576000,
+                     "addvcd" : "440000",
+                     "org" : "006941135",
+                     "children" : [
+                        {
+                           "id" : "4d3ce10a714245feac4838f42e090994",
+                           "name" : "电话",
+                           "orderIndex" : 4,
+                           "pid" : "4d3ce10a714245feac4838f42e090000",
+                           "lev" : "4",
+                           "status" : "0",
+                           "nt" : null,
+                           "ts" : 1501927576000,
+                           "addvcd" : "440000",
+                           "org" : "006941135",
+                           "children" : [],
+                           "dealTp" : "04"
+                        },
+                        {
+                           "id" : "4d3ce10a714245feac4838f42e091328",
+                           "name" : "发文",
+                           "orderIndex" : 2,
+                           "pid" : "4d3ce10a714245feac4838f42e090000",
+                           "lev" : "4",
+                           "status" : "0",
+                           "nt" : null,
+                           "ts" : 1501927576000,
+                           "addvcd" : "440000",
+                           "org" : "006941135",
+                           "children" : [],
+                           "dealTp" : "02"
+                        },
+                        {
+                           "id" : "4d3ce10a714245feac4838f42e0949cf",
+                           "name" : "短信",
+                           "orderIndex" : 3,
+                           "pid" : "4d3ce10a714245feac4838f42e090000",
+                           "lev" : "4",
+                           "status" : "0",
+                           "nt" : null,
+                           "ts" : 1501927576000,
+                           "addvcd" : "440000",
+                           "org" : "006941135",
+                           "children" : [],
+                           "dealTp" : "03"
+                        },
+                        {
+                           "id" : "4d3ce10a714245feac4838f42e09dfca",
+                           "name" : "传真",
+                           "orderIndex" : 5,
+                           "pid" : "4d3ce10a714245feac4838f42e090000",
+                           "lev" : "4",
+                           "status" : "0",
+                           "nt" : null,
+                           "ts" : 1501927576000,
+                           "addvcd" : "440000",
+                           "org" : "006941135",
+                           "children" : [],
+                           "dealTp" : "05"
+                        },
+                        {
+                           "id" : "4d3ce10a714245feac4838f42e09ee67",
+                           "name" : "拟稿",
+                           "orderIndex" : 1,
+                           "pid" : "4d3ce10a714245feac4838f42e090000",
+                           "lev" : "4",
+                           "status" : "0",
+                           "nt" : null,
+                           "ts" : 1501927576000,
+                           "addvcd" : "440000",
+                           "org" : "006941135",
+                           "children" : [],
+                           "dealTp" : "01"
+                        }
+                     ],
+                     "dealTp" : "00"
+                  },
+                  {
+                     "id" : "4d3ce10a714245feac4838f468f30000",
+                     "name" : "签到",
+                     "orderIndex" : 3,
+                     "pid" : "4d3ce10a714245feac4838f400000000",
+                     "lev" : "3",
+                     "status" : "0",
+                     "nt" : null,
+                     "ts" : 1501927576000,
+                     "addvcd" : "440000",
+                     "org" : "006941135",
+                     "children" : [],
+                     "dealTp" : "07"
+                  },
+                  {
+                     "id" : "4d3ce10a714245feac4838f4ba790000",
+                     "name" : "准备",
+                     "orderIndex" : 2,
+                     "pid" : "4d3ce10a714245feac4838f400000000",
+                     "lev" : "3",
+                     "status" : "0",
+                     "nt" : null,
+                     "ts" : 1501927576000,
+                     "addvcd" : "440000",
+                     "org" : "006941135",
+                     "children" : [],
+                     "dealTp" : "06"
+                  },
+                  {
+                     "id" : "4d3ce10a714245feac4838f4cd840000",
+                     "name" : "决议",
+                     "orderIndex" : 5,
+                     "pid" : "4d3ce10a714245feac4838f400000000",
+                     "lev" : "3",
+                     "status" : "0",
+                     "nt" : null,
+                     "ts" : 1501927576000,
+                     "addvcd" : "440000",
+                     "org" : "006941135",
+                     "children" : [
+                        {
+                           "id" : "4d3ce10a714245feac4838f4cd840f00",
+                           "name" : "拟稿",
+                           "orderIndex" : 1,
+                           "pid" : "4d3ce10a714245feac4838f4cd840000",
+                           "lev" : "4",
+                           "status" : "0",
+                           "nt" : null,
+                           "ts" : 1501927577000,
+                           "addvcd" : "440000",
+                           "org" : "006941135",
+                           "children" : [],
+                           "dealTp" : "01"
+                        },
+                        {
+                           "id" : "4d3ce10a714245feac4838f4cd844b6d",
+                           "name" : "电话",
+                           "orderIndex" : 4,
+                           "pid" : "4d3ce10a714245feac4838f4cd840000",
+                           "lev" : "4",
+                           "status" : "0",
+                           "nt" : null,
+                           "ts" : 1501927577000,
+                           "addvcd" : "440000",
+                           "org" : "006941135",
+                           "children" : [],
+                           "dealTp" : "04"
+                        },
+                        {
+                           "id" : "4d3ce10a714245feac4838f4cd844f96",
+                           "name" : "传真",
+                           "orderIndex" : 5,
+                           "pid" : "4d3ce10a714245feac4838f4cd840000",
+                           "lev" : "4",
+                           "status" : "0",
+                           "nt" : null,
+                           "ts" : 1501927577000,
+                           "addvcd" : "440000",
+                           "org" : "006941135",
+                           "children" : [],
+                           "dealTp" : "05"
+                        },
+                        {
+                           "id" : "4d3ce10a714245feac4838f4cd84bca3",
+                           "name" : "短信",
+                           "orderIndex" : 3,
+                           "pid" : "4d3ce10a714245feac4838f4cd840000",
+                           "lev" : "4",
+                           "status" : "0",
+                           "nt" : null,
+                           "ts" : 1501927577000,
+                           "addvcd" : "440000",
+                           "org" : "006941135",
+                           "children" : [],
+                           "dealTp" : "03"
+                        },
+                        {
+                           "id" : "4d3ce10a714245feac4838f4cd84c9af",
+                           "name" : "发文",
+                           "orderIndex" : 2,
+                           "pid" : "4d3ce10a714245feac4838f4cd840000",
+                           "lev" : "4",
+                           "status" : "0",
+                           "nt" : null,
+                           "ts" : 1501927577000,
+                           "addvcd" : "440000",
+                           "org" : "006941135",
+                           "children" : [],
+                           "dealTp" : "02"
+                        }
+                     ],
+                     "dealTp" : "09"
+                  }
+               ],
+               "dealTp" : "00"
+            },
+            {
+               "id" : "4d3ce10a714245feac48698e00000000",
+               "name" : "专家组",
+               "orderIndex" : 3,
+               "pid" : "4d3ce10a714245feac48000000000000",
+               "lev" : "2",
+               "status" : "0",
+               "nt" : null,
+               "ts" : 1501927575000,
+               "addvcd" : "440000",
+               "org" : "006941135",
+               "children" : [
+                  {
+                     "id" : "4d3ce10a714245feac48698e35d50000",
+                     "name" : "通知",
+                     "orderIndex" : 1,
+                     "pid" : "4d3ce10a714245feac48698e00000000",
+                     "lev" : "3",
+                     "status" : "0",
+                     "nt" : null,
+                     "ts" : 1501927576000,
+                     "addvcd" : "440000",
+                     "org" : "006941135",
+                     "children" : [
+                        {
+                           "id" : "4d3ce10a714245feac48698e35d50b7c",
+                           "name" : "拟稿",
+                           "orderIndex" : 1,
+                           "pid" : "4d3ce10a714245feac48698e35d50000",
+                           "lev" : "4",
+                           "status" : "0",
+                           "nt" : null,
+                           "ts" : 1501927576000,
+                           "addvcd" : "440000",
+                           "org" : "006941135",
+                           "children" : [],
+                           "dealTp" : "01"
+                        },
+                        {
+                           "id" : "4d3ce10a714245feac48698e35d54ba7",
+                           "name" : "短信",
+                           "orderIndex" : 3,
+                           "pid" : "4d3ce10a714245feac48698e35d50000",
+                           "lev" : "4",
+                           "status" : "0",
+                           "nt" : null,
+                           "ts" : 1501927576000,
+                           "addvcd" : "440000",
+                           "org" : "006941135",
+                           "children" : [],
+                           "dealTp" : "03"
+                        },
+                        {
+                           "id" : "4d3ce10a714245feac48698e35d55409",
+                           "name" : "发文",
+                           "orderIndex" : 2,
+                           "pid" : "4d3ce10a714245feac48698e35d50000",
+                           "lev" : "4",
+                           "status" : "0",
+                           "nt" : null,
+                           "ts" : 1501927576000,
+                           "addvcd" : "440000",
+                           "org" : "006941135",
+                           "children" : [],
+                           "dealTp" : "02"
+                        },
+                        {
+                           "id" : "4d3ce10a714245feac48698e35d56931",
+                           "name" : "电话",
+                           "orderIndex" : 4,
+                           "pid" : "4d3ce10a714245feac48698e35d50000",
+                           "lev" : "4",
+                           "status" : "0",
+                           "nt" : null,
+                           "ts" : 1501927576000,
+                           "addvcd" : "440000",
+                           "org" : "006941135",
+                           "children" : [],
+                           "dealTp" : "04"
+                        },
+                        {
+                           "id" : "4d3ce10a714245feac48698e35d5fb3a",
+                           "name" : "传真",
+                           "orderIndex" : 5,
+                           "pid" : "4d3ce10a714245feac48698e35d50000",
+                           "lev" : "4",
+                           "status" : "0",
+                           "nt" : null,
+                           "ts" : 1501927576000,
+                           "addvcd" : "440000",
+                           "org" : "006941135",
+                           "children" : [],
+                           "dealTp" : "05"
+                        }
+                     ],
+                     "dealTp" : "00"
+                  },
+                  {
+                     "id" : "4d3ce10a714245feac48698e35d50000",
+                     "name" : "派出",
+                     "orderIndex" : 2,
+                     "pid" : "4d3ce10a714245feac48698e00000000",
+                     "lev" : "3",
+                     "status" : "0",
+                     "nt" : null,
+                     "ts" : 1501927576000,
+                     "addvcd" : "440000",
+                     "org" : "006941135",
+                     "children" : [],
+                     "dealTp" : "10"
+                  },
+                  {
+                     "id" : "4d3ce10a714245feac48698e35d50000",
+                     "name" : "撤回",
+                     "orderIndex" : 3,
+                     "pid" : "4d3ce10a714245feac48698e00000000",
+                     "lev" : "3",
+                     "status" : "0",
+                     "nt" : null,
+                     "ts" : 1501927576000,
+                     "addvcd" : "440000",
+                     "org" : "006941135",
+                     "children" : [],
+                     "dealTp" : "11"
+                  }
+               ],
+               "dealTp" : "00"
+            },
+            {
+               "id" : "4d3ce10a714245feac4876f500000000",
+               "name" : "完成",
+               "orderIndex" : 6,
+               "pid" : "4d3ce10a714245feac48000000000000",
+               "lev" : "2",
+               "status" : "0",
+               "nt" : null,
+               "ts" : 1501927576000,
+               "addvcd" : "440000",
+               "org" : "006941135",
+               "children" : [],
+               "dealTp" : "13"
+            },
+            {
+               "id" : "4d3ce10a714245feac48b54300000000",
+               "name" : "抢险通知",
+               "orderIndex" : 1,
+               "pid" : "4d3ce10a714245feac48000000000000",
+               "lev" : "2",
+               "status" : "0",
+               "nt" : null,
+               "ts" : 1501927575000,
+               "addvcd" : "440000",
+               "org" : "006941135",
+               "children" : [
+                  {
+                     "id" : "4d3ce10a714245feac48b54367db0000",
+                     "name" : "电话",
+                     "orderIndex" : 4,
+                     "pid" : "4d3ce10a714245feac48b54300000000",
+                     "lev" : "3",
+                     "status" : "0",
+                     "nt" : null,
+                     "ts" : 1501927576000,
+                     "addvcd" : "440000",
+                     "org" : "006941135",
+                     "children" : [],
+                     "dealTp" : "04"
+                  },
+                  {
+                     "id" : "4d3ce10a714245feac48b54396570000",
+                     "name" : "发文",
+                     "orderIndex" : 2,
+                     "pid" : "4d3ce10a714245feac48b54300000000",
+                     "lev" : "3",
+                     "status" : "0",
+                     "nt" : null,
+                     "ts" : 1501927576000,
+                     "addvcd" : "440000",
+                     "org" : "006941135",
+                     "children" : [],
+                     "dealTp" : "02"
+                  },
+                  {
+                     "id" : "4d3ce10a714245feac48b543bfc20000",
+                     "name" : "传真",
+                     "orderIndex" : 5,
+                     "pid" : "4d3ce10a714245feac48b54300000000",
+                     "lev" : "3",
+                     "status" : "0",
+                     "nt" : null,
+                     "ts" : 1501927576000,
+                     "addvcd" : "440000",
+                     "org" : "006941135",
+                     "children" : [],
+                     "dealTp" : "05"
+                  },
+                  {
+                     "id" : "4d3ce10a714245feac48b543c5e00000",
+                     "name" : "短信",
+                     "orderIndex" : 3,
+                     "pid" : "4d3ce10a714245feac48b54300000000",
+                     "lev" : "3",
+                     "status" : "0",
+                     "nt" : null,
+                     "ts" : 1501927576000,
+                     "addvcd" : "440000",
+                     "org" : "006941135",
+                     "children" : [],
+                     "dealTp" : "03"
+                  },
+                  {
+                     "id" : "4d3ce10a714245feac48b543fa550000",
+                     "name" : "拟稿",
+                     "orderIndex" : 1,
+                     "pid" : "4d3ce10a714245feac48b54300000000",
+                     "lev" : "3",
+                     "status" : "0",
+                     "nt" : null,
+                     "ts" : 1501927576000,
+                     "addvcd" : "440000",
+                     "org" : "006941135",
+                     "children" : [],
+                     "dealTp" : "01"
+                  }
+               ],
+               "dealTp" : "00"
+            },
+            {
+               "id" : "4d3ce10a714245feac48c32d00000000",
+               "name" : "信息收集",
+               "orderIndex" : 4,
+               "pid" : "4d3ce10a714245feac48000000000000",
+               "lev" : "2",
+               "status" : "0",
+               "nt" : null,
+               "ts" : 1501927575000,
+               "addvcd" : "440000",
+               "org" : "006941135",
+               "children" : [],
+               "dealTp" : "12"
+            },
+            {
+               "id" : "4d3ce10a714245feac48cb3300000000",
+               "name" : "信息报送",
+               "orderIndex" : 5,
+               "pid" : "4d3ce10a714245feac48000000000000",
+               "lev" : "2",
+               "status" : "0",
+               "nt" : null,
+               "ts" : 1501927576000,
+               "addvcd" : "440000",
+               "org" : "006941135",
+               "dealTp" : "12",
+               "children" : [
+                  {
+                     "id" : "4d3ce10a714245feac48cb333a780000",
+                     "name" : "发文",
+                     "orderIndex" : 2,
+                     "pid" : "4d3ce10a714245feac48cb3300000000",
+                     "lev" : "3",
+                     "status" : "0",
+                     "nt" : null,
+                     "ts" : 1501927576000,
+                     "addvcd" : "440000",
+                     "org" : "006941135",
+                     "children" : [],
+                     "dealTp" : "02"
+                  },
+                  {
+                     "id" : "4d3ce10a714245feac48cb336e670000",
+                     "name" : "传真",
+                     "orderIndex" : 5,
+                     "pid" : "4d3ce10a714245feac48cb3300000000",
+                     "lev" : "3",
+                     "status" : "0",
+                     "nt" : null,
+                     "ts" : 1501927576000,
+                     "addvcd" : "440000",
+                     "org" : "006941135",
+                     "children" : [],
+                     "dealTp" : "05"
+                  },
+                  {
+                     "id" : "4d3ce10a714245feac48cb3374800000",
+                     "name" : "短信",
+                     "orderIndex" : 3,
+                     "pid" : "4d3ce10a714245feac48cb3300000000",
+                     "lev" : "3",
+                     "status" : "0",
+                     "nt" : null,
+                     "ts" : 1501927576000,
+                     "addvcd" : "440000",
+                     "org" : "006941135",
+                     "children" : [],
+                     "dealTp" : "03"
+                  },
+                  {
+                     "id" : "4d3ce10a714245feac48cb33b9bd0000",
+                     "name" : "拟稿",
+                     "orderIndex" : 1,
+                     "pid" : "4d3ce10a714245feac48cb3300000000",
+                     "lev" : "3",
+                     "status" : "0",
+                     "nt" : null,
+                     "ts" : 1501927576000,
+                     "addvcd" : "440000",
+                     "org" : "006941135",
+                     "children" : [],
+                     "dealTp" : "01"
+                  },
+                  {
+                     "id" : "4d3ce10a714245feac48cb33e34b0000",
+                     "name" : "电话",
+                     "orderIndex" : 4,
+                     "pid" : "4d3ce10a714245feac48cb3300000000",
+                     "lev" : "3",
+                     "status" : "0",
+                     "nt" : null,
+                     "ts" : 1501927576000,
+                     "addvcd" : "440000",
+                     "org" : "006941135",
+                     "children" : [],
+                     "dealTp" : "04"
+                  }
+               ],
+               "dealTp" : "00"
+            }
+         ],
+        "dealTp" : "00"
+   }] 
+
+   var flowChart={
+       init:function(){
+           var id = document.getElementById('flowChart');
+           var svgNS = 'http://www.w3.org/2000/svg';
+           var oSvg=flowChart.createTag('svg',{'xmlns':svgNS,'width':'100%','height':'100%'});
+           var vRect=flowChart.cRect('#flowChart',{
+                type:1,
+                id:'vRect',
+                rX:'110',
+                rY:'110',
+                tX:'110',
+                tY:'110',
+                tit:'工程抢险999999999999'
+            });
+            oSvg.appendChild(vRect);
+            id.appendChild(oSvg);
+
+       },
+       cRect:function(id,settings){
+          var oG = createTag('g',{'id':'vRect'}); 
+          if(settings.type==1){
+            var oRect = createTag('rect',{
+               'x':settings.rX,
+               'y':settings.rY,
+               'width':'34','height':'100','rx':'4','ry':'4','data':'vRect','class':'vRect rect'});
+            var oText = createTag('text',{
+               'x':settings.rX,
+               'y':settings.rY,
+               'width':'34','height':'100','class':'vRectTxt txt','data':'vRect'});
+            var oTspan = createTag('tspan');
+            oTspan.innerHTML = settings.tit;
+
+            oG.appendChild(oRect);
+            oG.appendChild(oText);
+            oG.appendChild(oTspan);
+            return oG;
+          }else if(settings.type==2){
+
+          }
+       },
+       createTag:function(tag,objAttr){ 
+          var oTag = document.createElementNS(svgNS,tag);  
+          for(var attr in objAttr){
+            oTag.setAttribute(attr , objAttr[attr]);
+          }  
+          return oTag;   
+        }
+   };
+
+   $('.rect,.txt').unbind('click').on('click',function(){
+      alert($(this).attr('data'));
+   });
+})
+</script>
+</body>
+</html>
+

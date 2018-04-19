@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>canvas画扇形</title>
+<!--   <link rel="stylesheet" type="text/css" href="animation.css">
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script> -->
+  <style type="text/css">
+ body{
+ 	background: #eee;
+ 	height: 1000px;
+ }
+ ul{
+ 	display: -none;
+ }
+ li{
+ 	list-style: none;
+ 	float: left;
+ 	width: 90px; 
+ 	height: 110px;
+ 	background: #fff;
+ 	margin-right: 10px;
+ }
+.Circulargraph{
+  background: #fff;
+  width: 600px;
+  height: 500px;
+  margin: 20px auto;
+  border: 1px solid #000000;
+
+}
+</style>
+ </head>
+ <body>
+<div class="Circulargraph">
+  <canvas id="canvas"></canvas>
+</div>
+ </body>
+</html>
+<script type="text/javascript">
+    drawBall('canvas',{
+      Gradient:[{point:0,color:"#b6adff"},{point:1,color:"#f9b7fd"}],
+      fillStyle:'#e3b1fe',
+      Range:[0,0.87],
+      text:'87%',
+    });
+/*
+    drawBall('canvas',{
+      Gradient:[{point:0,color:"#32e6bf"},{point:1,color:"#96edb9"}],
+      fillStyle:'#e3b1fe',
+      Range:[0,0.87],
+      text:'87%',
+      x:10,
+      y:10
+    });
+*/
+    function drawBall(id,settings){
+        var canvas = document.getElementById(id);
+        var ctx = canvas.getContext('2d');
+        var width=settings.canvWidth||canvas.parentNode.offsetWidth;
+        var height=settings.canvHeight||canvas.parentNode.offsetHeight;
+        var W = canvas.width = width;
+        var H = canvas.height = height; 
+        var x=settings.x||(W/2);
+        var y=settings.y||(H/2);
+
+        var R=settings.R||62;
+        var Range=[0,0.8];
+        if(settings.Range&&settings.Range.length>1){
+            Range=settings.Range;
+        };
+
+        console.log(settings);
+
+        Ball(ctx,{//最底层园
+           x:x,
+           y:y, 
+           Gradient:settings.Gradient,
+           fillStyle:settings.fillStyle,
+           R:R,
+           start:0,
+           end:2 * Math.PI
+        });
+
+        Ball(ctx,{//第二层百分比扇形
+           x:x,
+           y:y, 
+           fillStyle:'#fff',
+           R:R+2,
+           start:-(0.25+Range[0])*2*Math.PI,//-0.25是为了从正午12点方向开始
+           end:2*Math.PI*(1-0.25-Range[1])
+        });
+
+        Ball(ctx,{//第三层百分比扇形
+           x:x,
+           y:y, 
+           fillStyle:'rgba(215,230,236,1)',
+           R:R*54/62,
+           start:-(0.25+Range[0])*2*Math.PI,
+           end:2*Math.PI*(1-0.25-Range[1])
+        });
+
+        Ball(ctx,{//第四层百分比扇形
+           x:x,
+           y:y, 
+           fillStyle:'#fff',
+           R:R*44/62,
+           start:-(0.25+Range[0])*2*Math.PI,
+           end:2*Math.PI*(1-0.25-Range[1])
+        });
+
+        Ball(ctx,{//最上层白色小园
+           x:x,
+           y:y, 
+           fillStyle:'#fff',
+           R:R*30/62,
+           start:0,
+           end:2*Math.PI,
+           text:settings.text
+        });
+    }
+
+    function Ball(ctx,settings){
+        var start=settings.start||0;
+        var end=settings.end||2*Math.PI;
+        var x=settings.x;
+        var y=settings.y;
+        var R=settings.R;
+        if(settings.lineWidth){
+          x+=settings.lineWidth/2;
+          y+=settings.lineWidth/2;
+        }
+        ctx.save();
+        ctx.beginPath();
+        ctx.strokeStyle = settings.strokeStyle||'rgba(255,255,255,0)';
+        if(settings.Gradient&&settings.Gradient.length>0){//画渐变
+          var arrG=settings.Gradient;
+          var linear = ctx.createLinearGradient(x-(R/2),y-(R/2),x+(R/2),y+(R/2));
+          for(var i=0,len=arrG.length;i<len;i++){
+            linear.addColorStop(arrG[i].point,arrG[i].color);
+            linear.addColorStop(arrG[i].point,arrG[i].color);
+          }
+          settings.fillStyle=linear;
+        }
+        ctx.fillStyle =settings.fillStyle;
+        ctx.lineWidth=settings.lineWidth;
+        ctx.moveTo(x,y);
+        ctx.arc(x,y,settings.R,start,end);
+        !settings.lineWidth||ctx.stroke();
+        ctx.fill();
+        if(settings.text){//绘制文字
+          var offsetX=settings.text.length/2*16-8;
+          ctx.font = "20px Microsoft YaHei";
+          ctx.fillStyle = "#333333";
+          ctx.fillText(settings.text,x-offsetX,y+10);
+        }
+        ctx.closePath();
+        ctx.restore();
+    }
+
+/*	$(function(){
+		var li=$('li');
+		li.mouseenter(function(){
+			li.removeClass('a-flipinY');
+			$(this).addClass('a-flipinY');
+		})
+	})*/
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title></title>
+<style></style>
+<link rel="stylesheet" type="text/css" href="assets/layui/css/layui.css">
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="assets/layui/layui.all.js"></script>
+</head>
+<body>
+<div id="demo1"></div>
+
+<script type="text/javascript">
+  var laypage = layui.laypage
+  ,layer = layui.layer;
+   //总页数大于页码总数
+ laypage.render({
+    elem: 'demo1',
+    count: 1000,
+    layout: ['count','prev','page','next'],
+    jump: function(obj, first){
+/*      if(!first){
+        layer.msg('第 '+ obj.curr +' 页');
+      }*/
+    }
+  });
+</script>
+</body>
+</html>
+

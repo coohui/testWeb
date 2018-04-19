@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title></title>
+<style>
+body{ width: 1000px; margin:0 auto; }
+
+/* 本例子css */
+.mSlide{ width:976px;  overflow:hidden; position:relative;  border:1px solid #ccc;}
+.mSlide .hd{ overflow:hidden;  height:30px; background:#f4f4f4; padding:0 10px;}
+.mSlide .hd .prev,.mSlide .hd .next{display:block;  width:5px; height:9px; float:right; margin-right:5px; margin-top:10px;  overflow:hidden;
+   cursor:pointer;  background: red;background:url("img/arrow.png") no-repeat;}
+.mSlide .hd .next{ background-position:0 -50px;  }
+.mSlide .hd .prevStop{ background-position:-60px 0; }
+.mSlide .hd .nextStop{ background-position:-60px -50px; }
+.mSlide .hd ul{ float:right; overflow:hidden; zoom:1; margin-top:10px; zoom:1; }
+.mSlide .hd ul li{ float:left;  width:9px; height:9px; overflow:hidden; margin-right:5px; text-indent:-999px; cursor:pointer; background:url("img/icoCircle.gif") 0 -9px no-repeat; }
+.mSlide .hd ul li.on{ background-position:0 0; }
+
+.mSlide .bd{ padding-top: 10px; background: red }
+.mSlide .picList{ overflow:hidden; zoom:1; }
+.mSlide .picLi{ margin-right: 9px; margin-left: 6px; float:left; _display:inline; overflow:hidden; text-align:center;}
+.mSlide .pic{ text-align:center; }
+.mSlide .pic img{ width:230px; height:150px; display:block; }
+.mSlide .pic a{ cursor: default; }
+.mSlide .title{ line-height:24px;   }
+.mSlide .pageState{ line-height: 32px }
+</style>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div class="mSlide" id="mSlide">
+    <div class="bd">
+        <div class="picList">
+            <div class="picLi">
+                <div class="pic"><img src="img/zwzy.png" /></div>
+                <div class="title">效果图1</div>
+            </div>
+            <div class="picLi">
+                <div class="pic"><img src="img/zwzy.png" /></div>
+                <div class="title">效果图2</div>
+            </div>
+            <div class="picLi">
+                <div class="pic"><img src="img/zwzy.png"/></div>
+                <div class="title">效果图3</div>
+            </div>
+        </div> 
+        <div class="picList">
+            <div class="picLi">
+                <div class="pic"><img src="img/zwzy.png" /></div>
+                <div class="title">效果图4</div>
+            </div>
+            <div class="picLi">
+                <div class="pic"><img src="img/zwzy.png" /></div>
+                <div class="title">效果图5</div>
+            </div>
+            <div class="picLi">
+                <div class="pic"><img src="img/zwzy.png" /></div>
+                <div class="title">效果图6</div>
+            </div>
+        </div>
+    </div>
+    <div class="hd">
+        <a class="next"></a>
+        <ul></ul>
+        <a class="prev"></a>
+        <span class="pageState"></span>
+    </div>
+</div>
+<script type="text/javascript">
+var 
+</script>
+</body>
+</html>
+

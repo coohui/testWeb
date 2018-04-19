@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>css3选择器-div>span</title>
+<style>
+.div1{ height: 300px;  }
+.p1{ height: 200px; }
+div>span{ background: #f00; display: block; }
+/*div span与div>span的区别在于：后者只查找直接父级节点有div的而前者是父级所有元素中有div的*/
+</style>
+</head>
+<body>
+<div class="div1">
+    <p>
+	    <span class="p1">333</span>
+	</p>
+</div>
+<p>
+   <div>
+   	    <span class="p1">444</span>
+   </div>
+</p>
+</body>
+</html>
+

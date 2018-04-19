@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+#main {
+  width: 140px;
+  height: 300px;
+  border: 1px solid #000000;
+  display: grid;
+  grid-template-rows:3;
+  grid-template-columns:2;
+}
+
+#main div {
+  width: 70px;
+  height: 70px;
+}
+button{
+  margin-top:20px;
+}
+</style>
+</head>
+<body>
+<div id="main" class="test">
+  <div style="background-color:coral;"></div>
+  <div style="background-color:lightblue;"></div>
+  <div style="background-color:khaki;"></div>
+  <div style="background-color:pink;"></div>
+  <div style="background-color:lightgrey;"></div>
+  <div style="background-color:lightgreen;"></div> 
+</div>
+<button>切换</button>
+<p id="elems">space-around</p>
+<script type="text/javascript">
+/*  var btn=document.getElementsByTagName('button')[0];
+  var test=document.getElementsByClassName('test')[0];
+  var elems=document.getElementById('elems');
+  var arr=['stretch','center','flex-start','flex-end','space-bettween','space-around','initial','inherit'];
+  var num=0;
+  btn.onclick=function(){
+     num>(arr.length-2)?num=0:num++;
+     test.style.alignContent=arr[num];
+     elems.innerHTML=arr[num];
+  }*/
+</script>
+</body>
+</html>

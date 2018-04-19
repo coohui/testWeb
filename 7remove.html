@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>remove</title>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<style>
+.wrap{ width: 60px; height: 30px; line-height: 30px; border: 1px solid #000;  }
+.hide{ display: none; margin-top:90px;  }
+</style>
+</head>
+<body>
+<div id="id1" class="wrap">
+	<div>999999999</div>
+</div>
+<div id="id2" class="hide">
+	 <div>pppppppppp</div>
+</div>
+<script type="text/javascript">
+	$('#id1').click(function(event) {
+		 $('#id2').toggle();
+		 //$(this);
+		 console.log($('#id1'));
+	});
+</script>
+</body>
+</html>
+

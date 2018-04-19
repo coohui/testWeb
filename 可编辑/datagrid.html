@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>jQuery EasyUI</title>
+	<link rel="stylesheet" type="text/css" href="themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="themes/icon.css">
+	<script type="text/javascript" src="../jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="jquery.easyui.min.js"></script>
+	<script>
+		var products = [
+		    {productid:'FI-SW-01',name:'Koi'},
+		    {productid:'K9-DL-01',name:'Dalmation'},
+		    {productid:'RP-SN-01',name:'Rattlesnake'},
+		    {productid:'RP-LI-02',name:'Iguana'},
+		    {productid:'FL-DSH-01',name:'Manx'},
+		    {productid:'FL-DLH-02',name:'Persian'},
+		    {productid:'AV-CB-01',name:'Amazon Parrot'}
+		];
+		var data={"total":28,
+		    "rows":[
+			{"productid":"FI-SW-01","unitcost":10.00,"status":"P","listprice":16.50,"attr1":"Large","itemid":"EST-1"},
+			{"productid":"K9-DL-01","unitcost":12.00,"status":"P","listprice":18.50,"attr1":"Spotted Adult Female","itemid":"EST-10"},
+			{"productid":"RP-SN-01","unitcost":12.00,"status":"P","listprice":18.50,"attr1":"Venomless","itemid":"EST-11"},
+			{"productid":"RP-SN-01","unitcost":12.00,"status":"P","listprice":18.50,"attr1":"Rattleless","itemid":"EST-12"},
+			{"productid":"RP-LI-02","unitcost":12.00,"status":"P","listprice":18.50,"attr1":"Green Adult","itemid":"EST-13"},
+			{"productid":"FL-DSH-01","unitcost":12.00,"status":"P","listprice":58.50,"attr1":"Tailless","itemid":"EST-14"},
+			{"productid":"FL-DSH-01","unitcost":12.00,"status":"P","listprice":23.50,"attr1":"With tail","itemid":"EST-15"},
+			{"productid":"FL-DLH-02","unitcost":12.00,"status":"P","listprice":93.50,"attr1":"Adult Female","itemid":"EST-16"},
+			{"productid":"FL-DLH-02","unitcost":12.00,"status":"P","listprice":93.50,"attr1":"Adult Male","itemid":"EST-17"},
+			{"productid":"AV-CB-01","unitcost":92.00,"status":"P","listprice":193.50,"attr1":"Adult Male","itemid":"EST-18"}
+		]};
+		$(function(){
+			$('#tt').datagrid({
+				title:'Editable DataGrid',
+				iconCls:'icon-edit',
+				width:660,
+				height:250,
+				singleSelect:true,
+				idField:'itemid',
+				data:data,
+				columns:[[
+					{field:'itemid',title:'Item ID',width:60},
+					{field:'productid',title:'Product',width:100,
+						formatter:function(value){
+							for(var i=0; i<products.length; i++){
+								if (products[i].productid == value) return products[i].name;
+							}
+							return value;
+						},
+						editor:{
+							type:'combobox',
+							options:{
+								valueField:'productid',
+								textField:'name',
+								data:products,
+								required:true
+							}
+						}
+					},
+					{field:'listprice',title:'List Price',width:80,align:'right',editor:{type:'numberbox',options:{precision:1}}},
+					{field:'unitcost',title:'Unit Cost',width:80,align:'right',editor:'numberbox'},
+					{field:'attr1',title:'Attribute',width:150,editor:'text'},
+					{field:'status',title:'Status',width:50,align:'center',
+						editor:{
+							type:'checkbox',
+							options:{
+								on: 'P',
+								off: ''
+							}
+						}
+					},
+					{field:'action',title:'Action',width:70,align:'center',
+						formatter:function(value,row,index){
+							if (row.editing){
+								var s = '<a href="#" onclick="saverow('+index+')">Save</a> ';
+								var c = '<a href="#" onclick="cancelrow('+index+')">Cancel</a>';
+								return s+c;
+							} else {
+								var e = '<a href="#" onclick="editrow('+index+')">Edit</a> ';
+								var d = '<a href="#" onclick="deleterow('+index+')">Delete</a>';
+								return e+d;
+							}
+						}
+					}
+				]],
+				onBeforeEdit:function(index,row){
+					row.editing = true;
+					$('#tt').datagrid('refreshRow', index);
+				},
+				onAfterEdit:function(index,row){
+					row.editing = false;
+					$('#tt').datagrid('refreshRow', index);
+				},
+				onCancelEdit:function(index,row){
+					row.editing = false;
+					$('#tt').datagrid('refreshRow', index);
+				}
+			});
+		});
+		function editrow(index){
+			$('#tt').datagrid('beginEdit', index);
+		}
+		function deleterow(index){
+			$.messager.confirm('Confirm','Are you sure?',function(r){
+				if (r){
+					$('#tt').datagrid('deleteRow', index);
+				}
+			});
+		}
+		function saverow(index){
+			$('#tt').datagrid('endEdit', index);
+		}
+		function cancelrow(index){
+			$('#tt').datagrid('cancelEdit', index);
+		}
+	</script>
+</head>
+<body>
+	<h1>Editable DataGrid</h1>
+	
+	<table id="tt"></table>
+	
+</body>
+</html>

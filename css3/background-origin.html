@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+.test{
+  padding:20px;
+  border:20px dotted #000;
+  width: 200px;
+  height:100px;
+  background: url(2.jpg) no-repeat;
+  background-size:60px 30px;
+  background-origin: border-box;
+}
+button{
+  margin-top:20px;
+}
+</style>
+</head>
+<body>
+<section class="test"></section>
+<button>切换</button>
+<script type="text/javascript">
+  var btn=document.getElementsByTagName('button')[0];
+  var test=document.getElementsByClassName('test')[0];
+  var arr=['content-box','padding-box','border-box'];
+  var num=0;
+  btn.onclick=function(){
+     num>1?num=0:num++;
+     test.style.backgroundOrigin=arr[num];
+  }
+</script>
+</body>
+</html>

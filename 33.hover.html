@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title></title>
+<style>
+body{background: #ccc}
+.list{
+  background: #fff;
+  width: 700px;
+  margin:0 auto;
+  position: relative; 
+}
+.row{ 
+  clear: both;
+  margin:40px 0;
+  width: 700px;
+  height: 75px;
+  position: relative;
+  background: red;
+}
+</style>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <div class="list">
+        <div class="row">111</div>
+        <div class="row">222</div>
+        <div class="row">333</div>
+        <div class="row">444</div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+  $(function(){
+      var list=$('.list');
+      var row=$('.row');
+      list.on('mouseenter','.row',function(){
+        $(this).animate({});
+      });
+  })
+</script>
+

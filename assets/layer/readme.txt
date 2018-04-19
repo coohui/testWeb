@@ -1,0 +1,2 @@
+1、layer本身提供了seajs规范的支持，只不过我们换成了 dseDefine，因此把 layer里面的 define改成了dseDefine
+2、使用seajs加载的时候，需要手动引入样式文件,如果是普通模式,它自己会引入文件

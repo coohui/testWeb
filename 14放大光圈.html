@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title></title>
+<meta content="" name="keywords">
+<meta content="" name="description">
+<style type="text/css">
+.animated-pop {
+    -webkit-animation-name: pop;
+    animation-name: pop;
+}
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+.warn {
+    display: block;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid #ff0000;
+    background-color:rgba(255,0,0,.2);
+}
+.animate-wrap{ width: 35px; height: 35px; background: url(warn.png) center center no-repeat;}
+@-webkit-keyframes pop {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+		opacity: 1
+	}
+	100% {
+		-webkit-transform: scale(1.5);
+		transform: scale(1.5);
+		opacity: 0
+	}
+}
+
+@keyframes pop {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+		opacity: 1
+	}
+	100% {
+		-webkit-transform: scale(1.5);
+		transform: scale(1.5);
+		opacity: 0
+	}
+}
+</style>
+</head>
+<body>
+<div class="animate-wrap">
+	<span class="animated animated-pop warn"></span>
+</div>
+</body>
+</html>

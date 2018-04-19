@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+table{
+  border-collapse:collapse;
+  border-spacing: 0;
+}
+td{
+  width: 100px;
+  height:40px;
+  border: 1px solid #000;
+  text-align: center;
+}
+/*单冒号是伪类双冒号是伪元素*/
+section{
+  width: 20px;
+}
+/*将样式增加到文本的首字母*/
+section::first-letter{
+  color:red;
+}
+/*将某元素之后插入某些内容*/
+section::after{
+  content:'999';
+}
+</style>
+</head>
+<body>
+<table>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+  </tr>  
+</table>
+<section>swerwerwer</section>
+<script type="text/javascript">
+</script>
+</body>
+</html>

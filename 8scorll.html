@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="doc">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>滚轮事件</title>
+<style>
+body{ height: 1600px; }
+.div1{ width: 400px; height: 400px; border: 1px solid #000; overflow-y: auto; overflow-x: hidden;}
+.div2{ width: 400px; height: 800px; background: red}
+.div3{ width: 400px; height: 800px; background: blue}
+.div4{ width: 400px; height: 800px; background: yellow}
+.div5{ width: 400px; height: 800px; background: gray}
+</style>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+</head>
+<body id="body">
+<button id="btn" style="width: 60px; height: 30px;"></button>
+<div class="div1">
+     <div class="div2"></div>
+     <div class="div3"></div>
+     <div class="div4"></div>
+     <div class="div5"></div>
+</div>
+</body>
+<script type="text/javascript">
+$('#btn').click(function(){
+	//var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+	//$(document).scrollTop(1773);
+	$('#doc').animate({scrollTop: 1773}, 500);
+});
+</script>
+</html>
+
+
+

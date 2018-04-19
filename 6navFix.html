@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<title>固定标题导航</title>
+<style>
+body{padding: 0; margin: 0}
+/*用水情况说明*/
+.cont3{ padding-top:30px;  }
+.cont3 .cont-click{border-bottom: 1px solid rgb(220,220,220); width:100%;height: 40px; text-align: center; line-height: 40px; background: #f5f5f5; font-weight: bold; font-size: 16px; cursor: pointer; top:0; position: static;}
+.cont3 .cont-content{ height: 600px; background: #fff; }
+</style>
+</head>
+<body>
+<div class="cont3">
+          <div class="cont-click">（一） 基本情况</div>
+          <div class="cont-content cont-content1"></div>
+          <div class="cont-click">（二）年度取用水情况</div>
+          <div class="cont-content cont-content1"></div>
+          <div class="cont-click">（三） 基本情况</div>
+          <div class="cont-content cont-content1"></div>
+          <div class="cont-click">（四）年度取用水情况</div>
+          <div class="cont-content cont-content1"></div>
+          <div class="cont-click">（五） 基本情况</div>
+          <div class="cont-content cont-content1"></div>
+          <div class="cont-click">（六）年度取用水情况</div>
+          <div class="cont-content cont-content1"></div>
+</div>
+<script type="text/javascript">
+   var obj=getPos('.cont-click');
+   var iNow=obj.iNow;
+   var height=obj.height;
+   var pos=0;
+   menuFixed('.cont-click','.cont-content');
+   $('.cont-click').click(function(){
+       $(this).next('.cont-content').slideToggle();
+       iNow=getPos('.cont-click').iNow;
+   })
+
+    function menuFixed(elems,conts){
+        var elems=$(elems);
+        var conts=$(conts);
+        window.onscroll = function(){
+               var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+               var top=elems.eq(iNow).offset().top;
+
+               if(scrollTop<pos){
+                    elems.css('position','relative');  
+                    iNow?iNow--:0;
+                    pos=top; 
+               }else if(scrollTop>top){
+                    elems.css('position','relative');  
+                    elems.eq(iNow).css('position','fixed');
+                    conts.css('padding-top','0');
+                    conts.eq(iNow).css('padding-top',height); 
+                    pos=top;
+                    iNow++; 
+               }
+               console.log(iNow+':'+scrollTop+':'+pos);
+         }
+    }
+
+    function getPos(elems){
+         var elems=$(elems);
+         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+         var obj={};
+         for(var i=0;i<elems.length;i++){
+             if(elems.eq(i).offset().top>scrollTop){
+                  obj.iNow=i;
+                  obj.top=elems.eq(i).offset().top;
+                  obj.height=elems.eq(i).height();
+                  break;
+             }
+         }
+         return obj;
+    }
+</script>
+</body>
+</html>
+

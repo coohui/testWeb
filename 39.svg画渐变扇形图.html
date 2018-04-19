@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>svg画渐变扇形图</title>
+  <link rel="stylesheet" type="text/css" href="animation.css">
+  <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+  <style type="text/css">
+ body{
+ 	background: #eee;
+ 	height: 1000px;
+ }
+ ul{
+ 	display: -none;
+ }
+ li{
+ 	list-style: none;
+ 	float: left;
+ 	width: 90px; 
+ 	height: 110px;
+ 	background: #fff;
+ 	margin-right: 10px;
+ }
+.Circulargraph{
+}
+circle{
+  -webkit-transition: stroke-dasharray .25s;
+  transition: stroke-dasharray .25s;
+}
+.c2{
+-webkit-transform: rotate(-89.95deg);
+transform: rotate(-89.95deg);
+  transform-origin:center center;
+  stroke:#D1D3D7
+}
+.c1{
+  stroke:#00A5E0
+}
+  </style>
+ </head>
+ <body>
+<div class="Circulargraph">
+   sdfsd
+</div>
+  <svg width="440" height="440" viewBox="0 0 440 440">
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(189,174,255);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(219,177,255);stop-opacity:1" />
+    </linearGradient>
+    <circle cx="220" cy="220" r="170" stroke-width="50"  class="c1" fill="none"></circle>
+    <circle cx="220" cy="220" r="170" stroke-width="50"  fill="none" class="c2"  
+    stroke-dasharray="0 1069" transform="matrix(0,-1,1,0,0,440)"></circle>
+</svg>
+<p>拖我：<input id="range" type="range" min="0" max="100" value="0" style="width:300px;"></p>
+ </body>
+</html>
+<script type="text/javascript">
+if (window.addEventListener) {
+    var range = document.querySelector("#range"), circle = document.querySelectorAll("circle")[1];      
+  if (range && circle) {
+        range.addEventListener("change", function() {
+          console.log(this.value);
+            var percent = this.value / 100, perimeter = Math.PI * 2 * 170;
+            if (percent) {
+              circle.setAttribute('display', 'block');
+              circle.setAttribute('stroke-dasharray', perimeter * percent + " " + perimeter * (1- percent));
+              console.log('x：'+perimeter * percent+'y:'+perimeter * (1- percent));
+            } else {
+              circle.setAttribute('display', 'none');
+            }
+            
+        });
+    }
+  
+}
+/*	$(function(){
+		var li=$('li');
+		li.mouseenter(function(){
+			li.removeClass('a-flipinY');
+			$(this).addClass('a-flipinY');
+		})
+	})*/
+</script>

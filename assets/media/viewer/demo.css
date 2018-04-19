@@ -1,0 +1,10 @@
+.image,
+.images img {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+}
+
+.images li {
+    float: left;
+}

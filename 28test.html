@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+input{ color: #eee }
+</style>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<input type="text" name="" value="sdifhasidfoiasjd">
+<script type="text/javascript">
+var C={};
+C.rp = function (arr, int){  // C.rp([10, 20], true)
+  var max = Math.max.apply(this,arr);
+  var min = Math.min.apply(this,arr);
+  var num = Math.random() * (max - min) + min;
+  return int ? Math.round(num) : num;
+}; 
+
+var def={
+   a:'test1',
+   c:'test2',
+   d:{
+    da:'num4-1',
+    db:'num4-2'
+   }
+};
+
+var obj={
+  a:'num1',
+  b:'num2',
+  c:{
+    ca:'num3-1',
+    cb:'num3-2'
+  },
+  d:{
+    da:'yyy',
+    db:'aaa'
+  }
+};
+
+/*var c=Object.assign(def,obj);
+def.d.da='hao';*/
+var c=JSON.parse(JSON.stringify());
+console.log(c);
+//alert(C.rp([90,95],true));
+</script>
+</body>
+</html>
+

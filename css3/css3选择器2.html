@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>css3选择器-p+span</title>
+<style>
+span{display: block;}
+.div1{ height: 300px;  }
+.p1{ height: 200px; }
+p + span{ background:#ff0  }
+/*紧挨着P元素的同级元素span*/
+</style>
+</head>
+<body>
+<div class="div1">
+    <p>
+	    <span class="p1">333</span>
+	</p>
+	<span>555</span>
+</div>
+<p>
+   <div>
+   	    <span class="p1">444</span>
+   </div>
+</p>
+<span>555</span>
+</body>
+</html>
+

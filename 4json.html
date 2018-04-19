@@ -1,0 +1,459 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>json</title>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="JSON/json2.js"></script>
+<style>
+.wrap{ width: 60px; height: 30px; line-height: 30px; border: 1px solid #000;  }
+.hide{ display: none; margin-top:90px;  }
+</style>
+</head>
+<body>
+<script type="text/javascript">
+// 加了json2插件可以兼容到IE6，不加只能兼容到IE8
+var data= {
+	 "vo1" : [
+		{
+		   "apprOrgCd" : "007485821",
+		   "spjg" : "广州市水务局",
+		   "manOrgCd" : "732954088",
+		   "jdgljg" : "广州市水务局机关服务中心",
+		   "assistManOrgCd" : null,
+		   "assistManOrgNm" : null,
+		   "xzgljg" : null,
+		   "wrpNm" : "58-新发-变更-换发-延续",
+		   "lrNm" : "1",
+		   "intBd" : "2016-11-28",
+		   "intDl" : "2016-12-09",
+		   "extWrWpc" : {
+			  "wpcCd" : "440100201600060",
+			  "abb" : "粤穗",
+			  "nb" : "2016",
+			  "no" : "00060",
+			  "supplyNote" : null,
+			  "fillpersonId" : "40828064544ca3e801544cedf7a6002d",
+			  "checkpersonId" : "40828064544ca3e801544cedf7a6002d",
+			  "fillTime" : null,
+			  "checkTime" : null,
+			  "pidWpcCd" : "440100201600059",
+			  "ts" : 1478684435057,
+			  "storeStatus" : "3",
+			  "assistManOrgCd" : null,
+			  "assistManOrgNm" : null,
+			  "applIntBd" : "2016-11-09",
+			  "wwText" : "1",
+			  "rwWText" : null,
+			  "rwWqReq" : null,
+			  "ww" : 0
+		   },
+		   "post" : null,
+		   "orgAddr" : "1",
+		   "zip" : null,
+		   "contNm" : null,
+		   "contPost" : null,
+		   "depNm" : null,
+		   "tel" : "13896321011",
+		   "mail" : null,
+		   "applOrgCd" : "123456789",
+		   "frdbVO" : {
+			  "wpcCd" : "440100201600060",
+			  "post" : null,
+			  "orgChar" : null,
+			  "tradTp" : "4800",
+			  "orgAddr" : "1",
+			  "zip" : null,
+			  "contNm" : null,
+			  "depNm" : null,
+			  "contPost" : null,
+			  "tel" : "13896321011",
+			  "fax" : null,
+			  "eMail" : null,
+			  "lrNm" : "1",
+			  "orgCdText" : null,
+			  "dwlx" : null,
+			  "hylb" : "土木工程建筑业"
+		   }
+		}
+	 ],
+	 "vo2" : {
+		"yrApprWw" : 0,
+		"swWwIn" : 0,
+		"swWwOut" : 0,
+		"swWw" : 0,
+		"gwWw" : 0,
+		"dbs" : [
+		   {
+			  "swIntAddr" : null,
+			  "wrzCd" : null,
+			  "intPsn" : null,
+			  "adCd" : null,
+			  "swsTp" : null,
+			  "yrApplWw" : null,
+			  "maxIntQ" : null,
+			  "measDes" : null,
+			  "intSourNm" : null,
+			  "swIntTp" : null,
+			  "dayMaxQ" : null,
+			  "measTp" : null,
+			  "dbsnqsl" : null,
+			  "xzfqnm" : null,
+			  "szyfqnm" : null,
+			  "sylx" : null,
+			  "jlfs" : null,
+			  "qsfs" : null,
+			  "jlfslx" : null
+		   }
+		],
+		"dxs" : [
+		   {
+			  "gwsTp" : null,
+			  "gwintTp" : null,
+			  "measTp" : null,
+			  "gwIntAddr" : null,
+			  "wrzCd" : null,
+			  "intPsn" : null,
+			  "adCd" : null,
+			  "sylx" : null,
+			  "qsfs" : null,
+			  "sourTpDes" : null,
+			  "yrApplWw" : null,
+			  "dxslx" : null,
+			  "groTp" : null,
+			  "maxIntQ" : null,
+			  "dayMaxQ" : null,
+			  "measDes" : null,
+			  "jlfslx" : null,
+			  "xzfqnm" : null,
+			  "szyfqnm" : null
+		   }
+		]
+	 },
+	 "vo3" : {
+		"wsReg" : null,
+		"czshqs" : {
+		   "lifeWsPp" : null,
+		   "lifeWun" : null,
+		   "lifeYrWw" : null,
+		   "pubYrWw" : null,
+		   "genIndWw" : null,
+		   "hj" : 0,
+		   "lifeSelfPp" : null,
+		   "lifeSelfWun" : null,
+		   "lifeSelfWw" : null
+		},
+		"gyqs" : [
+		   {
+			  "wpcCd" : "440100201600060",
+			  "sn" : "0",
+			  "indSelfWw" : null,
+			  "prodWun" : null,
+			  "prodDesOp" : null,
+			  "indProd" : null
+		   },
+		   {
+			  "wpcCd" : "440100201600060",
+			  "sn" : "1",
+			  "indSelfWw" : null,
+			  "prodWun" : null,
+			  "prodDesOp" : null,
+			  "indProd" : null
+		   },
+		   {
+			  "wpcCd" : "440100201600060",
+			  "sn" : "2",
+			  "indSelfWw" : null,
+			  "prodWun" : null,
+			  "prodDesOp" : null,
+			  "indProd" : null
+		   }
+		],
+		"nyqs" : {
+		   "desIrrA" : null,
+		   "effIrrA" : null,
+		   "cropVar" : null,
+		   "irrNorm50" : null,
+		   "irrYrWw50" : null,
+		   "irrNorm75" : null,
+		   "irrYrWw75" : null,
+		   "irrNorm90" : null,
+		   "irrYrWw90" : null
+		},
+		"fdqs" : {
+		   "egIntTp" : "30",
+		   "egIntTwoNm" : "其他",
+		   "egIntOneNm" : "其他",
+		   "mechNum" : null,
+		   "insCap" : null,
+		   "yrEg" : 0,
+		   "desYrUh" : 0,
+		   "egYrWw" : 0,
+		   "hydMinEgQ" : 0,
+		   "theMaxWu" : null,
+		   "nt" : "57",
+		   "jzxx" : [
+			  {
+				 "wpcCd" : "440100201600060",
+				 "sn" : "0",
+				 "singInsCap" : null,
+				 "quantity" : null,
+				 "insCap" : null,
+				 "nt" : null
+			  }
+		   ]
+		},
+		"qtqs" : {
+		   "othYrWw" : null,
+		   "rivWw" : null,
+		   "othIntUse" : null
+		},
+		"qsnnfp" : {
+		   "wpcCd" : "440100201600060",
+		   "janWw" : 0,
+		   "febWw" : 0,
+		   "marWw" : 0,
+		   "aprWw" : 0,
+		   "mayWw" : 0,
+		   "junWw" : 0,
+		   "julWw" : 0,
+		   "augWw" : 0,
+		   "sepWw" : 0,
+		   "octWw" : 0,
+		   "novWw" : 0,
+		   "decWw" : 0,
+		   "desDayMaxWw" : null,
+		   "occMn" : null,
+		   "ts" : 1478684435000,
+		   "nt" : "57"
+		}
+	 },
+	 "vo4" : [
+		{
+		   "wpcCd" : "440100201600060",
+		   "sn" : 1,
+		   "lgtd" : null,
+		   "lttd" : null,
+		   "sourAddr" : null,
+		   "wellDep" : null,
+		   "aper" : null,
+		   "applDayPq" : null,
+		   "outQ" : null,
+		   "wellCd" : null,
+		   "ts" : 1478684435000,
+		   "nt" : null,
+		   "wellSup" : null
+		}
+	 ],
+	 "vo5" : [
+		{
+		   "wpcCd" : "440100201600060",
+		   "sn" : 1,
+		   "lpNm" : null,
+		   "lpAddr" : null,
+		   "lgtd" : null,
+		   "lttd" : null,
+		   "pumpCd" : null,
+		   "desHead" : null,
+		   "pumpSn" : null,
+		   "singEquWw" : null,
+		   "equNum" : null,
+		   "allEquWw" : null,
+		   "yrWw" : null,
+		   "ts" : 1478684435000,
+		   "nt" : null,
+		   "lpSup" : null
+		}
+	 ],
+	 "vo6" : [
+		{
+		   "wpcCd" : "440100201600060",
+		   "sn" : 1,
+		   "intBuilNm" : null,
+		   "intBuilAddr" : null,
+		   "lgtd" : null,
+		   "lttd" : null,
+		   "intBuilChr" : null,
+		   "desDivQ" : null,
+		   "yrWw" : null,
+		   "gateCd" : null,
+		   "ts" : 1478684435000,
+		   "nt" : null,
+		   "wdSup" : null
+		}
+	 ],
+	 "vo7" : [
+		{
+		   "wpcCd" : "440100201600060",
+		   "sn" : 1,
+		   "resNm" : "/",
+		   "resAddr" : null,
+		   "lgtd" : null,
+		   "lttd" : null,
+		   "sourNm" : null,
+		   "catA" : null,
+		   "totV" : null,
+		   "normZ" : null,
+		   "normZV" : null,
+		   "fsZ" : null,
+		   "fsZV" : null,
+		   "deadZ" : null,
+		   "deadV" : null,
+		   "resRegTp" : null,
+		   "minDisc" : null,
+		   "stEndLen" : null,
+		   "hpCd" : null,
+		   "ts" : 1478684435000,
+		   "nt" : null,
+		   "sktjfs" : null,
+		   "wspDt" : null,
+		   "wspDpDt" : null
+		}
+	 ],
+	 "vo8" : [
+		{
+		   "wpcCd" : "440100201600060",
+		   "sn" : 1,
+		   "wspNm" : "/",
+		   "wspAddr" : null,
+		   "lgtd" : null,
+		   "lttd" : null,
+		   "sourNm" : null,
+		   "catA" : null,
+		   "totV" : null,
+		   "normZ" : null,
+		   "normZV" : null,
+		   "fsZ" : null,
+		   "fsZV" : null,
+		   "deadZ" : null,
+		   "deadV" : null,
+		   "yrWs" : null,
+		   "wsR" : null,
+		   "minDisc" : null,
+		   "resCd" : null,
+		   "ts" : 1478684435000,
+		   "nt" : null,
+		   "nwspSupp" : null
+		}
+	 ],
+	 "vo9" : {
+		"wpaApplCd" : "440100201600058",
+		"wraRepCd" : null,
+		"wraRepNm" : null,
+		"orgNm" : null,
+		"wraCertCd" : null,
+		"apprOrgNm" : null,
+		"apprDt" : "2016-11-09",
+		"wraRepRes" : null,
+		"wraRepAdv" : null,
+		"passWra" : "1",
+		"qualOrgCd" : null,
+		"ts" : 1478684435000,
+		"nt" : null
+	 },
+	 "vo10" : {
+		"wpcCd" : "440100201600060",
+		"sewReu" : null,
+		"rwReuW" : null,
+		"mwReuW" : null,
+		"bwReuW" : null,
+		"seaReuW" : null,
+		"othReuW" : null,
+		"saveMeas" : null,
+		"sewTreaMeas" : null,
+		"sewTreaScal" : null,
+		"sewTreaCap" : null,
+		"sewTreaProc" : null,
+		"rwW" : 0,
+		"rwAddr" : "0",
+		"rwMeasFac" : "非在线",
+		"rwMainPoll" : null,
+		"rwWfzReq" : null,
+		"isRwWfzReq" : null,
+		"ts" : 1478684435000,
+		"nt" : "1411",
+		"wpcrMeas" : null
+	 },
+	 "vo11" : [
+		{
+		   "wpcCd" : "440100201600060",
+		   "sn" : 0,
+		   "voilReg" : null,
+		   "mmOrgNm" : null,
+		   "recDt" : null,
+		   "recPers" : null,
+		   "ts" : 1478684435000,
+		   "nt" : null
+		}
+	 ],
+	 "vo12" : [
+		{
+		   "wpcCd" : "440100201600060",
+		   "wpcSn" : "取水 粤穗 字[2016]第00060号",
+		   "wrpNm" : "58-新发-变更-换发-延续",
+		   "lrNm" : "1",
+		   "apprOrgCd" : "007485821",
+		   "apprDt" : "2016-11-09",
+		   "intAddr" : "3",
+		   "chkIntMet" : "2",
+		   "ww" : 0,
+		   "intUse" : "1",
+		   "chkSourTp" : "1",
+		   "rwAddr" : null,
+		   "rwTp" : null,
+		   "rwW" : 0,
+		   "rwWqReq" : null,
+		   "intBd" : "2016-11-28",
+		   "intDl" : "2016-12-09",
+		   "orgNm" : "广州市水务局",
+		   "wiuCd" : "123456789",
+		   "wpaApplCd" : "440100201600058",
+		   "certCond" : "9",
+		   "wwText" : "1",
+		   "rwWText" : null,
+		   "vwpcCd" : "123456789020"
+		}
+	 ],
+	 "vo13" : {
+		"abb" : null,
+		"nb" : null,
+		"no" : null,
+		"wiuCd" : null,
+		"wpaApplCd" : null,
+		"wpcCd" : null,
+		"attachList" : [
+		   {
+			  "fileCd" : "8ae4839c5847ca4701584847a0ee016d",
+			  "fileTitl" : "1478681403629-10.jpg",
+			  "filePath" : "/E:/server/tomcat/tomcat-7.0.65-developer(busi)-9010/webapps/busi/WEB-INF/classes/temp\\1478681403629-10.jpg",
+			  "fileExt" : null,
+			  "tileExt" : "图片",
+			  "fileSize" : "          9.72KB",
+			  "ts" : "2016-11-09"
+		   },
+		   {
+			  "fileCd" : "8ae4839c5847ca47015848475b070169",
+			  "fileTitl" : "1478681385735-125.jpg",
+			  "filePath" : "/E:/server/tomcat/tomcat-7.0.65-developer(busi)-9010/webapps/busi/WEB-INF/classes/temp\\1478681385735-125.jpg",
+			  "fileExt" : null,
+			  "tileExt" : "图片",
+			  "fileSize" : "        125.01KB",
+			  "ts" : "2016-11-09"
+		   }
+		],
+		"orgCd" : null,
+		"divisonCd" : null,
+		"dbs" : null,
+		"dxs" : null
+	 }}
+	data=JSON.stringify(data);
+	//document.write(data);
+	//console.log(data); 
+	data=JSON.parse(data);
+	data=data.vo12[0].wpcCd;
+	//console.log(data); 
+	document.write(data);
+</script>
+</body>
+</html>
+

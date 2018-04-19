@@ -16,143 +16,18 @@
       transform:rotateY(360deg);
 	}
 }
-body{
-  margin: 40px 10px;
-
-}
-.A{
-	width: 100%;
-	height: 2em;
-	font-size: 20px;
-	text-align: center;
-    line-height: 1;
-    background: red;
-}
-div{
-	width: 200px;
-	margin: 0 auto;
-}
-.triangle_up{
-  height:0px; width:0px;
-  border-bottom:50px solid transparent;
-  border-left:50px solid #006633;
-  border-right:50px solid transparent;
-}
-
-.triangle{
-  height:100px; width:100px;
-  border-bottom:50px solid red;
-  border-left:50px solid #006633;
-  border-right:50px solid blue;
-  border-top:50px solid yellow;
-}
-.triangle1{
-  height:0px; width:0px;
-  border-bottom:50px solid red;
-  border-left:50px solid #006633;
-  border-right:50px solid blue;
-  border-top:50px solid yellow;
-}
-
-.triangle-up{
-  height:0px; width:0px;
-  border-bottom:50px solid red;
-  border-left:50px solid transparent;
-  border-right:50px solid transparent;
-}
-.triangle-down{
-  height:0px; width:0px;
-  border-top:50px solid red;
-  border-left:50px solid transparent;
-  border-right:50px solid transparent;
-}
-.triangle-left{
-  height:0px; width:0px;
-  border-bottom:50px solid transparent;
-  border-top:50px solid transparent;
-  border-right:50px solid red;
-}
-.triangle-right{
-  height:0px; width:0px;
-  border-bottom:50px solid transparent;
-  border-left:50px solid red;
-  border-top:50px solid transparent;
-}
-/* .triangle-up45{
-  height:0px; width:0px;
-  border-bottom:50px solid red;
-  border-top:50px solid transparent;
-  border-right:50px solid transparent;
-}
-.triangle-down45{
-  height:0px; width:0px;
-  border-top:50px solid red;
-  border-left:50px solid transparent;
-  border-right:50px solid transparent;
-}
-.triangle-left45{
-  height:0px; width:0px;
-  border-bottom:50px solid transparent;
-  border-top:50px solid transparent;
-  border-right:50px solid red;
-}
-.triangle-right45{
-  height:0px; width:0px;
-  border-bottom:50px solid transparent;
-  border-left:50px solid red;
-  border-top:50px solid transparent;
-} */
 </style>
 </head>
 <body>
-<!--<div id='test' name="testId">
+<div id='test' name="testId">
 	<p name="first">first</p>
 </div>
 <div id="obj"></div>
 
-<div class="circular">3</div> 
-<div class="A">A</div>-->
-<div class="triangle"></div><br/>
-
-<div class="triangle1"></div><br/>
-
-<div class="triangle-up"></div><br/>
-
-<div class="triangle-down"></div><br/>
-
-<div class="triangle-left"></div><br/>
-
-<div class="triangle-right"></div><br/>
-<!-- 
-<div class="triangle-up45"></div><br/>
-
-<div class="triangle-down45"></div><br/>
-
-<div class="triangle-left45"></div><br/>
-
-<div class="triangle-right45"></div><br/> -->
+<div class="circular">3</div>
 </body>
 </html>
 <script>
-
-/*return false;
-function teacher(name,age){
-	this.name = name;
-	this.age = age;
-	this.sayhi = function(){
-	alert('name:'+name+", age:"+age);
-	}
-}
-function student(){
-	var args = arguments;
-	teacher.call(this,args[0],args[1]);
-	// teacher.apply(this,arguments);
-}
-var teacher1 = new teacher('xiaoming',23);
-teacher1.sayhi();
-var student1 = new student('xiaolan',12);
-student1.sayhi();
-
 var obody=document.getElementsByTagName('body')[0];
 alert('宽：'+document.documentElement.clientWidth+'高：'+document.documentElement.clientHeight );
 
@@ -212,7 +87,7 @@ console.log(Math.atan2(30));//返回从 x 轴到点 (x,y) 的角度（介于 -PI
 var arr=new Array(3); 
 for(var i in arr){
     console.log(i+':'+arr[i])
-}*/
+}
 
 //width:100%; white-space:nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden;  
 
@@ -305,94 +180,5 @@ const obj2 = {
 	}
 };
 obj2.say();*/
-
-/*function test(){
-    var oBtn=document.getElementsByTagName('button');
-    for(var i=0;i<oBtn.length;i++){
-       oBtn[i].onclick=bclick;
-       function bclick(){
-          console.log(i);
-          var i=999;
-       }
-    }
-}
-test();//点击输出的是10
-//为什么呢？因为for循环是没有作用域的，当前作用域在test函数上，变量i会提升到test函数的作用域上；
-//当点击按钮时，会执行函数bclick，输出i,此时该函数内没有定义i
-//此时会向函数外层找，在test函数的作用域上找到了i，而此时的i已经是2了；
-function test(){
-    var oBtn=document.getElementsByTagName('button');
-    for(var i=0;i<oBtn.length;i++){
-       oBtn[i].onclick=bclick;
-       function bclick(){
-          console.log(i);
-          var i=999;
-       }
-    }
-}
-test();//点击输出的是undefined
-//为什么此时输出undefined？；
-//因为点击按钮，执行函数bclick，js预解析时，发现bclick内有定义i，但是在输出时，i还没被赋值，于是会输出undefined
-//如果var i=999;放输出前，则会输出999
-function test(){
-    var oBtn=document.getElementsByTagName('button');
-    for(var i=0;i<oBtn.length;i++){
-       oBtn[i].onclick=bclick;
-       function bclick(){
-          console.log(i);
-       }
-       bclick();
-    }
-    var i=88;
-    console.log(i);
-}
-test();
-//输出的是0、1、2 88
-//点击输出88
-//for循环内调用函数bclick分别执行并输出了0，1，2，注意for循环中的i是在test函数作用域上
-//循环结束，此时i已经是2了，然后继续往下走，i又被重新定义并赋值了88
-//此时再点击按钮，输出的就是test作用域中的i,也就是最后被赋值了88的i
-
-//解决按钮点击，分别弹出不同数值的方法
-//下面来介绍3种
-//方法1：
-function test(){
-    var oBtn=document.getElementsByTagName('button');
-    for(let i=0;i<oBtn.length;i++){
-       oBtn[i].onclick=bclick;
-       function bclick(){
-          console.log(i);
-       }
-    }
-}
-test();
-//通过let把i的作用域控制在循环体内
-//方法2：
-function test(){
-    var oBtn=document.getElementsByTagName('button');
-    for(let i=0;i<oBtn.length;i++){
-       oBtn[i].index=i; 
-       oBtn[i].onclick=bclick;
-       function bclick(){
-          console.log(oBtn[i].index);
-       }
-    }
-}
-test();
-//把i记录到按钮的自定义属性上
-//方法3：
-function test(){
-    var oBtn=document.getElementsByTagName('button');
-    for(var i=0;i<oBtn.length;i++){
-        (function(i){
-            oBtn[i].onclick=bclick;
-            function bclick(){
-              console.log(i);
-            }
-        })(i);
-    }
-}
-test();
-//通过闭包的方式*/
 
 </script>

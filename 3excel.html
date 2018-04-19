@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+<body>
+<script type="text/javascript">
+	var ExcelSheet;
+ExcelApp = new ActiveXObject("Excel.Application");
+ExcelSheet = new ActiveXObject("Excel.Sheet");
+//本代码启动创建对象的应用程序（在这种情况下，Microsoft Excel 工作表）。一旦对象被创建，就可以用定义的对
+/*象变量在代码中引用它。 在下面的例子中，通过对象变量 ExcelSheet 访问新对象的属性和方法和其他 Excel 对象，
+包括 Application 对象和 ActiveSheet.Cells 集合。*/
+// 使 Excel 通过 Application 对象可见。
+ExcelSheet.Application.Visible = true;
+// 将一些文本放置到表格的第一格中。
+ExcelSheet.ActiveSheet.Cells(1,1).Value = "This is column A, row 1";
+// 保存表格。
+ExcelSheet.SaveAs("C:\\TEST.XLS");
+// 用 Application 对象用 Quit 方法关闭 Excel。
+ExcelSheet.Application.Quit();//
+</script>
+</body>
+</html>
+
+
+

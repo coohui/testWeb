@@ -1,0 +1,129 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+  <title></title>  
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">  
+  <style>  
+    *{  
+      padding: 0;  
+      margin: 0;  
+    }  
+    #guaguaka{  
+      position: relative;  
+      width: 200px;  
+      height: 100px;  
+      margin-left: 100px;  
+      margin-top: 100px;  
+    }  
+    #guaguakaContent{  
+      width: 200px;  
+      height: 100px;  
+      font-size: 20px;  
+      text-align: center;  
+      line-height: 100px;  
+      color: red;  
+      -webkit-user-select: none;  
+    }  
+    #myCanvas{  
+      position: absolute;  
+      background-color: transparent;  
+      left: 0;  
+      top: 0;  
+      -webkit-user-select: none;  
+    }  
+  </style>  
+</head>  
+<body>  
+  <div id="guaguaka">  
+    <div id="guaguakaContent"></div>  
+    <canvas id="myCanvas" width="200" height="100"></canvas>  
+  </div>  
+  <script>  
+    var guaguakaContent = document.getElementById('guaguakaContent');  
+    var prizeList = ['2元，恭喜中奖','谢谢惠顾'];  
+    var myCanvas = document.getElementById('myCanvas');  
+    var ctx = myCanvas.getContext('2d');  
+    var mouseDown = false;  
+    var mouseIn = false;  
+    var width = myCanvas.width;  
+    var height = myCanvas.height;  
+    var offsetLeft = myCanvas.offsetLeft;  
+    var offsetTop = myCanvas.offsetTop;  
+    // 先将canvas画上灰色蒙层  
+    ctx.fillStyle = 'grey';  
+    ctx.fillRect(0, 0, width, height);  
+    //此行非常重要，设置再绘制时的显示模式  
+    ctx.globalCompositeOperation="destination-out";  
+    // 随机算是否得奖  
+    guaguakaContent.innerText = prizeList[Math.floor(Math.random()*2)];  
+    myCanvas.addEventListener('mousedown', function(e){  
+      e.preventDefault();  
+      mouseDown = true;  
+    })  
+    myCanvas.addEventListener('touchstart', function(e){  
+      e.preventDefault();  
+      mouseDown = true;  
+    })  
+    myCanvas.addEventListener('mouseup', function(e){  
+      e.preventDefault();  
+      mouseDown = false;  
+    })  
+    myCanvas.addEventListener('mouseover', function(e){  
+      e.preventDefault();  
+      mouseIn = true;  
+    })  
+    myCanvas.addEventListener('mouseout', function(e){  
+      e.preventDefault();  
+      mouseIn = false;  
+    })  
+    myCanvas.addEventListener('touchend', function(e){  
+      e.preventDefault();  
+      mouseDown = false;  
+    })  
+    myCanvas.addEventListener('mousemove', function(e){  
+      var completed = 0;  
+      var data = ctx.getImageData(0,0,200,100).data;  
+      var total = data.length/4;  
+      var i;  
+      e.preventDefault();  
+      if(!mouseDown || !mouseIn){  
+        return;  
+      }  
+      ctx.beginPath();  
+      ctx.arc(e.offsetX, e.offsetY, 10, 0, Math.PI *2)  
+      ctx.fill();  
+      // 刮的数量到一半时，打印完成刮奖，4个数记录1个相素的rgba值，判断a值为0的超过一半即可  
+      for(i=3;i<data.length;i+=4){  
+        if(data[i] === 0){  
+          completed +=1;  
+        }  
+      }  
+      if(completed > total/2){  
+        console.log('已完成刮奖');  
+      }  
+    })  
+    myCanvas.addEventListener('touchmove', function(e){  
+      var rect = e.target.getBoundingClientRect();  
+      var completed = 0;  
+      var data = ctx.getImageData(0,0,200,100).data;  
+      var total = data.length/4;  
+      var i;  
+      e.preventDefault();  
+      if(!mouseDown){  
+        return;  
+      }  
+      ctx.beginPath();  
+      ctx.arc(e.targetTouches[0].pageX - rect.left, e.targetTouches[0].pageY - rect.top, 10, 0, Math.PI *2)  
+      ctx.fill();  
+      // 刮的数量到一半时，打印完成刮奖，4个数记录1个相素的rgba值，判断a值为0的超过一半即可  
+      for(i=3;i<data.length;i+=4){  
+        if(data[i] === 0){  
+          completed +=1;  
+        }  
+      }  
+      if(completed > total/2){  
+        console.log('已完成刮奖');  
+      }  
+    })  
+  </script>  
+</body>  

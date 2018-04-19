@@ -1,0 +1,40 @@
+/* 导入（Importing） */
+@import "test";
+@import "textAnimation.css";
+/* 变量（Variables） */
+@nice-blue: #5B83AD;
+@light-blue: @nice-blue + #111;
+@height:30px;
+@red:red;
+.header{
+  height: @height;
+  background: @light-blue;
+}
+/*混合（Mixins)*/
+.bordered {
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+.header{
+	color: @red;
+  .bordered;	
+}
+/* 嵌套 */
+.header{
+	color: @red;
+  .text{
+  	font-weight: bold;
+  	color: #000;
+  	&:hover{
+  		background: yellow
+  	}
+  }	
+}
+/* 运算 */
+@base:6px;
+.test2{
+	width:@base*100+20px;
+	height: @base*5;
+	background: blue;
+	margin-top: @base*10;
+}

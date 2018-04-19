@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>javascript六边形3d拖拽翻转效果</title>
+</head>
+    <style>
+      #box{width:200px;height:200px;margin: 200px auto; background: #ccc; position: relative;
+      transform:perspective(800px) rotateY(-60deg) rotateX(45deg);transform-style:preserve-3d;}
+      #box div{width:100%;height: 100%; position: absolute;top:0;left:0; background-size: cover;-webkit-box-shadow:0 0 100px #5fbcff; opacity: 0.8;}
+      .front{ transform: translateZ(100px); background:#f00;}
+      .back{transform: translateZ(-100px); background:#20ab4f;}
+      .top{transform:translateY(-100px) rotateX(90deg); background: #ff7800;}
+      .bottom{transform:translateY(100px) rotateX(-90deg); background: #00f6ff;}
+      .left{transform:translateX(-100px) rotateY(90deg); background: #0084ff;}
+      .right{transform:translateX(100px) rotateY(-90deg); background: #b400ff;}
+    </style>
+    <script>
+      window.onload=function(){
+        var oDiv=document.querySelector("#box");
+        var y=-60;
+        var x=45;
+        oDiv.onmousedown=function(ev){
+          var ev=ev||event;
+          var disX=ev.clientX-y;
+          var disY=ev.clientY-x;
+          document.onmousemove=function(ev){
+            var ev=ev||event;
+            y=ev.clientY-disY;
+            x=ev.clientX-disX;
+            oDiv.style.transform='perspective(800px) rotateX('+x+'deg) rotateY('+y+'deg)';
+             
+          }
+          document.onmouseup=function(){
+            document.onmouseup=null;
+            document.onmousemove=null;
+            oDiv.releaseCapture&&oDiv.releaseCapture();
+          }
+          oDiv.setCapture&&oDiv.setCapture()
+          return false;
+        }
+         
+      }
+    </script>
+  </head>
+  <body>
+    <div id="box">
+      <div class="front"></div>
+      <div class="back"></div>
+      <div class="top"></div>
+      <div class="bottom"></div>
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+  </body>
+</html>

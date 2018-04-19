@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>事件绑定</title>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<style>
+html{background: #fff}
+body{ width: 1000px; height: 1000px; background: yellow }
+.wrap{ width: 60px; height: 30px; line-height: 30px; border: 1px solid #000; background: red}
+.hide{margin-top:90px; background: blue; color: #fff}
+.iframeWrap{ overflow:hidden; }
+.iframe{position: absolute; top: -50px;}
+</style>
+</head>
+<body>
+<div id="iframeWrap">
+    <iframe id="iframe" class="iframe" frameborder="0" width="970" height="400" src="http://www.w3school.com.cn/cssref/css_selectors.asp"></iframe>  
+</div>
+<div id="btn">点击</div>
+<script type="text/javascript">
+	$('#btn').click(function(event) {
+		var iframe = document.getElementById("iframe");
+		var height=$('#iframe').height();
+		alert(height);
+		//alert(getIframeHeight(iframe));
+	});
+    function getIframeHeight(obj){  
+        var idoc = getIframeWindow(obj).document;   
+        if(idoc.body){  
+            return Math.max(idoc.body.scrollHeight,idoc.body.offsetHeight);     
+        }else if(idoc.documentElement){  
+            return Math.max(idoc.documentElement.scrollHeight,idoc.documentElement.offsetHeight);     
+        }  
+    }
+</script>
+</body>
+</html>
+

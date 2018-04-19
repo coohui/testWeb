@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+  <title></title>
+  <style>
+  html, body {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    background-color: #000;
+  }
+  .txt{
+     width: 1000px;
+     height: 100px;
+     line-height: 100px;  
+     color: #fff;
+     font-size: 90px;
+     margin:300px auto;
+     text-align: center;
+     display: none;
+  }
+  .animation{
+    animation:bigZoom 1s backwards;
+  }
+  @keyframes bigZoom{
+    0%{
+      transform:scale(100);
+      opacity: 0;
+    }
+    100%{
+      transform:scale(1);
+      opacity: 1;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="txt">广东省水资源系统</div>
+<script>
+   $(document).click(function(){
+       $('.txt').show().toggleClass('animation');
+   });
+</script>
+</body>
+</html>

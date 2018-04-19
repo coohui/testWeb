@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title></title>
+<style>
+body{ background: #eee; }
+.wrap{ width: 1000px; margin:0 auto; padding-top: 30px; }
+/* 本例子css */
+.picScroll-left{ width:976px;  overflow:hidden; position:relative;  border:1px solid #ccc;}
+.picScroll-left .hd{ overflow:hidden;  height:30px; background:#f4f4f4; padding:0 10px;}
+.picScroll-left .hd .prev,.picScroll-left .hd .next{display:block;  width:5px; height:9px; float:right; margin-right:5px; margin-top:10px;  overflow:hidden;
+   cursor:pointer;  background: red;background:url("img/arrow.png") no-repeat;}
+.picScroll-left .hd .next{ background-position:0 -50px;  }
+.picScroll-left .hd .prevStop{ background-position:-60px 0; }
+.picScroll-left .hd .nextStop{ background-position:-60px -50px; }
+.picScroll-left .hd ul{ float:right; overflow:hidden; zoom:1; margin-top:10px; zoom:1; }
+.picScroll-left .hd ul li{ float:left;  width:9px; height:9px; overflow:hidden; margin-right:5px; text-indent:-999px; cursor:pointer; background:url("img/icoCircle.gif") 0 -9px no-repeat; }
+.picScroll-left .hd ul li.on{ background-position:0 0; }
+
+.picScroll-left .bd{ padding-top: 10px }
+.picScroll-left .bd ul{ overflow:hidden; zoom:1; }
+.picScroll-left .bd ul li{ margin-right: 9px; margin-left: 6px; float:left; _display:inline; overflow:hidden; text-align:center;}
+.picScroll-left .bd ul li .pic{ text-align:center; }
+.picScroll-left .bd ul li .pic img{ width:230px; height:150px; display:block; }
+.picScroll-left .bd ul li .pic a{ cursor: default; }
+.picScroll-left .bd ul li .title{ line-height:24px;   }
+.picScroll-left .pageState{ line-height: 32px } 
+</style>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="assets/superSlide/jquery.SuperSlide.2.1.1.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <img src="img/1.png">
+    <div class="picScroll-left">
+        <div class="bd">
+            <ul class="picList">
+                <li>
+                    <div class="pic"><img src="img/zwzy.png" /></div>
+                    <div class="title">效果图1</div>
+                </li>
+                <li>
+                    <div class="pic"><img src="img/zwzy.png" /></div>
+                    <div class="title">效果图2</div>
+                </li>
+                <li>
+                    <div class="pic"><img src="img/zwzy.png"/></div>
+                    <div class="title">效果图3</div>
+                </li>
+                <li>
+                    <div class="pic"><img src="img/zwzy.png" /></div>
+                    <div class="title">效果图4</div>
+                </li>
+                <li>
+                    <div class="pic"><img src="img/zwzy.png" /></div>
+                    <div class="title">效果图5</div>
+                </li>
+                <li>
+                    <div class="pic"><img src="img/zwzy.png" /></div>
+                    <div class="title">效果图6</div>
+                </li>
+            </ul>
+        </div>
+        <div class="hd">
+            <a class="next"></a>
+            <ul></ul>
+            <a class="prev"></a>
+            <span class="pageState"></span>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+$(".picScroll-left").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:false,vis:4,trigger:"click"});
+
+</script>
+</body>
+</html>
+

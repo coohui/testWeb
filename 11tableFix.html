@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+/*固定列-固定表头-表格*/
+.m-table{ opacity: 1; filter: alpha(opacity=100)}
+.m-table a{cursor: default;}
+.m-table td{ text-align: center; padding: 0;}
+.m-table table{table-layout:fixed;}
+.scroll{width: 20px; background: #f5f5f5;}
+.m-table-wrap{ position: relative; height: 502px; clear: both;}
+.m-table-wrap1{ position: relative; height: 502px; clear: both;overflow: auto;overflow-y: scroll;}
+
+.m-view1{position: absolute; width: 143px; height: 502px; left: -1px; top: -1px;}
+.m-view2{position: absolute; width: 837px; height: 502px; overflow-x: hidden; overflow-y: hidden; left: 142px; top: -1px;}
+.table2{overflow-x: hidden;  width: 837px;}
+.table3{overflow-y: hidden;  width: 143px;height: 385px;}
+.table4{overflow-y: auto; overflow-x: auto; width: 835px;  height: 407px;}
+.table1 td{ height: 30px; line-height: 30px; overflow: hidden; background: #f5f5f5;}
+.table1 td:hover{ background: #f5f5f5 }
+.table2 td{ height: 30px; line-height: 30px; background: #f5f5f5 }
+.table2 td:hover{background: #f5f5f5 }
+.table3 .table-cell{ background: #ffffff;}
+.table4 .input{ text-align: right; padding-right: 12px; }
+.table4 input:disabled{background: #ffffff!important; cursor: default; color: #000}
+.table4 input[disabled]{background: #ffffff!important; cursor: default; color: #000}
+.table1 tr:last-of-type td{ border-width: 1px 1px 0px 1px; }
+.table2 tr:last-of-type td{ border-width: 1px 1px 0px 0!important;}
+.firstd{border-width: 1px 0px 1px 0px!important;}
+.lastd{border-width: 1px 0px 1px 0px!important;}
+.input{ float: left; height: 28px; line-height: 28px;  border: 1px solid #fff; text-align: center; }
+.input:focus{ background: #fff;border: 1px solid #fff; }
+.gray-bg{background: #f5f5f5!important;}
+.gray-bd{border: 1px solid #f5f5f5!important;}
+</style>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div class="m-table-wrap">
+  <div class="m-view1">
+      <div class="m-table table1" id="table1-t">
+			<table class="table frozen" id="tableT1">
+			    <thead> 
+			          <tr>
+			              <td colspan="1" rowspan="1" class="table-cell" width="40px">
+			                  <div class="item">序号</div>
+			              </td>
+			              <td colspan="1" rowspan="1" class="table-cell" width="100px">
+			                  <div class="item">行政区划</div>
+			              </td>
+			          </tr>
+			    </thead> 
+			</table>
+      </div>
+      <div class="m-table table3" id="table1-b">
+			<table class="table">
+			    <thead> 
+			          <tr>
+		                  <td colspan="" rowspan="" class="item">
+		                      <div class="table-cell-elem" title=""></div>
+		                  </td>
+			              <td class="firstd"><div class="scroll"></div></td>
+			          </tr>
+			    </thead> 
+			</table> 
+      </div>
+  </div>
+  <form id="form2">
+      <div class="m-view2">
+          <div class="m-table table2" id="table2-t">
+			<table id="tableB1" class="table frozen">
+			    <tbody>
+			      <tr>
+			        <td width="40px"><div class="gray-bg div"></div></td>
+			        <td width="100px"><div class="gray-bg div"></div></td>
+			      </tr>
+			    </tbody>
+			</table>
+          </div>
+          <div class="m-table table4" id="table2-b">
+				<table class="table scrollBody">
+				    <tbody>
+	                    <tr> 
+	                        <td></td>
+	                        <td class="lastd"></td>
+	                    </tr>
+				    </tbody>
+				</table> 
+          </div>
+      </div>
+  </form>
+</div>
+
+</body>
+</html>
+
+
+

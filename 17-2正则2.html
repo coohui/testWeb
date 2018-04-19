@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+</style>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<input id="input" type="text" name="">
+<button id="btn">验证</button>
+|<p name="test">sdfsf</p>
+<script type="text/javascript">
+  var oInput=document.getElementById('input');
+  var oBtn=document.getElementById('btn');
+
+  oBtn.onclick=function(){
+      var val=oInput.value;
+      //var Re=/Windows (?=95|98|NT|2000)/;
+	  // var test='节水宣传教育，1分：<br/>世界水日、中国水周、<br>城市节约用水宣传周等期间，</a>地方政府或其相关部门开展节水主题宣传活动，得1分。';
+      //alert(Re.test(val));
+	  alert(val.replace(/[A-Za-z]/g,''));
+  }
+</script>
+</body>
+</html>
+

@@ -1,0 +1,1 @@
+{"data":{"filePath":"D:/upload/1492656905122-QQ图片20170322093636.jpg","fileCd":"8ae489bf5b7fc568015b8948dbb214ae"},"status":1,"message":{"msg":"成功"}}

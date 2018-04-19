@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>canvas</title>
+</head>
+<style>
+
+</style>
+</head>
+<body>
+  <div class="wrap">
+      <canvas id="myCanvas"></canvas>
+  </div>
+<script>
+     window.requestAnimationFrame = (function(){ //浏览器的兼容设置  
+        return  window.requestAnimationFrame       || 
+                window.webkitRequestAnimationFrame || 
+                window.mozRequestAnimationFrame    || 
+                window.oRequestAnimationFrame      || 
+                window.msRequestAnimationFrame     || 
+                function(/* function */ callback, /* DOMElement */ element){
+                  window.setTimeout(callback, 1000 / 60); //定义每秒执行60次动画
+                };
+     })();
+     var cv = document.getElementById("myCanvas");
+     cv.width = 600;
+     cv.height = 400;
+     cv.style.border = "1px solid red";
+     var ctx = cv.getContext("2d");
+     var data2 = [.3, .1, .2, .4, .2, .7, .3, .9];
+     var data3 = [3, 12, 14, 17, 29, 33, 40, 52];
+ 
+     getBrokenLine(data2, "#f00");
+     //getBrokenLine(data3, "#0f0");
+     //画坐标轴
+     function drawAxis(){
+
+     }
+ 
+     //封装一个折线图的函数
+     function getBrokenLine(data, color) {
+         var maxNum = Math.max.apply(null, data);    //求数组中的最大值
+         var padding = 20,  //边距
+             x0 = padding,  //原点x轴坐标 20
+             y0 = cv.height - padding,  //原点y轴坐标 380
+             xArrow_x = padding, //x轴箭头处坐标x
+             xArrow_y = padding, //x轴箭头处坐标y
+             yArrow_x = cv.width - padding,  //y轴箭头处坐标x
+             yArrow_y = cv.height - padding, //y轴箭头处坐标y
+
+             xLength = cv.width - 2*padding,    //x轴的长度
+             yLength = cv.height - 2*padding,  //y轴的长度
+             pointsWidth = xLength/(data.length + 1); //折线上每个点之间的距离
+
+         ctx.beginPath();//控制绘制的折线不受坐标轴样式属性的影响
+         //绘制x轴
+         ctx.moveTo(x0, y0);
+         ctx.lineTo(yArrow_x, yArrow_y);
+         ctx.strokeStyle = "#dcdcdc";
+         //中断（坐标轴和折线的）连接
+         ctx.stroke();
+        
+         ctx.beginPath();
+         //绘制折线
+/*       for (var i = 0; i < data.length; i++) {
+             var pointX = padding + (i + 1) * pointsWidth;
+             var pointY = padding + (1 - data[i]/maxNum) * yLength;
+             ctx.lineTo(pointX, pointY);
+         }*/
+
+         var i=0;
+         var timer2 =null;
+         
+         function move(){
+             var pointX = padding + (i + 1) * pointsWidth;
+             var pointY = padding + (1 - data[i]/maxNum) * yLength;
+             ctx.lineTo(pointX, pointY);
+             i++;
+             if(i<data.length){
+               timer2 =requestAnimationFrame(move);
+             }else{
+               ctx.strokeStyle = color;
+               ctx.stroke();
+               cancelAnimationFrame(timer2);
+             }
+             console.log(i);
+         }
+         requestAnimationFrame(move);
+         console.log(color);
+     }
+</script>
+</body>
+</html>

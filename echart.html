@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit">
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<meta HTTP-EQUIV="expires" CONTENT="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script type="text/javascript" src="js/echarts.js"></script>
+<style>
+  
+</style>
+</head>
+<body>
+<div id="can" style="width: 600px; height: 400px">
+  
+</div>
+</body>
+<script type="text/javascript">
+var option={
+          tooltip : {
+            trigger: 'axis',
+            show:true,
+            formatter: function (params) {
+              var date=new Date();
+              var year  = date.getFullYear();
+              var month=date.getMonth()+1;
+              var day=params[0].name;
+              var reStr = '<span class="claText"> '+params[0].name+'</span>' ;
+              reStr += '<br/>  <div class="f0901"></div><span class="claText">访问量:' + (params[0].value||0)+'</span>' ;
+              return reStr;
+            },
+            axisPointer: {
+              type: 'none'
+            }
+          },
+          grid: {
+            x:0,
+              x2:0,
+              y:0,
+            top:0,
+            left:-20,
+            right:10,
+            bottom:0,
+            containLabel: true
+          },
+          xAxis:  {
+            type: 'category',
+            data :[],
+            splitLine:{show:false},
+            axisTick :{show:false},
+            axisLine: {
+              lineStyle: {
+                color: '#999999',//左边线的颜色
+                width:0.5,
+              },
+              show:false
+            },
+            axisLabel: {
+              textStyle: {
+                color: '#999999',//坐标值得具体的颜色
+                fontSize:12,
+              },
+              show:true,
+              formatter: function (value,index) {
+                if(index==2||index==28){
+                                   return value;
+                }else{
+                   return '';
+                }         
+              }
+            }
+          },
+          yAxis: [
+            {
+              type: 'value',
+              scale: true,
+              show : false,
+              data :[],
+              splitLine:{
+                show:false
+              },
+              min:'dataMin'
+            }
+
+          ],
+          series: [
+            {
+              type: 'line',
+              name:'访问量',
+              symbolSize:0,
+              data :[11, 11, 15, 13, 12, 13, 10],
+              itemStyle:{
+                normal:{
+                  color:'#ffcf5a',
+                  barBorderRadius: 2,
+                },
+                emphasis: {
+                  barBorderRadius: 2
+                }
+              }
+            }
+          ]
+        };
+var myChart = echarts.init(document.getElementById('can'));
+ myChart.setOption(option);
+ var num=11;
+
+ setInterval(function(){
+   option.series[0].data[6]=num++;
+    myChart.setOption(option);
+ },3000);
+
+</script>

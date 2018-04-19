@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title></title>
+<style>
+body{ background: #eee; }
+.wrap{ width: 1000px; margin:0 auto; padding-top: 30px; }
+/*layer分页*/
+.page{ background: #f5f5f5; height: 40px; margin:0 10px;}
+.page-btn{ display: block; width: 12px; height: 30px; }
+.first{ background: url(img/first.png) 0 center no-repeat; }
+.next{background: url(img/next.png) 0 center no-repeat;}
+.prev{background: url(img/pre.png) 0 center no-repeat;}
+.last{background: url(img/last.png) 0 center no-repeat;}
+.layui-disabled .next{background-position: -35px center;}
+.layui-disabled .prev{background-position: -35px center;}
+.layui-laypage{ 
+  margin:5px 10px 0 0!important;
+  float: right!important;
+}
+.layui-laypage a, .layui-laypage button, .layui-laypage input, .layui-laypage select, .layui-laypage span {
+   border: none!important;
+}
+.layui-laypage .layui-laypage-curr .layui-laypage-em{
+  background: none!important;
+}
+.layui-laypage .layui-laypage-curr em{
+  color:#3899d9!important;
+}
+.layui-laypage a, .layui-laypage span{
+  padding: 0 5px!important;
+  background: none!important;
+}
+.layui-laypage .layui-laypage-spr {
+    line-height: 22px!important;
+}
+.layui-laypage a, .layui-laypage span {
+  line-height: 30px!important;
+}
+/*入库图片*/
+.real-time-img-list{ background: #fff }
+.site-txt{ float: left;  height: 38px; width: 100%;}
+.site-name{ color: #3b3b3b; font-size: 14px;line-height: 38px;}
+.site-line{ border-top: 1px solid #3899d9; text-indent: 10px;}
+.mSlide{ width:1000px;  overflow:hidden; position:relative;}
+.mSlide .bd .picList{ overflow:hidden; zoom:1; }
+.mSlide .bd .picLi{ margin: 0 12px 0 8px; float:left; _display:inline; overflow:hidden; text-align:center;}
+.mSlide .bd .pic{ text-align:center; }
+.mSlide .bd .pic img{ width:230px; height:150px; display:block; }
+.mSlide .bd .pic a{ cursor: default; }
+.mSlide .bd .title{ line-height:32px; padding-bottom: 10px;}
+</style>
+<link rel="stylesheet" type="text/css" href="assets/layui/css/layui.css">
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="assets/layui/layui.all.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <img src="img/1.png">
+    <div class="real-time-img-list clear">
+         <ul class="site-txt site-line" >
+             <li class="site-name">入库图片</li>
+         </ul>
+        <div class="mSlide" id="mSlide">
+            <div class="bd">
+                <div class="picList"></div> 
+            </div>
+        </div>
+        <div id="page" class="page"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+  var arr=[
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510827933682&di=4d848f319eaa1273df0dc6cef2f58cc9&imgtype=0&src=http%3A%2F%2Fwww.shuoshuokong.com%2Fuploads%2Fallimg%2F160316%2F1-160316213544.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510827535608&di=6a1a8f0ab92cc52afcbc4832fbf3bd00&imgtype=0&src=http%3A%2F%2Fup.qqya.com%2Fallimg%2F201610-s%2F16-101819_2092.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510827535608&di=6a1a8f0ab92cc52afcbc4832fbf3bd00&imgtype=0&src=http%3A%2F%2Fup.qqya.com%2Fallimg%2F201610-s%2F16-101819_2092.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'},
+    {name:'图片',url:'http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b21122fd1a84c38065380dd78e2d.jpg'}
+  ];
+
+  var laypage = layui.laypage
+  ,layer = layui.layer;
+   //总页数大于页码总数
+ laypage.render({
+    elem: 'page',
+    count: arr.length,
+    limit: 12,
+    first:'<em class="first page-btn"></em>',
+    last: '<em class="last page-btn"></em>',
+    prev: '<em class="prev page-btn"></em>',
+    next: '<em class="next page-btn"></em>',
+    jump: function(obj, first){
+      if(!first){
+        pagination(arr,obj.curr,12);
+      }
+    }
+  });
+  pagination(arr,1,12);
+  function pagination(data,current,pagesize){
+      current=current-1;
+      var $picList=$('#mSlide .picList');
+      var len=((current+1)*pagesize)<=data.length?(current+1)*pagesize:data.length;
+      var html='';
+      for(var i=current*pagesize;i<len;i++){
+        var str='<div class="picLi">'+
+                    '<div class="pic"><img src="'+data[i].url+'"/></div>'+
+                    '<div class="title">'+data[i].name+i+'</div>'+
+                '</div>';
+            html+=str;    
+      }
+      $picList.html(html);
+  }
+</script>
+</body>
+</html>
+

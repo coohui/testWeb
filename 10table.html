@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+table{font-size:14px;table-layout:fixed;empty-cells:show;border-collapse: collapse;margin:0 auto;}
+td{min-height:28px;}
+.table{color:#333;width: 978px; background-color: #ffffff;}
+.table th {background-repeat:repeat-x;}
+.table td,.table th { text-align: left; font-size: 14px; word-wrap: break-word; color: #2a2a2a; padding:0;border:1px solid #dcdcdc; }
+.table tr.alter{background-color:#f5fafe;}
+.table div{float: left; height: 100%; width: 100%;}
+.table input{ border:1px solid #fff; line-height: 28px; min-height: 28px; }
+input:focus,textarea:focus{ border:1px solid #007dff!important; -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(19, 93, 233, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 2px 0 8px rgba(19, 93, 233, 0.6);}
+</style>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<!-- <table width="1050" border="1" class="table">
+  <tr>
+    <td colspan="1"><div><input type="" name="" value="1515"></div></td>
+    <td colspan="4"><div><input type="" name="" value="454"></div></td>
+    <td colspan="14"><div><input type="" name="" value="666"></div></td>
+  </tr>
+</table> -->
+<table class="table">
+    <tbody> 
+      <tr class="table-tit">
+          <td colspan="1" rowspan="3" class="leftOn item" width="12.5%"><div class="table-tit-item table-tit-item-1 center">序号</div></td>
+          <td colspan="1" rowspan="3" class="item" width="12.5%"><div class="table-tit-item table-tit-item-1 center">行政区划</div></td>
+
+          <td colspan="1" rowspan="1" class="item" width="12.5%"><div><input type="text" class="table-head-input" value="用水总量控制指标" name=""/></div></td>
+
+          <td colspan="3" rowspan="1" class="item" width="37.5%"><div><input type="text" class="table-head-input" value="用水效率控制指标" name=""/></div></td>
+          <td colspan="2" rowspan="1" class="rightOn item" width="25%"><div><input type="text" class="table-head-input" value="水功能区限制纳污指标" name=""/></div></td>
+      </tr>
+      <tr>
+          <td colspan="1" rowspan="1" class="item" height="46"><div><input type="text" class="table-head-input" value="用水总量" name=""/></div></td>
+          <td colspan="1" rowspan="1" class="item" height="46"><div><input type="text" class="table-head-input" value="万元国内生产总值用水量" name=""/></div></td>
+          <td colspan="1" rowspan="1" class="item" height="46"><div><input type="text" class="table-head-input" value="万元工业增加值用水量" name=""/></div></td>
+          <td colspan="1" rowspan="1" class="item" height="46"><div><input type="text" class="table-head-input" value="农田灌溉有效利用系数" name=""/></div></td>
+          <td colspan="1" rowspan="1" class="item" height="46"><div><input type="text" class="table-head-input" value="水功能区水质达标率(%)" name=""/></div></td>
+          <td colspan="1" rowspan="1" class="rightOn item" height="46"><div><input type="text" class="table-head-input" value="跨地级以上市河流交接断面水质达标率(%)" name=""/></div></td>
+      </tr>
+      <tr>
+          <td colspan="1" rowspan="1" class="item"><div><input type="text" class="table-head-input" value="2020" name=""/></div></td>
+          <td colspan="1" rowspan="1" class="item"><div><input type="text" class="table-head-input" value="2020" name=""/></div></td>
+          <td colspan="1" rowspan="1" class="item"><div><input type="text" class="table-head-input" value="2020" name=""/></div></td>
+          <td colspan="1" rowspan="1" class="item"><div><input type="text" class="table-head-input" value="2020" name=""/></div></td>
+          <td colspan="1" rowspan="1" class="item"><div><input type="text" class="table-head-input" value="2020" name="" /></div></td>
+          <td colspan="1" rowspan="1" class="rightOn item"><div><input type="text" class="table-head-input" value="2020" name=""/></div></td>
+      </tr>
+    </tbody> 
+</table>
+</body>
+</html>
+<script type="text/javascript">
+function myBrowser(){
+    var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+    var isOpera = userAgent.indexOf("Opera") > -1;
+    if (isOpera) {
+        return "Opera"
+    }; //判断是否Opera浏览器
+    if (userAgent.indexOf("Firefox") > -1) {
+        return "FF";
+    } //判断是否Firefox浏览器
+    if (userAgent.indexOf("Chrome") > -1){
+        return "Chrome";
+    }
+    if (userAgent.indexOf("Safari") > -1) {
+        return "Safari";
+    } //判断是否Safari浏览器
+    if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {
+        return "IE";
+    }; //判断是否IE浏览器
+}
+	//以下是调用上面的函数
+	var mb = myBrowser();
+	var cut=2;
+	if ("FF" == mb||"IE" == mb) {
+	    cut=4;
+	}
+	var div=$('.table').find('div');
+	for(var i=0;i<div.length;i++){
+		var width=div.eq(i).width()-cut;
+		var height=div.eq(i).height()-4;
+		div.eq(i).find('input').css({'width':width,'height':height});
+	}
+</script>
+
+

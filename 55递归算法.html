@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css">
+</style>
+</head>
+<body></body>
+</html>
+<script>
+var data=[{
+         "wrzCd" : "F000000",
+         "wrzNm" : "长江区",
+         "id" : "F000000",
+         "pid" : "-1",
+         "children" : [
+            {
+               "wrzCd" : "F070000",
+               "wrzNm" : "洞庭湖水系",
+               "id" : "F070000",
+               "pid" : "F000000",
+               "children" : [
+                  {
+                     "wrzCd" : "F070600",
+                     "wrzNm" : "湘江衡阳以上",
+                     "id" : "F070600",
+                     "pid" : "F070000",
+                     "children" : []
+                  }
+               ]
+            },
+            {
+               "wrzCd" : "F090000",
+               "wrzNm" : "鄱阳湖水系",
+               "id" : "F090000",
+               "pid" : "F000000",
+               "children" : [
+                  {
+                     "wrzCd" : "F090200",
+                     "wrzNm" : "赣江栋背以上",
+                     "id" : "F090200",
+                     "pid" : "F090000",
+                     "children" : [
+                        {
+                           "wrzCd" : "F090220",
+                           "wrzNm" : "章江",
+                           "id" : "F090220",
+                           "pid" : "F090200",
+                           "children" : []
+                        },
+                        {
+                           "wrzCd" : "F090230",
+                           "wrzNm" : "桃江(四)",
+                           "id" : "F090230",
+                           "pid" : "F090200",
+                           "children" : []
+                        }
+                     ]
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "wrzCd" : "H000000",
+         "wrzNm" : "珠江区",
+         "id" : "H000000",
+         "pid" : "-1",
+         "children" : [
+            {
+               "wrzCd" : "H040000",
+               "wrzNm" : "西江",
+               "id" : "H040000",
+               "pid" : "H000000",
+               "children" : [
+                  {
+                     "wrzCd" : "H040100",
+                     "wrzNm" : "桂贺江",
+                     "id" : "H040100",
+                     "pid" : "H040000",
+                     "children" : [
+                        {
+                           "wrzCd" : "H040120",
+                           "wrzNm" : "贺江",
+                           "id" : "H040120",
+                           "pid" : "H040100",
+                           "children" : []
+                        }
+                     ]
+                  },
+                  {
+                     "wrzCd" : "H040200",
+                     "wrzNm" : "黔浔江及西江（梧州以下）",
+                     "id" : "H040200",
+                     "pid" : "H040000",
+                     "children" : [
+                        {
+                           "wrzCd" : "H040230",
+                           "wrzNm" : "西江下游",
+                           "id" : "H040230",
+                           "pid" : "H040200",
+                           "children" : []
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "wrzCd" : "H050000",
+               "wrzNm" : "北江",
+               "id" : "H050000",
+               "pid" : "H000000",
+               "children" : [
+                  {
+                     "wrzCd" : "H050100",
+                     "wrzNm" : "北江大坑口以上",
+                     "id" : "H050100",
+                     "pid" : "H050000",
+                     "children" : [
+                        {
+                           "wrzCd" : "H050110",
+                           "wrzNm" : "浈江",
+                           "id" : "H050110",
+                           "pid" : "H050100",
+                           "children" : []
+                        },
+                        {
+                           "wrzCd" : "H050120",
+                           "wrzNm" : "武江",
+                           "id" : "H050120",
+                           "pid" : "H050100",
+                           "children" : []
+                        },
+                        {
+                           "wrzCd" : "H050130",
+                           "wrzNm" : "北江上游",
+                           "id" : "H050130",
+                           "pid" : "H050100",
+                           "children" : []
+                        }
+                     ]
+                  },
+                  {
+                     "wrzCd" : "H050200",
+                     "wrzNm" : "北江大坑口以下",
+                     "id" : "H050200",
+                     "pid" : "H050000",
+                     "children" : [
+                        {
+                           "wrzCd" : "H050220",
+                           "wrzNm" : "滃江",
+                           "id" : "H050220",
+                           "pid" : "H050200",
+                           "children" : []
+                        },
+                        {
+                           "wrzCd" : "H050230",
+                           "wrzNm" : "连江",
+                           "id" : "H050230",
+                           "pid" : "H050200",
+                           "children" : []
+                        },
+                        {
+                           "wrzCd" : "H050240",
+                           "wrzNm" : "绥江",
+                           "id" : "H050240",
+                           "pid" : "H050200",
+                           "children" : []
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "wrzCd" : "H060000",
+               "wrzNm" : "东江",
+               "id" : "H060000",
+               "pid" : "H000000",
+               "children" : [
+                  {
+                     "wrzCd" : "H060100",
+                     "wrzNm" : "东江秋香江口以上",
+                     "id" : "H060100",
+                     "pid" : "H060000",
+                     "children" : [
+                        {
+                           "wrzCd" : "H060110",
+                           "wrzNm" : "东江上游",
+                           "id" : "H060110",
+                           "pid" : "H060100",
+                           "children" : []
+                        },
+                        {
+                           "wrzCd" : "H060130",
+                           "wrzNm" : "新丰江",
+                           "id" : "H060130",
+                           "pid" : "H060100",
+                           "children" : []
+                        }
+                     ]
+                  },
+                  {
+                     "wrzCd" : "H060200",
+                     "wrzNm" : "东江秋香江口以下",
+                     "id" : "H060200",
+                     "pid" : "H060000",
+                     "children" : [
+                        {
+                           "wrzCd" : "H060210",
+                           "wrzNm" : "东江下游",
+                           "pid" : "H060200",
+                           "children" : []
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "wrzCd" : "H070000",
+               "wrzNm" : "珠江三角洲",
+               "id" : "H070000",
+               "pid" : "H000000",
+               "children" : [
+                  {
+                     "wrzCd" : "H070100",
+                     "wrzNm" : "东江三角洲",
+                     "id" : "H070100",
+                     "pid" : "H070000",
+                     "children" : []
+                  },
+                  {
+                     "wrzCd" : "H070300",
+                     "wrzNm" : "西北江三角洲",
+                     "id" : "H070300",
+                     "pid" : "H070000",
+                     "children" : []
+                  }
+               ]
+            },
+            {
+               "wrzCd" : "H080000",
+               "wrzNm" : "韩江及粤东诸河",
+               "id" : "H080000",
+               "pid" : "H000000",
+               "children" : [
+                  {
+                     "wrzCd" : "H080100",
+                     "wrzNm" : "韩江白莲以上",
+                     "id" : "H080100",
+                     "pid" : "H080000",
+                     "children" : [
+                        {
+                           "wrzCd" : "H080110",
+                           "wrzNm" : "梅江(珠)",
+                           "id" : "H080110",
+                           "pid" : "H080100",
+                           "children" : []
+                        },
+                        {
+                           "wrzCd" : "H080120",
+                           "wrzNm" : "汀江",
+                           "id" : "H080120",
+                           "pid" : "H080100",
+                           "children" : []
+                        },
+                        {
+                           "wrzCd" : "H080130",
+                           "wrzNm" : "韩江中游",
+                           "id" : "H080130",
+                           "pid" : "H080100",
+                           "children" : []
+                        }
+                     ]
+                  },
+                  {
+                     "wrzCd" : "H080200",
+                     "wrzNm" : "韩江白莲以下",
+                     "id" : "H080200",
+                     "pid" : "H080000",
+                     "children" : [
+                        {
+                           "wrzCd" : "H080230",
+                           "wrzNm" : "榕江",
+                           "id" : "H080230",
+                           "pid" : "H080200",
+                           "children" : []
+                        },
+                        {
+                           "wrzCd" : "H080250",
+                           "wrzNm" : "粤东沿海诸小河",
+                           "id" : "H080250",
+                           "pid" : "H080200",
+                           "children" : []
+                        }
+                     ]
+                  },
+                  {
+                     "wrzCd" : "H080300",
+                     "wrzNm" : "粤东诸河",
+                     "id" : "H080300",
+                     "pid" : "H080000",
+                     "children" : []
+                  }
+               ]
+            },
+            {
+               "wrzCd" : "H090000",
+               "wrzNm" : "粤西桂南沿海诸河",
+               "id" : "H090000",
+               "pid" : "H000000",
+               "children" : [
+                  {
+                     "wrzCd" : "H090100",
+                     "wrzNm" : "粤西诸河",
+                     "id" : "H090100",
+                     "pid" : "H090000",
+                     "children" : []
+                  }
+               ]
+            }
+         ]
+      }];
+
+function traverseTree(node){
+    if (!node) {
+        return;
+    }
+    console.log(node.wrzNm);
+    if (node.children && node.children.length > 0) {
+         for (var i = 0,len=node.children.length; i < len; i++) {
+            var wrzCd=node.children[i]&&Number(node.children[i].wrzCd.slice(5,7));
+            console.log(wrzCd);
+            if(wrzCd>0){
+                node.children=[];
+                continue;
+            }else{
+               this.traverseTree(node.children[i]);
+            }
+         }
+    }
+}
+
+for(var i=0,len=data.length;i<len;i++){
+   console.log(i+':+++++++++++++++++++++++++++++');
+   traverseTree(data[i]);
+}
+</script> 
