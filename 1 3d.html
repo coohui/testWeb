@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>3D正方体</title>
+<style>
+body{background:#000; margin: 0; padding: 0;-webkit-text-size-adjust: none; overflow: hidden;}
+.wrap{
+	height:350px;
+	position:relative;
+	-webkit-transform-style:preserve-3d;
+	-webkit-perspective:0px;
+	-webkit-transform:rotateX(10deg) rotateY(30deg) rotateZ(0deg);
+	-webkit-transform-origin: center center;
+ 	-webkit-animation:mydhua 5s ease infinite; }
+.box{
+	width:200px;
+	height:200px;
+	position:absolute;
+	top:50%;
+	left: 50%;
+	margin:-100px 0 0 -100px; 
+	line-height:200px; 
+	text-align: center;
+	font-size:48px;
+	color:#fff;
+}
+.box1{
+	-webkit-transform:rotateY(90deg) translateZ(-100px);
+	background:rgba(128,0,128,.5);
+}
+.box2{
+	-webkit-transform:rotateY(90deg) translateZ(100px);
+	background:rgba(255,0,255,.5);
+}
+.box3{
+	-webkit-transform:rotateX(90deg) translateZ(100px);
+	background:rgba(255,153,204,.5);
+}
+.box4{
+	-webkit-transform:rotateX(90deg) translateZ(100px);
+	background: rgba(0,204,255,.5);
+}
+.box5{
+	-webkit-transform: translateZ(-100px);
+	background:rgba(153,204,255,.5);
+}
+.box6{
+	-webkit-transform:translateZ(100px);
+	background:rgba(0,255,255,.5);
+}
+@-webkit-keyframes mydhua{
+0%{-webkit-transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg);-webkit-transform-origin: center center;}
+100%{-webkit-transform:rotateX(180deg) rotateY(180deg) rotateZ(180deg);-webkit-transform-origin: center center;}
+}
+</style>
+<body>
+	<div class="wrap">
+		<div class="box1 box">1</div>
+	 	<div class="box2 box">2</div>
+		<div class="box3 box">3</div>
+		<div class="box4 box">4</div>
+		<div class="box5 box">5</div>
+		<div class="box6 box">6</div>
+	</div>
+</body>
+</html>
+
