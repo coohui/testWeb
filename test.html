@@ -16,19 +16,126 @@
       transform:rotateY(360deg);
 	}
 }
+body{
+  margin: 40px 10px;
+
+}
+.A{
+	width: 100%;
+	height: 2em;
+	font-size: 20px;
+	text-align: center;
+    line-height: 1;
+    background: red;
+}
+div{
+	width: 200px;
+	margin: 0 auto;
+}
+.triangle_up{
+  height:0px; width:0px;
+  border-bottom:50px solid transparent;
+  border-left:50px solid #006633;
+  border-right:50px solid transparent;
+}
+
+.triangle{
+  height:100px; width:100px;
+  border-bottom:50px solid red;
+  border-left:50px solid #006633;
+  border-right:50px solid blue;
+  border-top:50px solid yellow;
+}
+.triangle1{
+  height:0px; width:0px;
+  border-bottom:50px solid red;
+  border-left:50px solid #006633;
+  border-right:50px solid blue;
+  border-top:50px solid yellow;
+}
+
+.triangle-up{
+  height:0px; width:0px;
+  border-bottom:50px solid red;
+  border-left:50px solid transparent;
+  border-right:50px solid transparent;
+}
+.triangle-down{
+  height:0px; width:0px;
+  border-top:50px solid red;
+  border-left:50px solid transparent;
+  border-right:50px solid transparent;
+}
+.triangle-left{
+  height:0px; width:0px;
+  border-bottom:50px solid transparent;
+  border-top:50px solid transparent;
+  border-right:50px solid red;
+}
+.triangle-right{
+  height:0px; width:0px;
+  border-bottom:50px solid transparent;
+  border-left:50px solid red;
+  border-top:50px solid transparent;
+}
+/* .triangle-up45{
+  height:0px; width:0px;
+  border-bottom:50px solid red;
+  border-top:50px solid transparent;
+  border-right:50px solid transparent;
+}
+.triangle-down45{
+  height:0px; width:0px;
+  border-top:50px solid red;
+  border-left:50px solid transparent;
+  border-right:50px solid transparent;
+}
+.triangle-left45{
+  height:0px; width:0px;
+  border-bottom:50px solid transparent;
+  border-top:50px solid transparent;
+  border-right:50px solid red;
+}
+.triangle-right45{
+  height:0px; width:0px;
+  border-bottom:50px solid transparent;
+  border-left:50px solid red;
+  border-top:50px solid transparent;
+} */
 </style>
 </head>
 <body>
-<div id='test' name="testId">
+<!--<div id='test' name="testId">
 	<p name="first">first</p>
 </div>
 <div id="obj"></div>
 
-<div class="circular">3</div>
+<div class="circular">3</div> 
+<div class="A">A</div>-->
+<div class="triangle"></div><br/>
+
+<div class="triangle1"></div><br/>
+
+<div class="triangle-up"></div><br/>
+
+<div class="triangle-down"></div><br/>
+
+<div class="triangle-left"></div><br/>
+
+<div class="triangle-right"></div><br/>
+<!-- 
+<div class="triangle-up45"></div><br/>
+
+<div class="triangle-down45"></div><br/>
+
+<div class="triangle-left45"></div><br/>
+
+<div class="triangle-right45"></div><br/> -->
 </body>
 </html>
 <script>
 
+/*return false;
 function teacher(name,age){
 	this.name = name;
 	this.age = age;
@@ -105,7 +212,7 @@ console.log(Math.atan2(30));//返回从 x 轴到点 (x,y) 的角度（介于 -PI
 var arr=new Array(3); 
 for(var i in arr){
     console.log(i+':'+arr[i])
-}
+}*/
 
 //width:100%; white-space:nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden;  
 
@@ -199,7 +306,7 @@ const obj2 = {
 };
 obj2.say();*/
 
-function test(){
+/*function test(){
     var oBtn=document.getElementsByTagName('button');
     for(var i=0;i<oBtn.length;i++){
        oBtn[i].onclick=bclick;
@@ -286,6 +393,6 @@ function test(){
     }
 }
 test();
-//通过闭包的方式
+//通过闭包的方式*/
 
 </script>
