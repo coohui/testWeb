@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<title>吾推网_自学站</title>
+<meta content="吾推网-自学站-前端开发-javascript-HTML5-CSS3-后台开发-php-mysql" name="keywords">
+<meta content="吾推网-自学站-我推网-自学网-web自学站-前端自学-前端开发-js-javascript-h5-HTML5-CSS3-后台开发-php-mysql" name="description">
+<link href="/templets/tweb/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/templets/tweb/css/style.css?15" rel="stylesheet" type="text/css" />
+<script src="/templets/tweb/js/pace.min.js" type="text/javascript"></script>
+<!--[if lt IE 9]>
+  <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif]--> 
+</head>
+<body>
+	<!-- 头部 header -->
+    <div class="m-menu-wrap" id="hMenuWrap"></div>
+<div class="m-menu" id="hMenu">
+    <div class="m-menu-head">
+         <div><a></a><p></p></div>
+    </div>
+    <ul>
+         
+            <li><span class="side-line"></span>
+              <a href="/a/wutui/">
+                吾推
+                (6)
+            </a></li>
+         
+            <li><span class="side-line"></span>
+              <a href="/a/zixue/">
+                自学
+                (1)
+            </a></li>
+         
+            <li><span class="side-line"></span>
+              <a href="/a/html/">
+                html
+                (1)
+            </a></li>
+         
+            <li><span class="side-line"></span>
+              <a href="/a/css/">
+                css
+                (1)
+            </a></li>
+         
+            <li><span class="side-line"></span>
+              <a href="/a/javascript/">
+                javascript
+                (1)
+            </a></li>
+         
+            <li><span class="side-line"></span>
+              <a href="/a/php/">
+                php
+                (2)
+            </a></li>
+         
+            <li><span class="side-line"></span>
+              <a href="/a/zhengze/">
+                正则
+                (1)
+            </a></li>
+         
+            <li><span class="side-line"></span>
+              <a href="/a/mysql/">
+                mysql
+                (1)
+            </a></li>
+         
+            <li><span class="side-line"></span>
+              <a href="/a/case/">
+                案例
+                (1)
+            </a></li>
+         
+    </ul>
+</div>
+
+<div class="container-fluid top">
+    <div class="row">
+        <div class="col-ld-2 col-md-2 col-sm-2 col-xs-2">
+            <div class="hide-menu glyphicon glyphicon-menu-hamburger visible-xs" id="mMenu"></div>
+        </div>
+        <div class="search col-ld-8 col-md-8 col-sm-8 col-xs-8">
+          <form  name="formsearch" id="search" action="/plus/search.php" >
+               <input type="hidden" name="kwtype" value="0" />
+               <input name="q" type="text" class="search-keyword input" id="search-keyword" placeholder="请输入标题关键字" value="请输入标题关键字" onfocus="if(this.value=='请输入标题关键字'){this.value='';}"  onblur="if(this.value==''){this.value='请输入标题关键字';}" />
+               <div class="fa-search"><span class="glyphicon glyphicon-search"></span></div>
+            </form>
+        </div>
+        <div class="fr col-ld-2 col-md-2 col-sm-2 col-xs-2 home">
+          <img id="music" class="music" src="/templets/tweb/images/wave.gif" alt="music"/>
+          <span class="MusicProgress" id="progress"></span>
+          <a href="/index.html" class="logo hidden-xs">吾推网_自学站</a>
+          <a href="/index.html" class="logo visible-xs glyphicon glyphicon-home"></a>
+        </div>
+    </div>
+</div>  
+	<div class="container-fluid">
+		<div class="row">
+			<!-- 侧边导航 sideMenu -->
+            <div class="col-ld-2 col-md-2 col-sm-3 side-menu hidden-xs">
+    <div class="side-list">
+        <ul>
+             
+                <li><span class="side-line"></span>
+                	<a href="/a/wutui/">
+                		吾推
+                		(6)
+                </a></li>
+             
+                <li><span class="side-line"></span>
+                	<a href="/a/zixue/">
+                		自学
+                		(1)
+                </a></li>
+             
+                <li><span class="side-line"></span>
+                	<a href="/a/html/">
+                		html
+                		(1)
+                </a></li>
+             
+                <li><span class="side-line"></span>
+                	<a href="/a/css/">
+                		css
+                		(1)
+                </a></li>
+             
+                <li><span class="side-line"></span>
+                	<a href="/a/javascript/">
+                		javascript
+                		(1)
+                </a></li>
+             
+                <li><span class="side-line"></span>
+                	<a href="/a/php/">
+                		php
+                		(2)
+                </a></li>
+             
+                <li><span class="side-line"></span>
+                	<a href="/a/zhengze/">
+                		正则
+                		(1)
+                </a></li>
+             
+                <li><span class="side-line"></span>
+                	<a href="/a/mysql/">
+                		mysql
+                		(1)
+                </a></li>
+             
+                <li><span class="side-line"></span>
+                	<a href="/a/case/">
+                		案例
+                		(1)
+                </a></li>
+             
+        </ul>
+    </div>
+</div>  
+			<div class="col-ld-10 col-md-10 col-sm-9 col-xs-12 main-list">
+				 <div class="item-tit"><a class="item-tit-text">吾推</a><span class="item-tit-line"></span><a class="more" href="/a/wutui/index.html">更多</a></div>
+				 <div class="row">
+	                  <div class="col-ld-3 col-md-4 col-sm-6 col-xs-12">
+						 		<div class="article">
+							 		<div class="elem">
+							 			<a class="article-tit textHide" href="/a/wutui/20170304/1.html" title="《醉城伤》" target="_blank">
+							 				《醉城伤》
+							 			</a>
+							 		</div>
+							 		<div class="b-tit">长在面包树的女人电视剧主题曲。...</div>
+							 	</div>
+						 	</div>
+<div class="col-ld-3 col-md-4 col-sm-6 col-xs-12">
+						 		<div class="article">
+							 		<div class="elem">
+							 			<a class="article-tit textHide" href="/a/wutui/20170806/44.html" title="《最后一个夏天》" target="_blank">
+							 				《最后一个夏天》
+							 			</a>
+							 		</div>
+							 		<div class="b-tit">天天都能见面 
+喔 你住的也不远 
+从来就不曾烦恼过时间 
+在同一个校园 
+看同样那一张脸 
+想不出 未来又会有怎样改变...</div>
+							 	</div>
+						 	</div>
+<div class="col-ld-3 col-md-4 col-sm-6 col-xs-12">
+						 		<div class="article">
+							 		<div class="elem">
+							 			<a class="article-tit textHide" href="/a/wutui/yinle/2017/0530/42.html" title="《刚好遇见你》" target="_blank">
+							 				《刚好遇见你》
+							 			</a>
+							 		</div>
+							 		<div class="b-tit">因为我刚好遇见你,留下足迹才美丽;
+风吹花落泪如雨,因为不想分离;
+因为刚好遇见你,留下十年的期许;
+如果再相遇,我想我...</div>
+							 	</div>
+						 	</div>
+<div class="col-ld-3 col-md-4 col-sm-6 col-xs-12">
+						 		<div class="article">
+							 		<div class="elem">
+							 			<a class="article-tit textHide" href="/a/wutui/yinle/2017/0531/43.html" title="《好心分手》" target="_blank">
+							 				《好心分手》
+							 			</a>
+							 		</div>
+							 		<div class="b-tit">好心分手所有版本中最喜欢方皓玟版...</div>
+							 	</div>
+						 	</div>
+<div class="col-ld-3 col-md-4 col-sm-6 col-xs-12">
+						 		<div class="article">
+							 		<div class="elem">
+							 			<a class="article-tit textHide" href="/a/wutui/20170411/32.html" title="《有点儿意思》" target="_blank">
+							 				《有点儿意思》
+							 			</a>
+							 		</div>
+							 		<div class="b-tit">《有点儿意思》是鹿晗演唱的一首歌曲，由朱婧汐填词，Matthew Tishler、Adam Royce、Liz Rodrigues谱曲。收录于鹿晗首张个人mini数字...</div>
+							 	</div>
+						 	</div>
+<div class="col-ld-3 col-md-4 col-sm-6 col-xs-12">
+						 		<div class="article">
+							 		<div class="elem">
+							 			<a class="article-tit textHide" href="/a/wutui/20170411/31.html" title="《情圣》" target="_blank">
+							 				《情圣》
+							 			</a>
+							 		</div>
+							 		<div class="b-tit">《情圣》是由新丽传媒股份有限公司出品的喜剧片，由宋晓飞、董旭执导，肖央、闫妮领衔主演，小沈阳、乔杉、艾伦、代乐...</div>
+							 	</div>
+						 	</div>
+
+				 </div>
+
+				 <div class="item-tit"><a class="item-tit-text">自学</a><span class="item-tit-line"></span><a class="more" href="/a/zixue/index.html">更多</a></div>
+				 <div class="row">
+	                   <div class="col-ld-3 col-md-4 col-sm-6 col-xs-12">
+						 		<div class="article">
+							 		<div class="elem">
+							 			<a class="article-tit textHide" href="/a/zixue/20170411/33.html" title="ajax与HTML5实例" target="_blank">
+							 				ajax与HTML5实例
+							 			</a>
+							 		</div>
+							 		<div class="b-tit">ajax与HTML5实例...</div>
+							 	</div>
+						 	</div>
+
+				 </div>
+
+				 <div class="item-tit"><a class="item-tit-text">html</a><span class="item-tit-line"></span><a class="more" href="/a/html/">更多</a></div>
+				 <div class="row">
+	                   <div class="col-ld-3 col-md-4 col-sm-6 col-xs-12">
+						 		<div class="article">
+							 		<div class="elem">
+							 			<a class="article-tit textHide" href="/a/html/20170425/38.html" title="待写中..." target="_blank">
+							 				待写中...
+							 			</a>
+							 		</div>
+							 		<div class="b-tit">待写中......</div>
+							 	</div>
+						 	</div>
+
+				 </div>
+
+				 <div class="item-tit"><a class="item-tit-text">css</a><span class="item-tit-line"></span><a class="more" href="/a/css/">更多</a></div>
+				 <div class="row">
+	                   <div class="col-ld-3 col-md-4 col-sm-6 col-xs-12">
+						 		<div class="article">
+							 		<div class="elem">
+							 			<a class="article-tit textHide" href="/a/css/20170411/36.html" title="待写中..." target="_blank">
+							 				待写中...
+							 			</a>
+							 		</div>
+							 		<div class="b-tit">css...</div>
+							 	</div>
+						 	</div>
+
+				 </div>
+
+				 <div class="item-tit"><a class="item-tit-text">javascript</a><span class="item-tit-line"></span><a class="more" href="/a/javascript/">更多</a></div>
+				 <div class="row">
+	                   <div class="col-ld-3 col-md-4 col-sm-6 col-xs-12">
+						 		<div class="article">
+							 		<div class="elem">
+							 			<a class="article-tit textHide" href="/a/javascript/20170304/8.html" title="97date在IE9中出现1问题" target="_blank">
+							 				97date在IE9中出现1问题
+							 			</a>
+							 		</div>
+							 		<div class="b-tit">97date在IE9中用月份格式时出现一堆1问题...</div>
+							 	</div>
+						 	</div>
+
+				 </div>
+
+				 <div class="item-tit"><a class="item-tit-text">php</a><span class="item-tit-line"></span><a class="more" href="/a/php/">更多</a></div>
+				 <div class="row">
+	                   <div class="col-ld-3 col-md-4 col-sm-6 col-xs-12">
+						 		<div class="article">
+							 		<div class="elem">
+							 			<a class="article-tit textHide" href="/a/php/zhimeng/2017/0423/37.html" title="织梦后台登录一片空白？" target="_blank">
+							 				织梦后台登录一片空白？
+							 			</a>
+							 		</div>
+							 		<div class="b-tit">DedeCms后台登录一片空白的一个原因...</div>
+							 	</div>
+						 	</div>
+<div class="col-ld-3 col-md-4 col-sm-6 col-xs-12">
+						 		<div class="article">
+							 		<div class="elem">
+							 			<a class="article-tit textHide" href="/a/php/20170304/10.html" title="wampserver端口修改" target="_blank">
+							 				wampserver端口修改
+							 			</a>
+							 		</div>
+							 		<div class="b-tit">修改Wamp打开默认页 Localhost端口后，通过图标里面的phpMyadmin打不开原因...</div>
+							 	</div>
+						 	</div>
+
+				 </div>
+
+				 <div class="item-tit"><a class="item-tit-text">正则</a><span class="item-tit-line"></span><a class="more" href="/a/zhengze/">更多</a></div>
+				 <div class="row">
+	                   <div class="col-ld-3 col-md-4 col-sm-6 col-xs-12">
+						 		<div class="article">
+							 		<div class="elem">
+							 			<a class="article-tit textHide" href="/a/zhengze/2017/0425/39.html" title="待写中..." target="_blank">
+							 				待写中...
+							 			</a>
+							 		</div>
+							 		<div class="b-tit">待写中......</div>
+							 	</div>
+						 	</div>
+
+				 </div>
+
+				 <div class="item-tit"><a class="item-tit-text">mysql</a><span class="item-tit-line"></span><a class="more" href="/a/mysql/">更多</a></div>
+				 <div class="row">
+	                   <div class="col-ld-3 col-md-4 col-sm-6 col-xs-12">
+						 		<div class="article">
+							 		<div class="elem">
+							 			<a class="article-tit textHide" href="/a/mysql/2017/0425/40.html" title="待写中..." target="_blank">
+							 				待写中...
+							 			</a>
+							 		</div>
+							 		<div class="b-tit">待写中......</div>
+							 	</div>
+						 	</div>
+
+				 </div>
+
+				 <div class="item-tit"><a class="item-tit-text">案例</a><span class="item-tit-line"></span><a class="more" href="/a/case/">更多</a></div>
+				 <div class="row">
+	                   <div class="col-ld-3 col-md-4 col-sm-6 col-xs-12">
+						 		<div class="article">
+							 		<div class="elem">
+							 			<a class="article-tit textHide" href="/a/case/2017/0425/41.html" title="待写中..." target="_blank">
+							 				待写中...
+							 			</a>
+							 		</div>
+							 		<div class="b-tit">待写中......</div>
+							 	</div>
+						 	</div>
+
+				 </div>
+
+			</div>
+		</div>
+	</div>
+	<!-- 尾部部 footer -->
+    <div class="container-fluid footer">
+    <div class="row">
+        <div class="col-ld-2 col-md-2 col-sm-1 hidden-xs"></div>
+        <div class="col-ld-8 col-md-8 col-sm-10 col-xs-12">
+            <div class="f-rows">
+             
+             </div>
+        </div>
+        <div class="col-ld-2 col-md-2 col-sm-1 hidden-xs"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    document.getElementsByTagName("html")[0].style.backgroundImage="none";
+    document.getElementsByTagName("body")[0].style.display="block";
+</script>
+  
+<script src="/templets/tweb/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/templets/tweb/js/common.js" type="text/javascript"></script>
+</body>
+</html>

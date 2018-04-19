@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>iframe子父级操作</title>
+  <style>
+  #pIframe{border:1px solid #000;}
+  </style>
+ </head>
+ <body>
+ <h4>我是最顶级父topIframe</h4>
+ <button id="btn1">
+   点击我改变子级pIframe1的背景色
+ </button><br/><br/>
+ <iframe id="topIframe" src="iframeChild.html"></iframe>
+ <iframe id="topIframe2" src="iframeChild2.html"></iframe>
+ <pre>
+ 父级js部分：
+ var btn=document.getElementById('btn1');
+ btn.onclick=function(){
+ var childBody=document.getElementById("topIframe").contentWindow.document.getElementsByTagName('body')[0];
+     childBody.style.backgroundColor="#ff0"; 
+ }
+ 子级pIframe1中js部分：
+ var btn=document.getElementById('pBtn');
+ var btn2=document.getElementById('pBtn2');
+ btn.onclick=function(){
+	 var parent=window.parent;
+	 var tit=parent.document.getElementsByTagName('h4')[0];
+	 tit.style.color='#f00';
+ }
+ btn2.onclick=function(){
+	 var parent=window.parent;
+	 var topCont=parent.document.getElementById("topIframe2").contentWindow;
+	 var body=topCont.document.getElementsByTagName('body')[0];
+     body.style.backgroundColor='#f00';
+ } 
+ </pre>
+ <script>
+ var btn=document.getElementById('btn1');
+ btn.onclick=function(){
+ var childBody=document.getElementById("topIframe").contentWindow.document.getElementsByTagName('body')[0];
+     childBody.style.backgroundColor="#ff0"; 
+ }
+ </script>
+ </body>
+</html>

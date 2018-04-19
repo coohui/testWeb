@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>pIframe</title>
+ </head>
+ <body>
+ 我是topIframe的子级pIframe1
+ <button id="pBtn">点击我改变topIframe的标题颜色</button><br/><br/>
+ <button id="pBtn2">点击我改变父级中pIframe2的背景颜色</button>
+ <script>
+ var btn=document.getElementById('pBtn');
+ var btn2=document.getElementById('pBtn2');
+ btn.onclick=function(){
+	 var parent=window.parent;
+	 var tit=parent.document.getElementsByTagName('h4')[0];
+	 tit.style.color='#f00';
+ }
+ btn2.onclick=function(){
+	 var parent=window.parent;
+	 var topCont=parent.document.getElementById("topIframe2").contentWindow;
+	 var body=topCont.document.getElementsByTagName('body')[0];
+     body.style.backgroundColor='#f00';
+ } 
+ </script>
+ </body>
+</html>
