@@ -21,6 +21,28 @@
 </body>
 <script type="text/javascript">
 var option={
+          legend: {
+              data:[
+                  {
+                      name:'访问量',
+                      textStyle:{
+                          fontSize:12,
+                          fontWeight:'bolder',
+                          color:'#cccccc'
+                      },
+                      icon:'image://./img/pre.png'//格式为'image://+icon文件地址'，其中image::后的//不能省略
+                  },
+                  {
+                      name:'访问量2',
+                      textStyle:{
+                          fontSize:12,
+                          fontWeight:'bolder',
+                          icon:'image://./img/icoCircle.gif'//格式为'image://+icon文件地址'，其中image::后的//不能省略
+                      },
+                      icon:'pie'
+                  }
+              ]
+          },
           tooltip : {
             trigger: 'axis',
             show:true,
@@ -67,7 +89,7 @@ var option={
               show:true,
               formatter: function (value,index) {
                 if(index==2||index==28){
-                                   return value;
+                    return value;
                 }else{
                    return '';
                 }         
@@ -93,6 +115,21 @@ var option={
               name:'访问量',
               symbolSize:0,
               data :[11, 11, 15, 13, 12, 13, 10],
+              itemStyle:{
+                normal:{
+                  color:'#ffcf5a',
+                  barBorderRadius: 2,
+                },
+                emphasis: {
+                  barBorderRadius: 2
+                }
+              }
+            },
+            {
+              type: 'line',
+              name:'访问量2',
+              symbolSize:0,
+              data :[31, 11, 65, 33, 42, 56, 90],
               itemStyle:{
                 normal:{
                   color:'#ffcf5a',
