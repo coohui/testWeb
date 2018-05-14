@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>echart-legend</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit">
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<meta HTTP-EQUIV="expires" CONTENT="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script type="text/javascript" src="js/echarts.min.js"></script> 
+<style>
+</style>
+</head>
+<body>
+<div id="can" style="float:left;width: 100px; height: 400px"></div>
+<div id="can2" style="float:left;width: 500px; height: 400px"></div>
+</body>
+<script type="text/javascript">
+var option = {
+    tooltip : {
+        trigger: 'axis',
+        show:true,
+        // formatter: function (params) {
+        //     console.log(params);
+        //     var date=new Date();
+        //     var year  = date.getFullYear();
+        //     var month=date.getMonth()+1;
+        //     var day=params[0].name;
+        //     var reStr = '<span class="claText"> '+params[0].name+'</span>' ;
+        //     reStr += '<br/>  <div class="f0901"></div><span class="claText">访问量:' + (params[0].value||0)+'</span>' ;
+        //     return reStr;
+        // },
+        axisPointer: {
+            type: 'none'
+        }
+    },
+    grid: {
+        top:0,
+        left:-40,
+        right:0,
+        bottom:28,
+        containLabel: true
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        splitLine:{show:false},
+        axisTick :{show:false},
+        axisLine: {
+            lineStyle: {
+                color: '#999999',//左边线的颜色
+                width:0.5
+            }
+        },
+        axisLabel: {
+            textStyle: {
+                color: '#333333',//坐标值得具体的颜色
+                fontSize:14,
+            },
+            show:true,
+            // formatter: function (params) {
+            //     if(params<1){
+            //        return '';
+            //     }else{
+            //         return params;
+            //     }
+            //     console.log(params);
+            // }
+        },
+        data: [11,12]
+    },
+    yAxis: {
+        type: 'value',
+        show : false
+    },
+    series: [
+        {
+            data: [0,900,0],
+            type: 'line',
+            itemStyle:{
+                normal:{
+                    color:'rgba(177, 239, 255, 1)'
+                },
+                opacity:0
+            },
+            lineStyle:{
+                opacity:0
+            },
+            symbol: "none",
+            smooth: true,
+            areaStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgb(169, 211, 255)'
+                    }, {
+                        offset: 1,
+                        color: 'rgb(203, 229, 255)'
+                    }])
+                },
+                formatter: function (params) {
+                    console.log(params);
+                }
+            }
+        }
+    ]
+};
+var option2 = {
+    tooltip : {
+        trigger: 'axis',
+        show:true,
+        // formatter: function (params) {
+        //     console.log(params);
+        //     // var date=new Date();
+        //     // var year  = date.getFullYear();
+        //     // var month=date.getMonth()+1;
+        //     // var day=params[0].name;
+        //     // var reStr = '<span class="claText"> '+params[0].name+'</span>' ;
+        //     // reStr += '<br/>  <div class="f0901"></div><span class="claText">访问量:' + (params[0].value||0)+'</span>' ;
+        //     // return reStr;
+        // },
+        axisPointer: {
+            type: 'none'
+        }
+    },
+    grid: {
+        top:0,
+        left:-40,
+        bottom:28,
+        containLabel: true
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        splitLine:{show:false},
+        axisTick :{show:false},
+        axisLine: {
+            lineStyle: {
+                color: '#999999',//左边线的颜色
+                width:0.5
+            }
+        },
+        axisLabel: {
+            textStyle: {
+                color: '#333333',//坐标值得具体的颜色
+                fontSize:14,
+            },
+            show:true,
+            // formatter: function (params) {
+            //     if(params<1){
+            //        return '';
+            //     }else{
+            //         return params;
+            //     }
+            //     console.log(params);
+            // }
+        },
+        data: [1, 2, 3, 4, 5, 6, 7 , 8 , 9, 10]
+    },
+    yAxis: {
+        type: 'value',
+        show : false
+    },
+    series: [
+        {
+            data: [0,932, 901, 934, 1290, 1330, 1320,1515,949,634,60],
+            type: 'line',
+            itemStyle:{
+                normal:{
+                    color:'rgba(177, 239, 255, 1)'
+                },
+                opacity:0
+            },
+            lineStyle:{
+                opacity:0
+            },
+            symbol: "none",
+            smooth: true,
+            areaStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgb(177, 239, 255)'
+                    }, {
+                        offset: 1,
+                        color: 'rgb(224, 249, 255)'
+                    }])
+                }
+            }
+        }
+    ]
+};
+var myChart = echarts.init(document.getElementById('can'));
+ myChart.setOption(option);
+
+var myChart2 = echarts.init(document.getElementById('can2'));
+myChart2.setOption(option2);
+</script>
