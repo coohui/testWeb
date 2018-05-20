@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+</body>
+</html>
+<script>
+async function async1() {
+	console.log('async1 start');
+	await async2();
+	console.log('async1 end');
+}
+
+async function async2() {
+    console.log('async2');
+}
+
+console.log('script start');
+
+setTimeout(function() {
+    console.log('setTimeout');
+}, 0);
+
+async1();
+
+new Promise(function(resolve) {
+    console.log('promise1');
+    setTimeout(function(){
+       resolve('promise1-done!');
+    },0)
+}).then(function(data) {
+	console.log(data);
+    console.log('promise2');
+});
+
+new Promise(function(resolve) {
+    console.log('promise3');
+    resolve('promise3-done!');
+}).then(function(data) {
+	console.log(data);
+    console.log('promise4');
+});
+
+for(var i=0;i<1000000002;i++){
+	if(i==1000000){
+       console.log(i);
+	}
+}
+console.log('script end');
+
+script start
+async1 start
+async2
+promise1
+promise3
+1000000
+script end
+promise3-done!
+promise4
+async1 end
+setTimeout
+promise1-done!
+promise2
+
+// function sleep(second) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//         	resolve('request done! ' + second);
+//         }, second);
+//     })
+// }
+
+// async function correctDemo() {
+//     let p1 = sleep(1100);
+//     p1.then(function(data){
+//     	console.log(data);
+//     });
+//     let p2 = sleep(900);
+//     console.log(p2);
+//     let p3 = sleep(1000);
+//     console.log(p3);
+//     await Promise.all([p1, p2, p3]);
+//     console.log('clear the loading~');
+// }
+// correctDemo();
+</script> 
