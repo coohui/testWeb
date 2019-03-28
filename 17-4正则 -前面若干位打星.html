@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+</style>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<input id="input" type="text" name="" value="262750240@qq.com">
+<button id="btn">验证</button>
+|<p name="test">sdfsf</p>
+<script type="text/javascript">
+  var oInput=document.getElementById('input')
+  var oBtn=document.getElementById('btn')
+
+  oBtn.onclick=function () {
+	var val=oInput.value
+	// 2 62750240@qq.com => * 
+	// 6 2750240@qq.com => *
+	// 2 750240@qq.com => * 
+	// ...
+	var Re=/\S{1}(?=\S{2,}@\S*$)/ig
+	alert(val.replace(Re,'*'))
+  }
+</script>
+</body>
+</html>
+
