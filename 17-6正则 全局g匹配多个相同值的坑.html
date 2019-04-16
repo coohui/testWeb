@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>正数</title>
+<style>
+</style>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<input id="input" type="text" name="">
+<input id="input2" type="text" name="">
+<button id="btn">验证</button>
+|<p name="test" id="result"></p>
+<script type="text/javascript">
+  var oInput=document.getElementById('input');
+  var oInput2=document.getElementById('input2');
+  var oBtn=document.getElementById('btn');
+  var result = document.getElementById('result');
+
+  oBtn.onclick = test
+  oInput.onblur = test
+  oInput.onkeyup = function(e){
+	  if(e.keyCode == 13 || e.keyCode == 32){
+	    test()
+	  }
+  }
+  
+  function test(){
+	  var val=oInput.value;
+    var val2=oInput2.value;
+	  var Re=/^((\d+\.\d+)*|\d*)$/g;
+    // 第一个输入框和第二个输入框都输123时，会得出 true-false 结果，这是因为g是
+    // G是全局匹配，匹配一次之后 ，那个正则对象会记录匹配的位置，下次匹配会从下个位置开始
+    // 下次匹配时剩下的字符串已到末尾，就是空字符串，所以匹配失败，得到nul
+    // 解决办法是每次匹配重新定义Re或者去掉g
+	  result.innerHTML = Re.test(val) + '-' + Re.test(val2)
+	    console.log(Re.test(val), Re.test(val2))
+  }
+  
+</script>
+</body>
+</html>

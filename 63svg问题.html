@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css">
+.test{
+	stroke-dasharray: 276.146px, 276.146px; 
+	transition: stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease 0s; 
+	stroke-dashoffset: 80px;
+}
+path[Attributes Style] {
+    d: path('M 50 50 m 0 -43 a 43 43 0 1 1 0 86 a 43 43 0 1 1 0 -86');
+    stroke-linecap: round;
+    stroke: rgb(219, 70, 72);
+    stroke-width: 12.1;
+    fill: none;
+}
+:not(svg), :not(foreignObject) > svg {
+    transform-origin: 0px 0px 0px;
+}
+</style>
+</head>
+<body>
+<div style="width: 60px;height: 60px">
+<svg viewBox="0 0 100 100">
+<path d="M 50 50 m 0 -43 a 43 43 0 1 1 0 86 a 43 43 0 1 1 0 -86" stroke="#e5e9f2" stroke-width="12.1" fill="none" class="el-progress-circle__track"></path>
+<path d="M 50 50 m 0 -43 a 43 43 0 1 1 0 86 a 43 43 0 1 1 0 -86" stroke-linecap="round" stroke="#db4648" stroke-width="12.1" fill="none" class="el-progress-circle__path" id="test"></path></svg>
+</div>
+<div id="start">开始</div>
+<script>
+let test = document.getElementById('test')
+let start = document.getElementById('start')
+
+start.onclick=function(){
+	test.className = 'el-progress-circle__path test'
+}
+</script>
+
+</body>
+</html>

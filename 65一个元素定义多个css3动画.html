@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style>
+div {
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: relative;
+ 
+}
+ 
+.animation1 {
+            animation: upin 2s ease;
+    -webkit-animation: upin 2s ease;
+}
+ 
+.animation2 {
+            animation:beat .93s infinite ease ;
+    -webkit-animation:beat .93s infinite ease ;
+}
+ 
+@keyframes upin{
+    0% {
+        opacity: 0;
+        transform: translateY(-100%)
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+ 
+@-webkit-keyframes upin{
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-100%)
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0)
+    }
+}
+ 
+@keyframes beat {
+    0% {transform: scale(1)}
+    15% {transform: scale(1.2)}
+    30% {transform: scale(1)}
+    55% {transform: scale(1.1)}
+    100% {transform: scale(1)}
+}
+
+@-webkit-keyframes beat {
+    0% {-webkit-transform: scale(1)}
+    15% {-webkit-transform: scale(1.2)}
+    30% {-webkit-transform: scale(1)}
+    55% {-webkit-transform: scale(1.1)}
+    100% {-webkit-transform: scale(1)}
+}
+
+.animation{
+    animation-name: upin,beat;
+    animation-duration: 2s,1s;
+    animation-timing-function: ease,ease;
+    animation-delay:0s,2s;
+    animation-iteration-count:1,3;
+}
+
+</style>
+</head>
+ 
+<body>
+<div class="animation" style="position: absolute;top: 30%;left: 30%;"></div>
+<div id="animationDiv" class="animation1"></div>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+var animationDiv = $("#animationDiv");
+animationDiv.bind("webkitAnimationEnd", function() {
+    animationDiv.removeClass("animation1");
+    animationDiv.addClass("animation2");
+});
+</script>
+</body>
+</html>
