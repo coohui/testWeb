@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css"></style>
+</head>
+<body>
+</body>
+</html>
+<script>
+let exp = new Date()
+//一小时后过期
+exp.setTime(exp.getTime() + 60 * 60 * 1000)
+document.cookie = `username=John Doe;expires=${exp.toUTCString()};path=/;`
+document.getElementsByTagName('body')[0].innerHTML = exp.getMonth()
+</script>
