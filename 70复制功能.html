@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test</title>
+</head>
+<body>
+  <div>
+    <span id="copyMy" style="position: absolute;left: -100000px;">这是复制的内容</span>
+    <button onClick="copyFn()">点击复制</button>
+  </div>
+  <script>
+    function copyFn() {
+      var val = document.getElementById('copyMy');
+      window.getSelection().selectAllChildren(val); // 把指定元素的所有子元素设为选中区域，并取消之前的选中区域
+      document.execCommand("Copy");
+    }
+  </script>
+</body>
+</html>

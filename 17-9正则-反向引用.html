@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <title>反向引用</title>
+  </head>
+  <body></body>
+   <script type="text/javascript">
+      var str = '123456runoob123runoob456';
+      var n = str.match(/([1-9])([a-z]+)/g);
+      var n1 = str.match(/(?:[1-9])([a-z]+)/g);
+      // () 表示捕获分组, ?= 和 ?!是两个非捕获元，前者为正向预查，在任何开始匹配圆括号内的正则表达式模式的位置来匹配搜索字符串，后者为负向预查，在任何开始不匹配该正则表达式模式的位置来匹配搜索字符串，此时n,n1毫无区别，但在非捕获元中不能使用反向引用
+      console.log(n, n1)
+      // exp1(?=exp2)：查找 exp2 前面的 exp1
+      var str = '123456runoob123runoob456';
+      var n = str.match(/runoob([\d])/g);
+      var n1 = str.match(/runoob(?:[\d])/g);
+      var n3 = str.match(/runoob(?=[\d])/g);
+      console.log(JSON.stringify(n), JSON.stringify(n1), JSON.stringify(n3))
+      // ["runoob1","runoob4"] ["runoob1","runoob4"] ["runoob","runoob"]
+      // (?<=exp2)exp1：查找 exp2 后面的 exp1。
+      var str = 'runoob123runoob456';
+      var n = str.match(/runoob([\d])/g);
+      var n3 = str.match(/(?<=[\d])runoob/g);
+      console.log(JSON.stringify(n), JSON.stringify(n3))
+      // ["runoob1","runoob4"] ["runoob"]
+      // exp1(?!exp2)：查找后面不是 exp2 的 exp1。
+      var str = 'runoob123runoob456runoob';
+      var n = str.match(/runoob([\d])/g);
+      var n3 = str.match(/runoob(?![\d])/g);
+      console.log(JSON.stringify(n), JSON.stringify(n3))
+      // ["runoob1","runoob4"] ["runoob"]
+      // (?<!exp2)exp1：查找前面不是 exp2 的 exp1。
+      var str = 'runoob123runoob456runoob';
+      var n = str.match(/([\d])runoob/g);
+      var n3 = str.match(/(?<![\d])runoob/g);
+      console.log(JSON.stringify(n), JSON.stringify(n3))
+      // ["3runoob","6runoob"] ["runoob"] =>runoob123中的runoob
+   </script>
+</html>

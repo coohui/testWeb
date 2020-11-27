@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <script type="text/javascript" src="assets/jquery/jquery-1.9.1.min.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <div class="ConnectingLine">
+      <input id="btn" type="button" value="动起来" style="margin: 310px 0 0 320px;"/>
+      <div class="animate-wrap">
+        <div class="particle-ray">
+          <div 
+            id="rayDown"
+            class="particle">
+          </div>
+          <div 
+            id="rayUp"
+            class="particle">
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <style type="text/css">
+    body{
+      background: linear-gradient(to right, #411894, #1d3899);
+    }
+    .ConnectingLine{
+      position: relative;
+      float: right;
+      width: 1093px;
+      height: 568px;
+      background-size: cover;
+      background: url('img/bg2.png') no-repeat;
+    }
+    .animate-wrap{
+      position: absolute;
+      right: 300px;
+      bottom: 60px;
+      width: 400px;
+      height: 400px;
+    }
+    .particle-ray{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 400px;
+      height: 400px;
+      z-index: 200;
+    }
+    .particle{
+      position:absolute;
+      left: 338px;
+      top: 349px;
+      width: 4px;
+      height: 2px;
+      border-radius: 50%;
+      background-color: #fff;
+      opacity: 0;
+    }
+    .ray1{
+      opacity: 1;
+    }
+    .ray2{
+      opacity: 1;
+    }
+  </style>
+   <script type="text/javascript">
+    window.onload = function(){
+      var oBtn = document.getElementById('btn');
+      var oRayUp = document.getElementById('rayUp');
+      var oRayDown = document.getElementById('rayDown');
+      var timer = null;
+      oBtn.onclick = function(){
+        //起始位置
+        clearInterval(timer);
+        
+        //半径
+        var rx = (56 - 4 / 2) / 2;
+        var ry = (34 - 2 / 1) / 2;
+        // 上半部分动画
+        var rayUpStartAngle = 306; // 150
+        var rayUpEndAngle = 136;
+        var rayUp = {
+          slashX: 0,
+          slashY: 0
+        }
+        // 下半部分动画
+        var rayDownStartAngle = 136; // 150
+        var rayDownEndAngle = 306;
+        var rayDown = {
+          slashX: 0,
+          slashY: 0
+        }
+
+        var getAngle = function (x, y) {
+          var radian = Math.atan(y / x); // 弧度
+          var angle = 180 / (Math.PI / radian); // 弧度转角度
+          if (x < 0) { // x小于0的时候加上180°，即实际角度
+            angle = angle + 180;
+          }
+          return angle;
+        }
+
+        var angle3 = getAngle(237, 130); // 算出斜线角度
+
+        var arcFun = function (config) {
+          var angle = config.angle;
+          var initX = config.initX;
+          var initY = config.initY;
+          var oRay = config.oRay;
+          var slashX = config.slashX;
+          var slashY = config.slashY;
+          var arcType = config.arcType;
+
+          if (arcType == 'up') { // 上半部分光线运动
+            if (angle <= rayUpEndAngle) { // 斜线运动
+              currLeft = slashX; // 角度要转成弧度
+              currTop = slashY; // 角度要转成弧度
+              slashX -= 4;
+              slashY -= (4 * Math.tan(angle3 / 180 * Math.PI));
+            } else { // 下半部分圆周运动
+              slashX = initX - rx * Math.sin(angle / 180 * Math.PI); // 角度要转成弧度
+              slashY = initY - (ry - ry * Math.cos(angle / 180 * Math.PI)); // 角度要转成弧度
+            }
+          } else { // 下半部分光线运动
+            if (angle >= rayDownEndAngle) { // 斜线运动
+              currLeft = slashX; // 角度要转成弧度
+              currTop = slashY; // 角度要转成弧度
+              slashX -= 4;
+              slashY -= (4 * Math.tan(angle3 / 180 * Math.PI));
+            } else { // 下半部分圆周运动
+              slashX = initX + rx * Math.sin(angle / 180 * Math.PI); // 角度要转成弧度
+              slashY = initY + (ry - ry * Math.cos(angle / 180 * Math.PI)); // 角度要转成弧度
+            }
+          }
+
+          // 3、改变外观（UI）
+          oRay.style.left = slashX + 'px';
+          oRay.style.top = slashY + 'px';
+          return {
+            slashX: slashX,
+            slashY: slashY,
+            angle: angle
+          }
+        }
+
+        oRayUp.className = 'particle ray1';
+        oRayDown.className = 'particle ray2';
+
+        timer = setInterval(function () {
+          if (rayUpStartAngle > rayUpEndAngle) {
+            rayUpStartAngle = (rayUpStartAngle - 4) % 360;//增加度数
+          }
+
+          rayUp = arcFun({
+            oRay: oRayUp,
+            arcType: 'up',
+            angle: rayUpStartAngle,
+            initX: 338 + 1,
+            initY: 349 + 32,
+            slashX: rayUp.slashX,
+            slashY: rayUp.slashY
+          })
+
+
+          if (rayDownStartAngle < rayDownEndAngle) {
+            rayDownStartAngle = (rayDownStartAngle + 4) % 360;//增加度数
+          }
+
+          rayDown = arcFun({
+            oRay: oRayDown,
+            arcType: 'down',
+            angle: rayDownStartAngle,
+            initX: 338,
+            initY: 349,
+            slashX: rayDown.slashX,
+            slashY: rayDown.slashY
+          })
+
+          if (rayDown.slashX <= 80) {
+            clearInterval(timer);
+          }
+        }, 30);
+
+      }
+    }
+   </script>
+</html>

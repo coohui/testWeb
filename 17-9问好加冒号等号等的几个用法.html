@@ -12,13 +12,14 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <title></title>
+    <title>反向引用</title>
   </head>
   <body></body>
    <script type="text/javascript">
-     let str = '<div style="color: red">我是红色<p class="p1" title="ppppp"></p></div>'
-     document.getElementsByTagNames('body')[0].innerHTML = str
-     let reg = /<\/?[^>]+>/ig
-     console.log(str)
+      var str = '123456runoob123runoob456';
+      var n = str.match(/([1-9])([a-z]+)/g);
+      var n1 = str.match(/(?:[1-9])([a-z]+)/g);
+      // () 表示捕获分组, ?= 和 ?!是两个非捕获元，前者为正向预查，在任何开始匹配圆括号内的正则表达式模式的位置来匹配搜索字符串，后者为负向预查，在任何开始不匹配该正则表达式模式的位置来匹配搜索字符串，此时n,n1毫无区别，但在非捕获元中不能使用反向引用
+      console.log(n, n1)
    </script>
 </html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <title></title>
+  </head>
+  <body>
+		mysql
+		1.查看数据库操作
+		show databases；
+		2.查看当前使用的是哪个数据库
+		select database();
+		选中某个数据库(test为某个数据库名)
+		use test;
+		创建students表
+		create table students(
+		   id int NOT NULL AUTO_INCREMENT,
+		   name char(20) NOT NULL,
+		   age int NOT NULL,
+		   PRIMARY KEY (id)
+		 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+		展示表
+		show tables;
+		展示表结构(students为某张表)
+		desc students;
+		查询表内容
+		select * from students;
+		添加表字段
+		alter table students add sex char(3) not null default '未知';
+		修改表的字段属性（字段类型必须要）
+		alter table students change name name（新名称可以一样表示不变） char(20) not null default ‘’;
+		alter table 表名称 change 字段名称 新字段名称 字段类型 [是否允许非空];
+		alter table 表名称 modify 字段名称 字段类型 [是否允许非空];
+		删除表字段
+		alter table students drop sex;
+		删除数据表
+		drop table students;
+		插入数据
+		insert into students (name, age) values ('刘德华',50);
+		展示插入的数据
+		select * from students;
+		查询students表中的所有女性
+		select name, sex from students where sex = '女';
+		查询students表中的出现的第一个女性（where指定任何条件可以搭配and 和 or，limit返回的记录数）
+		select name, sex from students where sex = '女' limit 1;
+		从第二条开始查询students表中的出现的第一个人（offset偏移）
+		select name, sex from students limit 1 offset 1;
+		where 配合 and, or, in, not in的用法
+		select * from students where students.sex = '女' or students.age >= 50;
+		查询students表中的所有女性或大于等于50岁的人
+		查询id在2，3中的数据
+		select * from students where students.id in(2, 3);
+		查询id不在2，3中的数据
+		select * from students where students.id not in(2, 3);
+		把刘德华的性别更新成男，年龄51岁
+		update students set sex = '男' , age = 51 where name = '刘德华';
+		删除students表中名字为zs的记录
+		delete from students where name = 'zs';
+		LIKE 子句中使用百分号 %字符来表示任意多个字符，_表示任意单个字符，[]表示括号内所列字符中的一个（类似正则表达式）。指定一个字符、字符串或范围，要求所匹配对象为它们中的任一个。
+		[^] ：表示不在括号所列之内的单个字符。其取值和 [] 相同，但它要求所匹配对象为指定字符以外的任一个字符。
+		查询students表中第一个字为刘，最后一个字为华的记录
+		select * from students where name like '刘%华';
+		查询出students表和teacher表中所有的名字和年龄并按年龄排序（union all 把重复的也会展示出来）
+		// 连接两个以上的 SELECT 语句的结果组合到一个结果集合中
+		select name, age from students union select name, age from teacher order by age;
+		order by asc 或 desc 关键字来设置查询结果是按升序或降序排列
+		通过性别分组，取出students表中年龄最大的记录（group by配合COUNT, SUM, AVG，max等函数使用）
+		select max(age), name, sex from students group by sex;
+		// join 把students表和teacher表里面课程相同的集合条数
+		select s.name, s.course, s.hobby, s.works, t.name from students s join teacher t on s.course = t.course;
+		// left join 把students表和teacher表里面课程相同的集合条数加students表
+		select s.name, s.course, s.hobby, s.works, t.name from students s left join teacher t on s.course = t.course;
+		// right join 把students表和teacher表里面课程相同的集合条数加teacher表
+		select s.name, s.course, s.hobby, s.works, t.name from students s right join teacher t on s.course = t.course;
+		// 正则表达式,查询课程字段带有c字母的数据
+		select * from students where course regexp '[c]';
+
+		2.退出三种方法：
+		mysql > exit;
+		mysql > quit;
+		mysql > \q;
+  </body>
+   <script type="text/javascript">
+   </script>
+</html>
