@@ -14,7 +14,45 @@
 function palindrome(str){
     return str==str.split('').reverse().join('');
 };
-console.log(palindrome('aba'));
+// console.log(palindrome('aba'));
+
+var arr = [3, 9, 1, 2, 5]
+var arr2 = [23, 78, 45, 8, 32, 56]
+// 冒泡排序
+function bubbleSort (arr) {
+    var len = arr.length;
+    for (var i = 0; i < len; i++) {
+        for(var j = 0; j < len - i; j++) {
+            var temp = 0;
+            if (arr[j] > arr[j + 1]) {
+                temp = arr[j + 1];
+                arr[j + 1] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    return arr;
+}
+// console.log('bubbleSort', selectionSort(arr))
+// 选择排序
+function selectionSort (arr) {
+	let len = arr.length
+	for (let i = 0; i < len; i++) {
+		let iMinIndex = i
+		// 循环第一i遍，找出>=i当中的最小值
+        for (let j = i + 1; j < len; j++) {
+            if (arr[iMinIndex] > arr[j]) {
+            	iMinIndex = j
+            }
+        }
+        // 把>=i后面的最小值与i当前位置交换
+        let iMin = arr[iMinIndex]
+        arr[iMinIndex] = arr[i]
+        arr[i] = iMin
+	}
+	return arr
+}
+// console.log('selectionSort', selectionSort(arr2))
 </script>
 </body>
 </html>
