@@ -2,14 +2,23 @@
 <html>
 	<head>
 		<title></title>
+		<style>
+			.container{
+				zoom:0.5;
+			}
+		</style>
 	</head>
-	<body style="background-color:#f3f3f3"> 
-		<canvas id="canvas" width=1000 height=650></canvas>
+	<body style="background-color:#f3f3f3;"> 
+		<div class="container">
+			<canvas id="canvas" width=1000 height=650></canvas>
+		</div>
 		<script>
 			var canvas = document.getElementById("canvas");
-			var startX = 100;
-			var startY = 600;
+			let scale = 2
+			var startX = 100 / scale;
+			var startY = 600 / scale;
 			var ctx = canvas.getContext('2d');
+			ctx.scale(scale, scale);
 			var data = [0,100,200,300,400,500];		//坐标轴坐标
 			var point = [[100,200],[150,230],[200,190],[250,240],[300,300],[350,270],[400,500],[450,400],[500,100]];	//点坐标
 			//建立坐标系
@@ -25,15 +34,15 @@
 			}
 			//填充横纵坐标
 			function insert(){
-				var x = 100;
-				var y = 600;
+				var x = 100 / scale;
+				var y = 600 / scale;
 				//绘制横坐标
 				for(var i in data){
 					ctx.fillText(data[i],x,y+20);
 					x += 100;
 				}
-				x = 100;
-				y = 600;
+				x = 100 / scale;
+				y = 600 / scale;
 				//绘制纵坐标
 				for(var i in data){
 					ctx.fillText(data[i],x-20,y);
@@ -50,8 +59,8 @@
 				if(num == 8){
 					clearInterval(sh);
 				}
-				var x = point[num][0];
-				var y = point[num][1];
+				var x = point[num][0] / scale;
+				var y = point[num][1] / scale;
 				//转换坐标
 				x += 100;
 				y = startY - y;

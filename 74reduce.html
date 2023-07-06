@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <title>reduce</title>
+  </head>
+  <body></body>
+   <script type="text/javascript">
+    let names = ['peter', 'tom', 'mary', 'bob', 'tom','peter'];
+
+    let nameNum = names.reduce((pre,cur)=>{
+      console.log(pre,cur)
+      return pre + '-' + cur
+    })
+    console.log(nameNum); //{ peter: 2, tom: 2, mary: 1, bob: 1 }
+
+    let arr = [1,2,3,4,4,1]
+    let newArr = arr.reduce((pre,cur)=>{
+        if(!pre.includes(cur)){
+          return pre.concat(cur)
+        }else{
+          return pre
+        }
+    },[])
+    console.log(newArr);// [1, 2, 3, 4]
+
+    // let str = '[1,2,3]'
+    console.log(Array.of(3))
+    let arr3 = [1,2,3,4]
+    let arr2 = arr3.keys()
+    console.log(Array.isArray(arr2), arr2)
+    for (let key of arr2) {
+        console.log(key);   // 0,1,2,3
+    }
+
+    let arr4 = [1,2,3,4]
+    let arr5 = arr4.entries()
+    console.log(Array.isArray(arr5), arr5)
+    for (let e of arr5) {
+        console.log(e);   // [0,1] [1,2] [2,3] [3,4]
+    }
+
+   </script>
+</html>

@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <title>40-2.线条变短运动</title>
+  </head>
+  <style>
+  .captable-tree{
+    margin: 30px auto 0;
+    position: relative;
+    border: 1px solid #000;
+    width: 1200px;
+    height: 500px;
+  }
+  .btn-wrap{
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+    width: 100%;
+  }
+  .captable-tab{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+  }
+  .captable-tab-li{
+    cursor: pointer;
+    float: left;
+    margin: 0 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid #999;
+    background-color: #999;
+    opacity: 0.5;
+  }
+  .active{
+    background-color: #fff;
+  }
+  .btn{
+    float: left;
+    cursor: pointer;
+    margin: 0 10px;
+  }
+  </style>
+  <body>
+    <div class="captable-tree">
+      <canvas style="position: absolute;z-index: 1;" id="clock"></canvas>
+      <!-- <div style="position: absolute; left: 50%; height: 100%; width: 0;border: 1px dotted #ddd;"></div> -->
+    </div>
+    
+    <div class="captable-tab">
+      <div class="captable-tab-li active"></div>
+      <div class="captable-tab-li"></div>
+      <div class="captable-tab-li"></div>
+      <div class="captable-tab-li"></div>
+      <div class="captable-tab-li"></div>
+      <div class="captable-tab-li"></div>
+    </div>
+
+    <div class="btn-wrap">
+      <div class="btn" id="btn">开始</div>
+      <div class="btn" id="big">放大</div>
+      <div class="btn" id="small">缩小</div>
+      <div class="btn" id="up">上</div>
+      <div class="btn" id="down">下</div>
+      <div class="btn" id="left">左</div>
+      <div class="btn" id="right">右</div>
+    </div>
+  </body>
+   <script type="text/javascript">
+    window.onload = function() {
+      let data = [
+        {
+          name: '狂想科技技术有限责任公司',
+          rate: '10%',
+          stock: '10000000',
+          hold_value: '100000000',
+          animation: 'none'
+        },
+        {
+          name: '腾讯科技股份有限公司',
+          rate: '50%',
+          stock: '50000000',
+          hold_value: '500000000',
+          animation: 'none'
+        },
+        {
+          name: '阿里巴巴电子商务股份有限公司',
+          rate: '10%',
+          stock: '10000000',
+          hold_value: '100000000',
+          animation: 'in'
+        },
+        {
+          name: '马云',
+          rate: '1%',
+          stock: '1000000',
+          hold_value: '10000000',
+          animation: 'none'
+        },
+        {
+          name: '马化腾',
+          rate: '2%',
+          stock: '2000000',
+          hold_value: '20000000',
+          animation: 'out'
+        },
+        {
+          name: '利好科技（深圳）有限责任公司',
+          rate: '5%',
+          stock: '5000000',
+          hold_value: '50000000',
+          animation: 'none'
+        }
+      ]
+
+      let oLis = document.getElementsByClassName('captable-tab-li')
+      
+      for (let i = 0; i < oLis.length; i++) {
+        oLis[i].onclick = () => {
+          for (let j = 0; j < oLis.length; j++) {
+            oLis[j].className = 'captable-tab-li'
+          }
+          data.map((item) => {
+            let r = Math.random()
+            if (r < 0.33 && item.animation != 'out') {
+              item.animation = 'none'
+            } else if (r >= 0.33 && r < 0.66 && item.animation != 'out') {
+              item.animation = 'out'
+            } else {
+              if (item.animation != 'in' && item.animation != 'none') {
+                item.animation = 'in'
+              } else {
+                item.animation = 'out'
+              }
+            }
+          })
+          oLis[i].className = 'captable-tab-li active'
+          oLine.initData(data)
+        }
+      }
+        
+      class Line {
+        constructor (props) {
+          this.ctx = null
+          this.lineWidth = 1
+          this.rw = 170
+          this.rh = 80
+          this.rectSpace = 30
+          this.strokeStyle = '#d3d3d3'
+          this.hLineStartWidth = 0
+          this.hLineEndWidth = 0
+          this.vLineSpeed = 8
+          this.hLineSpeed = 8
+          this.vHeight = 60
+          this.arrL = []
+          this.arrR = []
+          this.curArr = []
+          this.preArr = []
+          this.preL = 0
+          this.preR = 0
+          this.curL = 0
+          this.curR = 0
+          this.hAnimationTypeL = 'LS' // 横线 => LL左边向左运动 LR左边向右运动 LS 不动
+          this.hAnimationTypeR = 'RS' // 横线 => RL右边向左运动 RR右边向右运动 RS 不动
+          this.animateHlineToShorterL = false
+          this.animateHlineToLongerL = false
+          this.animateHlineToShorterR = false
+          this.animateHlineToLongerR = false
+          this.title = ''
+          Object.assign(this, props)
+          return this
+        }
+        drawVline (config) { // 画竖线
+          let {ctx} = this
+          let {x, y, h, lineWidth = 1} = config
+          h = h <= 0 ? 0 : h
+          ctx.beginPath()
+          ctx.lineWidth = lineWidth
+          ctx.strokeStyle = this.strokeStyle
+          ctx.moveTo(x, y)
+          ctx.lineTo(x, y + h)
+          ctx.stroke()
+          ctx.closePath()
+          return this
+        }
+        drawHline (config) { // 画横线
+          let {x = 0, y = 0, l = 0, r = 0, w = 200
+          } = config
+          let {ctx} = this
+          w = w <= 0 ? 0 : w / 2
+          ctx.beginPath()
+          ctx.lineWidth = this.lineWidth
+          ctx.strokeStyle = this.strokeStyle
+          ctx.moveTo(x, y)
+          ctx.lineTo(x + r, y)
+          ctx.moveTo(x, y)
+          ctx.lineTo(x - l, y)
+          ctx.stroke()
+          ctx.closePath()
+          return this
+        }
+        drawRect (config) {
+          let {x, y, rx = 0, ry = 20, rw = this.rw, rh = this.rh, globalAlpha = 1,
+            index = 0, item = {name: '', animation: 'none'}, strokeStyle = this.strokeStyle,
+            fillStyle = '#fff', font = '14px', fontStyle = '#000'
+          } = config
+          let {ctx} = this
+          let name = item.name
+          let len = name.length
+          let num = (rw - 20) / parseInt(font)
+          num = parseInt(num)
+          len = Math.ceil(len / num)
+          ctx.globalAlpha = globalAlpha > 0 ? globalAlpha : 0
+          ctx.beginPath()
+          ctx.fillStyle = fillStyle
+          ctx.fillRect(x, y, rw, rh)
+          ctx.strokeStyle = strokeStyle
+          ctx.strokeRect(x, y, rw, rh)
+          ctx.font = font + ' Arial'
+          ctx.fillStyle = fontStyle
+          let cx = x + parseInt(rw / 2)
+          for (let i = 0; i < len; i++) {
+            // 居中
+            if (i == (len - 1) && name.length != num) {
+              ctx.fillText(name.slice(i * num, (i + 1) * num), cx - parseInt(font) * (name.length % num) / 2, y + ry + i * (parseInt(font) + 6))
+            } else {
+              ctx.fillText(name.slice(i * num, (i + 1) * num), cx - parseInt(font) * num / 2, y + ry + i * (parseInt(font) + 6))
+            }
+          }
+          ctx.fillText(item.animation, cx - parseInt(font) * num / 2, y + ry + 2 * (parseInt(font) + 6))
+          ctx.closePath()
+          return this
+        }
+        drawRectAndVline (arr) { // 竖线和方块
+          let {rw} = this
+          arr.forEach((item) => {
+            let x = item.x
+            let y = item.y
+            let animation = item.animation
+            let vHeight = 60
+            let globalAlpha = 1
+            if (animation === 'out' || animation === 'none') {
+              this.drawRect({
+                x: x,
+                y: y + vHeight,
+                globalAlpha: globalAlpha,
+                index: item.index,
+                item: item
+              })
+              this.drawVline({
+                x: x + parseInt(rw / 2),
+                y: y,
+                h: vHeight
+              })
+            }
+          })
+        }
+        animateHlineL () { // 左边横线运动
+          this.drawHline({l: this.preL})
+          switch (this.hAnimationTypeL) {
+            case 'LR':
+              if (this.preL > this.curL) {
+                this.preL = this.preL - this.hLineSpeed
+              } else if (this.preL <= this.curL) {
+                this.preL = this.curL
+              }
+              break
+            case 'LL':
+              if (this.preL < this.curL) {
+                this.preL = this.preL + this.hLineSpeed
+              } else if (this.preL >= this.curL) {
+                this.preL = this.curL
+              }
+              break
+            case 'LS':
+              break
+          }
+        }
+        animateHlineR () { // 右边横线运动
+          this.drawHline({r: this.preR})
+          switch (this.hAnimationTypeR) {
+            case 'RL':
+              if (this.preR > this.curR) {
+                this.preR = this.preR - this.hLineSpeed
+              } else if (this.preR <= this.curR) {
+                this.preR = this.curR
+              }
+              break
+            case 'RR':
+              if (this.preR < this.curR) {
+                this.preR = this.preR + this.hLineSpeed
+              } else if (this.preR >= this.curR) {
+                this.preR = this.curR
+              }
+              break
+            case 'RS':
+              break
+          }
+        }
+        animationVlineAndRect (arr) { // 方块运动
+          let {ctx, rw} = this
+          arr.forEach((item, index) => {
+            let x = item.x
+            let y = item.y
+            let vHeight = item.vHeight
+            let globalAlpha = item.globalAlpha
+            let animation = item.animation
+            ctx.save()
+            this.drawRect({
+              x: x,
+              y: y + vHeight,
+              globalAlpha: globalAlpha,
+              index: item.index,
+              item: item
+            })
+            if (animation === 'out' && globalAlpha > 0) {
+              globalAlpha = globalAlpha - 0.1
+            } else if (animation === 'in' && vHeight >= this.vHeight && globalAlpha <= 1) {
+              globalAlpha = globalAlpha + 0.1
+            } else if (animation === 'none' ) {
+              globalAlpha = 1
+            }
+            ctx.restore()
+            this.drawVline({
+              x: x + parseInt(rw / 2),
+              y: y,
+              h: vHeight
+            })
+            if (animation === 'out' && globalAlpha <= 0 && vHeight > 0) {
+              vHeight = vHeight - this.vLineSpeed
+              if (vHeight <= 0) {
+                this.animateHlineToShorter()
+              }
+            } else if (animation === 'in' && vHeight <= this.vHeight) {
+              vHeight = vHeight + this.vLineSpeed
+            } else if (animation === 'none' ) {
+              vHeight = this.vHeight
+            }
+            vHeight = vHeight >= this.vHeight ? this.vHeight : vHeight
+            vHeight = vHeight < 0 ? 0 : vHeight
+            globalAlpha = globalAlpha < 0 ? 0 : globalAlpha
+            item.vHeight = vHeight
+            item.globalAlpha = globalAlpha
+          })
+        }
+        animateHlineToShorter () { // 横线开始变短
+          if (this.hAnimationTypeL === 'LR') {
+            this.animateHlineToShorterL = true
+          }
+          if (this.hAnimationTypeR === 'RL') {
+            this.animateHlineToShorterR = true
+          }
+        }
+        resetData () {
+          this.animateHlineToLongerL = false
+          this.animateHlineToLongerR = false
+          this.animateHlineToShorterL = false
+          this.animateHlineToShorterR = false
+          this.arrL = []
+          this.arrR = []
+          this.curArr = []
+        }
+        initData (data = []) {
+          let {rw, rh, rectSpace} = this
+          let len = parseInt(data.length / 2)
+          let w = rw + rectSpace
+          this.preArr = JSON.parse(JSON.stringify(this.curArr))
+          this.resetData()
+
+          data.map((item, index) => {
+            let i = index - len
+            item.x = i * w
+            item.y = 0
+            item.index = index
+            // 拆分成左右两边
+            if (item.x < 0) {
+              this.arrL.push(item)
+            } else {
+              this.arrR.push(item)
+            }
+
+            switch (item.animation) {
+              case 'out':
+                item.globalAlpha = 1
+                item.vHeight = this.vHeight
+                for (let i = 0; i < this.curArr.length; i ++) {
+                  if (this.curArr[i] === index) {
+                    this.curArr[i].splice(i, 1)
+                    break
+                  }
+                }
+                this.preArr.push(index)
+                break
+              case 'none':
+                item.globalAlpha = 1
+                item.vHeight = this.vHeight
+                this.preArr.push(index)
+                this.curArr.push(index)
+              break
+              case 'in':
+                item.globalAlpha = 0
+                item.vHeight = 0
+                this.curArr.push(index)
+                break
+            }
+          })
+
+          this.preL = (len - Math.min(...this.preArr)) * w - (w - this.rectSpace) / 2
+          this.preR = (Math.max(...this.preArr) - len) * w + (w - this.rectSpace) / 2
+          this.preR = this.preR > 0 ? this.preR : 0
+          this.curL = (len - Math.min(...this.curArr)) * w - (w - this.rectSpace) / 2
+          this.curR = (Math.max(...this.curArr) - len) * w + (w - this.rectSpace) / 2
+          this.curR = this.curR > 0 ? this.curR : 0
+
+          if (this.preL > this.curL) {
+            this.hAnimationTypeL = 'LR'
+          } else if (this.preL < this.curL) {
+            this.hAnimationTypeL = 'LL'
+          } else {
+            this.hAnimationTypeL = 'LS'
+          }
+
+          if (this.preR > this.curR) {
+            this.hAnimationTypeR = 'RL'
+          } else if (this.preR < this.curR) {
+            this.hAnimationTypeR = 'RR'
+          } else {
+            this.hAnimationTypeR = 'RS'
+          }
+          this.data = data
+          return this
+        }
+        draw (config = {}) {
+          Object.assign(this, config)
+          let {ctx, rw, rh, data, rectSpace} = this
+          
+          // 画顶层节点竖线
+          this.drawVline({
+            x: 0,
+            y: -50,
+            h: 50,
+            lineWidth: 2
+          })
+          // 画顶层节点方块
+          this.drawRect({
+            rw: 300,
+            rh: 64,
+            x: - 150,
+            y: -114,
+            ry: 36,
+            fontStyle: '#fff',
+            font: '20px',
+            strokeStyle: '#2971dc',
+            fillStyle: '#3285ff',
+            item: {name: this.title}
+          })
+
+          if (this.hAnimationTypeL === 'LL') {
+            this.animateHlineL()
+            if (this.animateHlineToLongerL) {
+              this.animationVlineAndRect(this.arrL)
+            } else {
+              this.drawRectAndVline(this.arrL)
+            }
+
+            // 运动完横线再运动方块
+            if (this.preL >= this.curL) {
+              this.animateHlineToLongerL = true
+            }
+          }
+
+          if (this.hAnimationTypeL === 'LR') {
+            if (this.animateHlineToShorterL) {
+              this.animateHlineL()
+            } else {
+              this.drawHline({l: this.preL})
+            }
+            this.animationVlineAndRect(this.arrL)
+          }
+
+          if (this.hAnimationTypeL === 'LS') {
+            this.drawHline({l: this.preL})
+            this.animationVlineAndRect(this.arrL)
+          }
+
+          if (this.hAnimationTypeR === 'RL') {
+            if (this.animateHlineToShorterR) {
+              this.animateHlineR()
+            } else { 
+              this.drawHline({r: this.preR})
+            }
+            this.animationVlineAndRect(this.arrR)
+          }
+
+          if (this.hAnimationTypeR === 'RR') {
+            this.animateHlineR()
+            if (this.animateHlineToLongerR) {
+              this.animationVlineAndRect(this.arrR)
+            } else { // 初始化
+              this.drawRectAndVline(this.arrR)
+            }
+            // 运动完横线再运动方块
+            if (this.preR >= this.curR) {
+              this.animateHlineToLongerR = true
+            }
+          }
+
+          if (this.hAnimationTypeR === 'RS') {
+            this.drawHline({r: this.preR})
+            this.animationVlineAndRect(this.arrR)
+          }
+        }
+      }
+
+      
+      let oBtn = document.getElementById('btn')
+      let oBig = document.getElementById('big')
+      let oSmall = document.getElementById('small')
+      let oUp = document.getElementById('up')
+      let oDown = document.getElementById('down')
+      let oLeft = document.getElementById('left')
+      let oRight = document.getElementById('right')
+      let canvas = document.getElementById('clock')
+      let timer = null
+      let w = 200
+      let h = 60
+      let globalAlpha = 1
+      let ratio = window.devicePixelRatio || 1
+      let scale = 1
+      let tx = 600
+      let ty = 200
+      let cw = 1200
+      let ch = 500
+      canvas.style.width = cw + 'px'
+      canvas.style.height = ch + 'px'
+      canvas.width = cw * ratio
+      canvas.height = ch * ratio
+      let ctx = canvas.getContext('2d')
+      let oLine = new Line({
+        ctx: ctx,
+        title: '芒果科技有限责任公司'
+      }).initData(data)
+
+      if(canvas.getContext) {
+        drawLine(ctx)
+      }
+
+      oBtn.onclick = () => {
+        animate()
+      }
+
+      oBig.onclick = () => {
+        scale += 0.1
+      }
+
+      oSmall.onclick = () => {
+        scale -= 0.1
+      }
+
+      oLeft.onclick = () => {
+        tx += 2
+      }
+
+      oRight.onclick = () => {
+        tx -= 2
+      }
+
+      oUp.onclick = () => {
+        ty -= 2
+      }
+
+      oDown.onclick = () => {
+        ty += 2
+      }
+
+      function drawLine(ctx) {
+        ctx.save()
+        ctx.clearRect(0, 0, cw * ratio, ch * ratio)
+        ctx.translate(tx, ty) //设置中心点，此时（300， 300）成了坐标（0，0）
+        ctx.scale(scale, scale)
+        oLine.draw()
+        ctx.restore()
+      }
+      
+      function animate () {
+        clearInterval(timer)
+        timer = setInterval(() => {
+          drawLine(ctx)
+        }, 30)
+      }
+    }
+  </script>
+</html>

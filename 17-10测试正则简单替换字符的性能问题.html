@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>测试正则性能</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+  let t1 = new Date().getTime()
+  let obj = `{
+            "pi_staff_type" : "&amp;&amp;&amp;&amp;&amp;",
+            "pi_staff_id" : "1",
+            "pi_staff_name" : "其他",
+            "pi_staff_group" : "1",
+            "pi_grant_uid" : "30712",
+            "pi_grant_name" : "刘德华",
+            "pi_grant_en_name" : "",
+            "pi_leave_email" : "",
+            "pi_deal_way" : "1",
+            "pi_id" : "707876",
+            "contract_num" : "1",
+            "detail" : [
+               {
+                  "pi_tool_type" : "1",
+                  "pi_serial_number" : "2212220003",
+                  "pi_grant_stock" : "3000",
+                  "pi_strike_currency" : "1",
+                  "pi_grant_extend" : null,
+                  "pi_strike_price" : "0.2",
+                  "pi_lock_stock" : 3000,
+                  "pi_lock_prize" : 900,
+                  "pi_effect_stock" : 0,
+                  "pi_effect_prize" : 0,
+                  "pi_used_stock" : 0,
+                  "pi_rel_data" : null,
+                  "pi_used_prize" : 0,
+                  "consult_cancel_stock" : 0,
+                  "overdue_strike_cancel_stock" : 0,
+                  "pi_cashout_stock" : "",
+                  "pi_cashout_prize" : 0,
+                  "pi_cancel_stock" : 0,
+                  "pi_cancel_stock_go_back" : "",
+                  "delay_unlock_stock" : 0,
+                  "transfer_data" : [],
+                  "cashout_detail" : [],
+                  "pi_deal_way" : "1",
+                  "pi_status" : "4",
+                  "pi_id" : "707876",
+                  "pi_before_quit_cancel_stock" : 0,
+                  "pi_after_quit_cancel_stock" : 0,
+                  "pi_limit_strike_cancel_stock" : 0,
+                  "pi_not_calc_prize_cashout_stock" : 0
+               },
+               {
+                  "pi_tool_type" : "1",
+                  "pi_serial_number" : "2212220002",
+                  "pi_grant_stock" : "2000",
+                  "pi_strike_currency" : "1",
+                  "pi_grant_extend" : null,
+                  "pi_strike_price" : "0.1",
+                  "pi_lock_stock" : 2000,
+                  "pi_lock_prize" : 800,
+                  "pi_effect_stock" : 0,
+                  "pi_effect_prize" : 0,
+                  "pi_used_stock" : 0,
+                  "pi_rel_data" : null,
+                  "pi_used_prize" : 0,
+                  "consult_cancel_stock" : 0,
+                  "overdue_strike_cancel_stock" : 0,
+                  "pi_cashout_stock" : "",
+                  "pi_cashout_prize" : 0,
+                  "pi_cancel_stock" : 0,
+                  "pi_cancel_stock_go_back" : "",
+                  "delay_unlock_stock" : 0,
+                  "transfer_data" : [],
+                  "cashout_detail" : [],
+                  "pi_deal_way" : "1",
+                  "pi_status" : "4",
+                  "pi_id" : "707875",
+                  "pi_before_quit_cancel_stock" : 0,
+                  "pi_after_quit_cancel_stock" : 0,
+                  "pi_limit_strike_cancel_stock" : 0,
+                  "pi_not_calc_prize_cashout_stock" : 0
+               },
+               {
+                  "pi_tool_type" : "1",
+                  "pi_serial_number" : "2212220001",
+                  "pi_grant_stock" : "1000",
+                  "pi_strike_currency" : "1",
+                  "pi_grant_extend" : null,
+                  "pi_strike_price" : "0.2",
+                  "pi_lock_stock" : 500,
+                  "pi_lock_prize" : 150,
+                  "pi_effect_stock" : 500,
+                  "pi_effect_prize" : 150,
+                  "pi_used_stock" : 0,
+                  "pi_rel_data" : null,
+                  "pi_used_prize" : 0,
+                  "consult_cancel_stock" : 0,
+                  "overdue_strike_cancel_stock" : 0,
+                  "pi_cashout_stock" : "",
+                  "pi_cashout_prize" : 0,
+                  "pi_cancel_stock" : 0,
+                  "pi_cancel_stock_go_back" : "",
+                  "delay_unlock_stock" : 0,
+                  "transfer_data" : [],
+                  "cashout_detail" : [],
+                  "pi_deal_way" : "1",
+                  "pi_status" : "4",
+                  "pi_id" : "707874",
+                  "pi_before_quit_cancel_stock" : 0,
+                  "pi_after_quit_cancel_stock" : 0,
+                  "pi_limit_strike_cancel_stock" : 0,
+                  "pi_not_calc_prize_cashout_stock" : 0
+               },
+               {
+                  "pi_tool_type" : "1",
+                  "pi_serial_number" : "2211250001",
+                  "pi_grant_stock" : "800",
+                  "pi_strike_currency" : "2",
+                  "pi_grant_extend" : "[]",
+                  "pi_strike_price" : "0.1",
+                  "pi_lock_stock" : 0,
+                  "pi_lock_prize" : 0,
+                  "pi_effect_stock" : 800,
+                  "pi_effect_prize" : -167.72,
+                  "pi_used_stock" : 0,
+                  "pi_rel_data" : null,
+                  "pi_used_prize" : 0,
+                  "consult_cancel_stock" : 0,
+                  "overdue_strike_cancel_stock" : 0,
+                  "pi_cashout_stock" : "",
+                  "pi_cashout_prize" : 0,
+                  "pi_cancel_stock" : 0,
+                  "pi_cancel_stock_go_back" : "",
+                  "delay_unlock_stock" : 0,
+                  "transfer_data" : [],
+                  "cashout_detail" : [],
+                  "pi_deal_way" : "1",
+                  "pi_status" : "4",
+                  "pi_id" : 707632,
+                  "pi_before_quit_cancel_stock" : 0,
+                  "pi_after_quit_cancel_stock" : 0,
+                  "pi_limit_strike_cancel_stock" : 0,
+                  "pi_not_calc_prize_cashout_stock" : 0
+               },
+               {
+                  "pi_tool_type" : "1",
+                  "pi_serial_number" : "2211150001",
+                  "pi_grant_stock" : "800",
+                  "pi_strike_currency" : 2,
+                  "pi_grant_extend" : "[]",
+                  "pi_strike_price" : 0.1,
+                  "pi_lock_stock" : 0,
+                  "pi_lock_prize" : 0,
+                  "pi_effect_stock" : 800,
+                  "pi_effect_prize" : -167.72,
+                  "pi_used_stock" : 22,
+                  "pi_rel_data" : null,
+                  "pi_used_prize" : -4.61,
+                  "consult_cancel_stock" : 0,
+                  "overdue_strike_cancel_stock" : 0,
+                  "pi_cashout_stock" : 22,
+                  "pi_cashout_prize" : 16.49,
+                  "pi_cancel_stock" : 0,
+                  "pi_cancel_stock_go_back" : "",
+                  "delay_unlock_stock" : 0,
+                  "transfer_data" : [],
+                  "cashout_detail" : [
+                     {
+                        "cashout_prize" : "12.9579",
+                        "cash_currency" : "1",
+                        "cashout_finish_time" : "1668586395",
+                        "ca_convert_money" : "USD 90.70",
+                        "cashout_stock" : "10",
+                     },
+                     {
+                        "cashout_prize" : "2.9579",
+                        "cash_currency" : "1",
+                        "cashout_finish_time" : "1671415366",
+                        "ca_convert_money" : "USD 20.70",
+                        "cashout_stock" : "10",
+                     },
+                     {
+                        "cashout_prize" : "0.57438",
+                        "cash_currency" : "1",
+                        "cashout_finish_time" : "1671415383",
+                        "ca_convert_money" : "",
+                        "cashout_stock" : "2",
+                        "ca_convert_rate" : ""
+                     }
+                  ],
+                  "pi_deal_way" : "1",
+                  "pi_status" : "4",
+                  "pi_id" : 707519,
+                  "pi_before_quit_cancel_stock" : 0,
+                  "pi_after_quit_cancel_stock" : 0,
+                  "pi_limit_strike_cancel_stock" : 0,
+                  "pi_not_calc_prize_cashout_stock" : 0
+               }
+            ]
+         }`
+//   let arr = []
+//   for (let i = 0; i < 20000; i++){
+//     arr.push(obj)
+//   }
+//   let str = JSON.stringify(arr)
+
+  let str = ''
+  for (let i = 0; i < 20000; i++){
+   str += obj
+  }
+
+  let reg = /&(?:nbsp|#160|lt|#60|gt|62|amp|#38|quot|#34|cent|#162|pound|#163|yen|#165|euro|#8364|sect|#167|copy|#169|reg|#174|trade|#8482|times|#215|divide|#247);/g
+  let entity = {
+    '&nbsp;': ' ',
+    '&#160;': ' ',
+    '&lt;': '<',
+    '&#60;': '<',
+    '&gt;': '>',
+    '&62;': '>',
+    '&amp;': '&',
+    '&#38;': '&',
+    '&quot;': '"',
+    '&#34;': '"',
+    '&cent;': '￠',
+    '&#162;': '￠',
+    '&pound;': '£',
+    '&#163;': '£',
+    '&yen;': '¥',
+    '&#165;': '¥',
+    '&euro;': '€',
+    '&#8364;': '€',
+    '&sect;': '§',
+    '&#167;': '§',
+    '&copy;': '©',
+    '&#169;': '©',
+    '&reg;': '®',
+    '&#174;': '®',
+    '&trade;': '™',
+    '&#8482;': '™',
+    '&times;': '×',
+    '&#215;': '×',
+    '&divide;': '÷',
+    '&#247;': '÷'
+  }
+  str = str.replace(reg, function (chars) {
+    return entity[chars]
+  })
+
+  let t2 = new Date().getTime()
+  console.log(t2 - t1)
+</script> 

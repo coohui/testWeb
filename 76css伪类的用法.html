@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="format-detection" content="telephone=no">
+</head>
+<body>
+  <p class="p1">b</p>
+
+  <p class="p2" data-txt="我是动态获取的">attr</p>
+
+  <p class="p3" lang="ch"><q>我是<q>中文</q></q></p>
+  <p class="p3" lang="en"><q>我是<q>英文</q></q></p>
+
+  <p class="p4">我是测试图片</p>
+</body>
+<!-- 样式 -->
+<style>
+  .p1:before{
+    content: 'a';
+  }
+  .p1:after{
+    content: 'c';
+  }
+
+  .p2:before{
+    content: attr(data-txt); /*动态获取数据*/
+  }
+
+  q:lang(ch){
+    quotes: "“" "”" "{" "}";
+  }
+  q:lang(en){
+    quotes: "'" "'" "[" "]";
+  }
+
+  .p4:after{
+    content: url(./img/test.jpg);
+  }
+</style>
+</html>

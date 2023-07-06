@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+  <div id="div" class="div">hover</div>
+  <div id="div2" class="div">点击</div>
+</body>
+</html>
+<style>
+  .div{
+    text-align: center;
+    cursor: pointer;
+    margin: 30px;
+    font-size: 20px;
+  }
+  .div:hover{
+    color: blue;
+  }
+  .hover{
+    font-size: 40px;
+    font-weight: bolder;
+    color: red;
+  }
+</style>
+<script>
+  let oDiv2 = document.querySelector('#div2')
+  let oDiv = document.querySelector('#div')
+  oDiv.onmouseenter = () => {
+    oDiv.classList.add('hover')
+  }
+
+  oDiv.onmouseout = () => {
+    oDiv.classList.remove('hover')
+  }
+
+  oDiv2.onclick = () => {
+    oDiv.dispatchEvent(new Event('mouseenter'))
+    console.log('主动触发了mouseenter事件', oDiv)
+  }
+</script> 

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <title>40-1.canvas画时钟</title>
+  </head>
+  <body>
+    <div style="border: 1px solid #000; width: 600px; height: 600px;">
+      <canvas id="clock"></canvas>
+    </div>
+    <br/>
+
+    <div id="btn" style="cursor: pointer;">btn</div>
+  </body>
+   <script type="text/javascript">
+    // https://juejin.cn/post/6986785259966857247
+    let oBtn = document.getElementById('btn')
+    let x = 3
+    let y = 3
+    let canvas = document.getElementById('clock')
+    canvas.width = 600;
+    canvas.height = 600;
+    let ctx = canvas.getContext('2d')
+    if(canvas.getContext) {
+      drawClock(ctx)
+    }
+
+    oBtn.onclick = () => {
+      x += 30
+      y += 30
+      ctx.translate(x, y)
+      drawClock(ctx)
+    }
+    function drawClock(ctx) {
+      ctx.save()
+      ctx.clearRect(0, 0, 6000, 6000)
+      ctx.translate(300, 300); //设置中心点，此时（300， 300）成了坐标（0，0）
+      ctx.save()
+
+      //画大圆
+      ctx.beginPath()
+      ctx.arc(0, 0, 100, 0, 2*Math.PI)
+      ctx.lineWidth = 1
+      ctx.stroke()
+      ctx.closePath()
+
+      //画小圆
+      ctx.beginPath()
+      ctx.arc(0, 0, 5, 0, 2*Math.PI)
+      ctx.stroke()
+      ctx.closePath()
+
+      // 获取当前时分秒
+      let time = new Date()
+      let hour = time.getHours()%12
+      let min = time.getMinutes()
+      let sec = time.getSeconds()
+
+      // 时针
+      // 顺时针旋转坐标x，y轴
+      ctx.rotate(2*Math.PI/12*hour + 2 * Math.PI / 12 * (min / 60) - Math.PI / 2)
+      ctx.beginPath()
+      // moveTo设置画线起点
+      ctx.moveTo(-10, 0)
+      // lineTo设置画线经过点
+      ctx.lineTo(40, 0)
+      // 设置线宽
+      ctx.lineWidth = 10
+      ctx.stroke()
+      ctx.closePath()
+      ctx.restore()
+      ctx.save()
+
+      // 分针
+      ctx.rotate(2 * Math.PI / 60 * min + 2 * Math.PI / 60 * (sec / 60) - Math.PI / 2)
+      ctx.beginPath()
+      ctx.moveTo(-10, 0)
+      ctx.lineTo(60, 0)
+      ctx.lineWidth = 5
+      ctx.strokeStyle = 'blue'
+      ctx.stroke()
+      ctx.closePath()
+      ctx.restore()
+      ctx.save()
+        //秒针
+      ctx.rotate(2 * Math.PI / 60 * sec - Math.PI / 2)
+      ctx.beginPath()
+      ctx.moveTo(-10, 0)
+      ctx.lineTo(80, 0)
+      ctx.strokeStyle = 'red'
+      ctx.stroke()
+      ctx.closePath()
+      ctx.restore()
+      ctx.save()
+
+      // 绘制刻度，也是跟绘制时分秒针一样，只不过刻度是死的
+      ctx.lineWidth = 1
+      for(let i = 0; i<60; i++) {
+        ctx.rotate(2*Math.PI/60)
+        ctx.beginPath()
+        ctx.moveTo(90, 0)
+        ctx.lineTo(100, 0)
+        ctx.stroke()
+        ctx.closePath()
+      }
+      ctx.restore()
+      ctx.save()
+      ctx.lineWidth = 4
+      for (let i = 0; i < 12; i++) {
+        ctx.rotate(2 * Math.PI / 12)
+        ctx.beginPath()
+        ctx.moveTo(85, 0)
+        ctx.lineTo(100, 0)
+        ctx.stroke()
+        ctx.closePath()
+      }
+      ctx.restore()
+      ctx.restore()
+    }
+
+    setInterval(() => {
+      drawClock(ctx)
+    }, 1000);
+   </script>
+</html>
